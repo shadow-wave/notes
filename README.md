@@ -7,12 +7,13 @@
   ██║   ██║██╔══██╗██╔══╝  ██╔══██║   ██║   ██║╚██╗██║██║   ██║   ██║   ██╔══╝  ╚════██║
   ╚██████╔╝██║  ██║███████╗██║  ██║   ██║   ██║ ╚████║╚██████╔╝   ██║   ███████╗███████║
    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═══╝ ╚═════╝    ╚═╝   ╚══════╝╚══════╝
-                     S T U D I O   P R O   •   I P A D O S   1 8
+                 S T U D I O   P R O   •   I P A D O S   2 7 . 0 . 1
 ```
 
-> **A native-grade, Liquid Glass note-taking & academic PDF study engine engineered for iPad (Apple Silicon M1–M4 / A16 / iPadOS 18). Featuring 240Hz coalesced Apple Pencil inking, dual-tier Dark Mode (Midnight Space & Pure Obsidian True OLED #000000), hardware palm rejection, and 100% offline self-contained deployment with zero external CDN dependencies.**
+> **A native-grade, Liquid Glass note-taking & academic PDF study engine engineered for iPad (Apple Silicon / iPadOS 27.0.1). Featuring smooth Hydro-Elastic Water Drop jiggly physics, 240Hz coalesced Apple Pencil inking, dual-tier Dark Mode (Midnight Space & Pure Obsidian True OLED #000000), hardware palm rejection, and 100% offline self-contained deployment with zero external CDN dependencies.**
 
-[![Platform](https://img.shields.io/badge/Platform-iPadOS%2018%20%7C%20iOS%20%7C%20macOS-007AFF?style=for-the-badge&logo=apple&logoColor=white)](#)
+[![Platform](https://img.shields.io/badge/Platform-iPadOS%2027.0.1%20%7C%20iOS%20%7C%20macOS-007AFF?style=for-the-badge&logo=apple&logoColor=white)](#)
+[![Physics Engine](https://img.shields.io/badge/Physics-Hydro--Elastic%20Water%20Drop%20Jiggle-00C7BE?style=for-the-badge)](#)
 [![Apple Pencil](https://img.shields.io/badge/Apple%20Pencil-240Hz%20Coalesced%20Inking-34C759?style=for-the-badge&logo=apple&logoColor=white)](#)
 [![Display Engine](https://img.shields.io/badge/OLED%20Display-True%20Black%20%23000000%20%2B%20Liquid%20Glass-FF2D55?style=for-the-badge)](#)
 [![Offline](https://img.shields.io/badge/Offline-100%25%20PWA%20Cache--First-FF9500?style=for-the-badge)](#)
@@ -25,16 +26,16 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────┐
-│                                GREATNOTES STUDIO PRO                                   │
+│                           GREATNOTES STUDIO PRO (iPadOS 27.0.1)                         │
 │                                                                                         │
 │   ┌────────────────────────┐  ┌────────────────────────┐  ┌─────────────────────────┐   │
-│   │     Liquid Glass       │  │   240Hz Apple Pencil   │  │   Pure Obsidian OLED    │   │
-│   │     Visual System      │  │      Inking Core       │  │      Display Engine     │   │
+│   │   Hydro-Elastic Water  │  │   240Hz Apple Pencil   │  │   Pure Obsidian OLED    │   │
+│   │    Drop Liquid Glass   │  │      Inking Core       │  │      Display Engine     │   │
 │   │                        │  │                        │  │                         │   │
-│   │ • Specular Rim Glow    │  │ • Coalesced 240Hz      │  │ • True #000000 Black    │   │
-│   │ • Dynamic Dock Morph   │  │ • Hardware Palm Reject │  │ • Tandem OLED 0-Nit     │   │
-│   │ • Retina Page Matrix   │  │ • Zero-Fog Chisel HL   │  │ • Liquid Glass Backlit  │   │
-│   │ • SF Symbols Pro Suite │  │ • Magic Keyboard HUD   │  │ • Smart Night PDF #1215 │   │
+│   │ • Volume Squish (0.88) │  │ • Coalesced 240Hz      │  │ • True #000000 Black    │   │
+│   │ • Viscous Jiggle Pop   │  │ • Hardware Palm Reject │  │ • Tandem OLED 0-Nit     │   │
+│   │ • Droplet Levitation   │  │ • Zero-Fog Chisel HL   │  │ • Liquid Glass Backlit  │   │
+│   │ • Caustic Wave Ripple  │  │ • Magic Keyboard HUD   │  │ • Smart Night PDF #1215 │   │
 │   └────────────────────────┘  └────────────────────────┘  └─────────────────────────┘   │
 │                                                                                         │
 │   ┌─────────────────────────────────────────────────────────────────────────────────┐   │
@@ -48,7 +49,26 @@
 
 ## ✨ Flagship Highlights
 
-### 1. 🌌 Dual-Tier Dark Engine: Midnight Space vs. Pure Obsidian True OLED
+### 1. 💧 Refined Hydro-Elastic Water Drop & Liquid Glass Physics (iPadOS 27.0.1 Specification)
+GreatNotes Studio Pro is engineered around the refined **iPadOS 27.0.1 subtle fluid interaction model**, treating UI components as cohesive, viscous water droplets with whisper-soft, relaxing physics:
+
+* **Surface Tension & Subtle Tactile Press**:
+  When any button, dock tool, or book card is pressed (`:active`), it organically compresses with whisper-soft tactile damping (`transform: scale(0.965, 0.975) translateY(0.5px)`), delivering authentic fluid feedback without visual distortion.
+* **Whisper-Subtle Water-Drop Jiggle (`@keyframes waterDropJiggle`)**:
+  Upon releasing touch, surface tension relaxes the element through a gentle, subtle fluid micro-settle:
+  `scale(1.025, 0.975) -> scale(0.985, 1.015) -> scale(1.006, 0.996) -> scale(1, 1)`. Refined and calm, preserving full focus during intensive study.
+* **Calm Ambient Levitation**:
+  Active tools in the floating dock float in a slow, tranquil 5.5-second ambient breathing loop (`@keyframes waterDropletLevitate`), elevated above the glass tray with internal caustic specular highlights (`inset 0 1.5px 1px rgba(255, 255, 255, 0.55)`).
+* **Cohesive Hydro-Dynamic Dock Adaptation**:
+  Switching dock tools causes the dock container to morph and adapt smoothly (`@keyframes dockWaterMorph`), simulating fluid cohesion with serene, gentle damping.
+* **Smooth Bubble Popping Sheets (`@keyframes waterBubblePopIn`)**:
+  Modals and sheets (Settings, Page Matrix, Shortcuts HUD) glide smoothly into view from below, settling into place with native iPadOS elegance.
+* **Whisper-Soft Caustic Ripple**:
+  Every tap spawns an ethereal, low-opacity caustic wave (`.water-drop-ripple`) radiating gently outward directly beneath your Apple Pencil tip or finger.
+
+---
+
+### 2. 🌌 Dual-Tier Dark Engine: Midnight Space vs. Pure Obsidian True OLED
 GreatNotes Studio Pro features an industry-first dual-mode dark appearance system engineered specifically for iPad displays:
 
 | Feature | ☀️ Luminous Light | 🌌 Midnight Space | 🖤 Pure Obsidian OLED |
@@ -68,12 +88,12 @@ GreatNotes Studio Pro features an industry-first dual-mode dark appearance syste
 
 ---
 
-### 2. ⚡ 240Hz Apple Pencil Inking Core & Adaptive Floating Dock
+### 3. ⚡ 240Hz Apple Pencil Inking Core & Adaptive Floating Dock
 * **Coalesced Pointer Pipeline (`e.getCoalescedEvents()`)**: Captures micro-strokes at hardware-level 240Hz on Apple Pencil Pro and Apple Pencil (USB-C / 2nd Gen) for zero discernible latency.
 * **Strict Stylus Hardware Palm Rejection**: Distinguishes stylus input (`pointerType === 'pen'`) from hand touch, allowing you to rest your palm naturally on the glass without false markings.
 * **Zero-Fog Chisel Highlighter**: Built with continuous quadratic beziers and four-tier canvas layering. Renders translucent fluorescent ink ribbons *underneath* textbook text and pen strokes with zero overlapping cap artifacts, dark beads, or foggy haze.
 * **Presentation Laser Studio**: Continuous glowing laser beam with white-hot diode tip, neon flare, and seamless `lineCap = 'butt'` joints. Configurable dissolution trails (500ms, 850ms, 1.4s) and beam thicknesses (Fine 4px, Medium 8px, Broad 14px).
-* **Spring-Staggered Morphing Dock**: When selecting tools, the floating dock dynamically morphs with spring physics (`.dock-item-enter` & `.tray-animated`) to present custom controls:
+* **Spring-Staggered Morphing Dock**: When selecting tools, the floating dock dynamically morphs with spring physics to present custom controls:
   - **📐 Vector Shape Studio**: Snapping vector drawing for Lines, Arrows, Rectangles, Circles, and Triangles.
   - **⚡ Glowing Laser Pointer**: 5 neon diode colors and trail duration selectors.
   - **🧹 Dual-Engine Eraser**: Instant toggle between Whole-Stroke Eraser and Precision Pixel Eraser.
@@ -82,7 +102,7 @@ GreatNotes Studio Pro features an industry-first dual-mode dark appearance syste
 
 ---
 
-### 3. 🪟 Liquid Glass Page Matrix & Academic Study Suite
+### 4. 🪟 Liquid Glass Page Matrix & Academic Study Suite
 * **True-Aspect-Ratio Page Sorter (`⌘ M`)**: Bird's-eye matrix view displaying every document page in its genuine aspect ratio (A4 portrait, engineering grid, or landscape slides) without stretching or square cropping.
 * **Retina 2.0x DPI Previews**: Page thumbnails are rasterized at 2x device pixel density, keeping fine handwriting and formulas crisp.
 * **Interleaved Study Sheets**: Seamlessly insert ruled sheets, Cornell notes, engineering graph paper, or blank sketch pads between existing PDF textbook pages.
@@ -91,7 +111,7 @@ GreatNotes Studio Pro features an industry-first dual-mode dark appearance syste
 
 ---
 
-### 4. ⌨️ iPad Magic Keyboard & Gesture Shortcuts
+### 5. ⌨️ iPad Magic Keyboard & Gesture Shortcuts
 
 Press **`⌘ /`** (or **`?`**) anywhere in the app to display the floating frosted **Shortcuts HUD Sheet**.
 
@@ -136,7 +156,7 @@ Press **`⌘ /`** (or **`?`**) anywhere in the app to display the floating frost
 
 ---
 
-### 5. 🛡️ 100% Offline & Zero-CDN Architecture
+### 6. 🛡️ 100% Offline & Zero-CDN Architecture
 * **Zero External Dependencies**: All vendor libraries (`pdf.min.js`, `pdf.worker.min.js`, `jspdf.umd.min.js`, `lucide.min.js`), vector icons, and stylesheets are bundled locally. **No unpkg, no cdnjs, no tailwind CDN**.
 * **Instant 0.00ms Boot**: The Service Worker implements a **Cache-First** strategy with Stale-While-Revalidate, caching the complete application shell for offline study.
 * **Crash-Resistant IndexedDB**: Automatically stores notebook metadata, vector strokes, and PDF blobs across app restarts and screen locks.
@@ -146,8 +166,8 @@ Press **`⌘ /`** (or **`?`**) anywhere in the app to display the floating frost
 ## 📁 Repository Structure
 
 ```
-├── index.html                  # Core Studio Application (UI, Inking Engine & CSS)
-├── sw.js                       # iPadOS Offline PWA Service Worker (Cache-First)
+├── index.html                  # Core Studio Application (UI, Inking Engine & Water Drop Physics)
+├── sw.js                       # iPadOS 27.0.1 Offline PWA Service Worker (Cache-First)
 ├── manifest.json               # Web App Manifest (Standalone iPadOS configuration)
 ├── pdf.min.js                  # Offline PDF.js core library
 ├── pdf.worker.min.js           # Offline PDF.js web worker
@@ -182,7 +202,7 @@ You can deploy GreatNotes Studio Pro to the web in **under 60 seconds**:
 ```bash
 git init
 git add .
-git commit -m "feat: GreatNotes Studio Pro v4.0 release"
+git commit -m "feat: GreatNotes Studio Pro v5.0 for iPadOS 27.0.1"
 git branch -M main
 git remote add origin https://github.com/YOUR_USERNAME/greatnotes-ipad.git
 git push -u origin main
@@ -209,6 +229,7 @@ git push -u origin main
 
 ## ⚙️ Technical Specifications
 
+* **Interaction Model**: Hydro-elastic water drop surface tension & volume-conserving squish physics (`cubic-bezier(0.34, 1.56, 0.64, 1)`).
 * **Canvas Architecture**: Four-tier hardware-accelerated canvas stack (`.layer-bg`, `.layer-hl`, `.layer-ink`, `.layer-active`).
 * **Inking Latency**: Up to 240Hz coalesced pointer pipeline with dynamic quadratic bezier smoothing.
 * **Highlighter Composition**: Hardware `mix-blend-mode: multiply` (light paper) and `screen` (dark paper) for zero-fog text legibility.

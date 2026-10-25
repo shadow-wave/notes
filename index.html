@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <!-- Native iPadOS Flagship PWA Meta -->
+    <!-- Native iPadOS 27.0.1 Flagship PWA Meta -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -20,7 +20,7 @@
     <link rel="icon" type="image/png" href="./favicon-dark.png" media="(prefers-color-scheme: dark)">
     <link rel="icon" type="image/png" href="./favicon-light.png" media="(prefers-color-scheme: light)">
     
-    <title>GreatNotes Pro - iPadOS Study & PDF Note Studio</title>
+    <title>GreatNotes Studio Pro - iPadOS 27.0.1 Notes & PDF Studio</title>
 
     <!-- Local Offline PDF & Export Libraries -->
     <script src="./pdf.min.js"></script>
@@ -31,7 +31,7 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js', { scope: './' })
-                    .then(reg => console.log('[GreatNotes Pro] Offline Service Worker Active:', reg.scope))
+                    .then(reg => console.log('[GreatNotes Pro] iPadOS 27.0.1 Offline Service Worker Active:', reg.scope))
                     .catch(err => console.warn('[GreatNotes Pro] SW Registration note:', err));
             });
         }
@@ -39,7 +39,7 @@
 
     <style>
         /* ==========================================================================
-           IPADOS 18 FLAGSHIP DESIGN SYSTEM: LUXURY GLASS & DUAL THEME ENGINE
+           IPADOS 27.0.1 FLAGSHIP DESIGN SYSTEM: LIQUID GLASS & HYDRO-ELASTIC WATER DROP ENGINE
            ========================================================================== */
         :root {
             /* Typography: Apple SF Pro System Stack */
@@ -337,32 +337,88 @@
 
         .apple-dock-glass {
             background: var(--bg-glass-pill);
-            backdrop-filter: blur(45px) saturate(230%);
-            -webkit-backdrop-filter: blur(45px) saturate(230%);
+            backdrop-filter: blur(48px) saturate(240%);
+            -webkit-backdrop-filter: blur(48px) saturate(240%);
             border: 1px solid var(--border-glass);
-            box-shadow: var(--shadow-dock), var(--border-specular);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12),
+                        0 6px 18px rgba(0, 0, 0, 0.06),
+                        inset 0 1.5px 1px rgba(255, 255, 255, 0.75),
+                        inset 0 -1.5px 2px rgba(0, 0, 0, 0.08);
+            transition: width 0.44s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        height 0.44s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        transform 0.44s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        box-shadow 0.35s ease,
+                        background 0.35s ease;
         }
         html.dark .apple-dock-glass {
             background: rgba(16, 22, 36, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            box-shadow: 0 24px 65px rgba(0, 0, 0, 0.82), 0 8px 24px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 0 26px rgba(var(--accent-blue-rgb), 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 24px 65px rgba(0, 0, 0, 0.85),
+                        0 8px 24px rgba(0, 0, 0, 0.65),
+                        inset 0 1.5px 1px rgba(255, 255, 255, 0.35),
+                        inset 0 -1.5px 2px rgba(0, 0, 0, 0.4),
+                        0 0 26px rgba(var(--accent-blue-rgb), 0.16);
         }
 
-        /* NATIVE SPRING PHYSICS FOR BUTTONS & TOUCH */
+        /* IPADOS 27.0.1 REFINED HYDRO-ELASTIC WATER DROP PHYSICS (WHISPER-SUBTLE SPEC) */
+        @keyframes waterDropJiggle {
+            0% { transform: scale(1.025, 0.975); }
+            35% { transform: scale(0.985, 1.015) translateY(-1px); }
+            70% { transform: scale(1.006, 0.996); }
+            100% { transform: scale(1, 1) translateY(0); }
+        }
+
+        @keyframes waterBubblePopIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.97) translateY(10px);
+            }
+            65% {
+                opacity: 1;
+                transform: scale(1.006) translateY(-1px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Calm, Ambient Hover Float for Selected Tool (Slow 5.5s gentle breath) */
+        @keyframes waterDropletLevitate {
+            0%, 100% {
+                transform: translateY(-3px) scale(1.04);
+            }
+            50% {
+                transform: translateY(-4.5px) scale(1.045);
+            }
+        }
+
+        /* WATER-DROP SQUISH & TACTILE SPRING FOR BUTTONS (SUBTLE & REFINED) */
         .spring-btn {
-            transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.18s ease, color 0.18s ease, opacity 0.18s ease, box-shadow 0.2s ease;
+            transition: transform 0.24s cubic-bezier(0.25, 1, 0.5, 1),
+                        background-color 0.18s ease,
+                        color 0.18s ease,
+                        opacity 0.18s ease,
+                        box-shadow 0.22s ease;
             cursor: pointer;
             outline: none;
             border: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
+        /* Subtle natural tactile press */
         .spring-btn:active:not(:disabled) {
-            transform: scale(0.93) translate3d(0, 0, 0);
+            transform: scale(0.965, 0.975) translateY(0.5px) !important;
+            transition: transform 0.12s ease-out;
+        }
+        .water-drop-jiggle {
+            animation: waterDropJiggle 0.44s cubic-bezier(0.25, 1, 0.5, 1) both;
         }
 
-        /* PREMIUM DOCK TOOL BUTTONS */
+        /* LIQUID GLASS WATER-DROP DOCK TOOL BUTTONS */
         .dock-tool-btn {
             width: 44px;
             height: 44px;
@@ -373,17 +429,26 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.32s cubic-bezier(0.34, 1.45, 0.64, 1), background-color 0.22s ease, color 0.22s ease, box-shadow 0.28s ease;
+            overflow: hidden;
+            transition: transform 0.30s cubic-bezier(0.25, 1, 0.5, 1),
+                        background-color 0.22s ease,
+                        color 0.22s ease,
+                        box-shadow 0.28s ease;
         }
         .dock-tool-btn span {
             display: flex;
             align-items: center;
             justify-content: center;
+            pointer-events: none;
+            transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .dock-tool-btn:hover {
             color: var(--text-primary);
             background: rgba(0, 0, 0, 0.05);
-            transform: translateY(-2px);
+            transform: translateY(-1.5px) scale(1.02);
+        }
+        .dock-tool-btn:hover span {
+            transform: scale(1.04);
         }
         html.dark .dock-tool-btn {
             color: rgba(226, 232, 240, 0.72);
@@ -392,14 +457,23 @@
             color: #FFFFFF;
             background: rgba(255, 255, 255, 0.12);
         }
+        .dock-tool-btn:active {
+            transform: scale(0.96, 0.97) translateY(0.5px) !important;
+            transition: transform 0.10s ease;
+        }
         .dock-tool-btn.active {
             background-color: var(--accent-blue) !important;
             color: #FFFFFF !important;
-            transform: translateY(-8px) scale(1.15);
-            box-shadow: 0 10px 26px rgba(var(--accent-blue-rgb), 0.50);
+            animation: waterDropletLevitate 5.5s infinite ease-in-out;
+            box-shadow: 0 8px 22px rgba(var(--accent-blue-rgb), 0.45),
+                        inset 0 1.5px 1px rgba(255, 255, 255, 0.55),
+                        inset 0 -1.5px 2px rgba(0, 0, 0, 0.25) !important;
         }
         html.dark .dock-tool-btn.active {
-            box-shadow: 0 10px 28px rgba(var(--accent-blue-rgb), 0.65), 0 0 16px rgba(var(--accent-blue-rgb), 0.35);
+            box-shadow: 0 8px 24px rgba(var(--accent-blue-rgb), 0.55),
+                        inset 0 1.5px 1px rgba(255, 255, 255, 0.45),
+                        inset 0 -1.5px 2px rgba(0, 0, 0, 0.4),
+                        0 0 14px rgba(var(--accent-blue-rgb), 0.30) !important;
         }
         .dock-tool-btn.active::after {
             content: '';
@@ -411,21 +485,47 @@
             height: 4px;
             border-radius: 50%;
             background: var(--accent-blue);
+            box-shadow: 0 0 6px var(--accent-blue);
         }
         .dock-tool-btn.active svg {
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.30));
         }
 
+        /* WATER DROP CAUSTIC RIPPLE EFFECT (WHISPER-SUBTLE SPEC) */
+        .water-drop-ripple {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, rgba(var(--accent-blue-rgb), 0.15) 50%, transparent 70%);
+            transform: scale(0);
+            animation: waterRippleExpand 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            z-index: 10;
+        }
+        html.dark .water-drop-ripple {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(var(--accent-blue-rgb), 0.20) 50%, transparent 70%);
+        }
+        @keyframes waterRippleExpand {
+            0% {
+                opacity: 0.38;
+                transform: scale(0.3);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.6);
+            }
+        }
+
         /* NOTEBOOK COVER 3D HARDCOVER JOURNAL SPECIFICATION */
         .notebook-item {
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             cursor: pointer;
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .notebook-item:active {
-            transform: scale(0.96);
+            transform: scale(0.98) translateY(1px);
         }
         .notebook-cover-card {
             width: 100%;
@@ -648,8 +748,7 @@
                         opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .apple-overlay.active .apple-modal-box {
-            transform: scale(1) translateY(0);
-            opacity: 1;
+            animation: waterBubblePopIn 0.44s cubic-bezier(0.34, 1.56, 0.64, 1) both;
         }
 
         /* PAGE MATRIX FULL VIEW TRANSITION */
@@ -665,10 +764,8 @@
             overflow: hidden;
             padding: 24px;
             box-shadow: var(--shadow-dock);
-            transform: scale(0.92) translateY(28px);
             opacity: 0;
-            transition: transform 0.40s cubic-bezier(0.16, 1, 0.3, 1),
-                        opacity 0.32s ease;
+            transition: opacity 0.32s ease;
         }
         html.dark .matrix-modal-content {
             background: rgba(12, 16, 28, 0.92);
@@ -678,8 +775,7 @@
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.22);
         }
         #page-matrix-sheet.active .matrix-modal-content {
-            transform: scale(1) translateY(0);
-            opacity: 1;
+            animation: waterBubblePopIn 0.46s cubic-bezier(0.34, 1.56, 0.64, 1) both;
         }
         @keyframes matrix-card-pop {
             from {
@@ -972,31 +1068,32 @@
             transform: scale(1.12);
         }
 
-        /* DOCK COLLAPSE, MINIMIZE & FLUID MORPHING ANIMATIONS */
+        /* DOCK COLLAPSE, MINIMIZE & SUBTLE MORPHING ANIMATIONS */
         #apple-pencil-dock {
-            transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.32s ease;
+            transition: transform 0.38s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.30s ease;
         }
         #apple-pencil-dock.dock-minimized {
-            transform: translateY(calc(100% + 24px));
+            transform: translateY(calc(100% + 24px)) scale(0.95);
             opacity: 0;
             pointer-events: none;
         }
-        .apple-dock-glass {
-            transition: max-width 0.38s cubic-bezier(0.16, 1, 0.3, 1),
-                        padding 0.38s cubic-bezier(0.16, 1, 0.3, 1),
-                        box-shadow 0.25s ease,
-                        background-color 0.25s ease;
-            will-change: max-width, transform;
+        @keyframes dockWaterMorph {
+            0% { transform: scale(0.995, 1.005); }
+            50% { transform: scale(1.004, 0.996); }
+            100% { transform: scale(1, 1); }
+        }
+        .dock-morphing {
+            animation: dockWaterMorph 0.36s cubic-bezier(0.25, 1, 0.5, 1) both;
         }
         #dock-customization-tray {
-            transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.26s cubic-bezier(0.25, 1, 0.5, 1),
+                        transform 0.28s cubic-bezier(0.25, 1, 0.5, 1);
             will-change: opacity, transform;
         }
         @keyframes tray-morph {
             0% {
-                opacity: 0.55;
-                transform: scale(0.95);
+                opacity: 0.65;
+                transform: scale(0.97);
             }
             100% {
                 opacity: 1;
@@ -1004,16 +1101,12 @@
             }
         }
         .tray-animated {
-            animation: tray-morph 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+            animation: tray-morph 0.28s cubic-bezier(0.25, 1, 0.5, 1) both;
         }
         @keyframes dock-item-spring-in {
             0% {
                 opacity: 0;
-                transform: scale(0.68) translateY(6px);
-            }
-            60% {
-                opacity: 0.95;
-                transform: scale(1.08) translateY(-1px);
+                transform: scale(0.92) translateY(4px);
             }
             100% {
                 opacity: 1;
@@ -1021,7 +1114,7 @@
             }
         }
         .dock-item-enter {
-            animation: dock-item-spring-in 0.34s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+            animation: dock-item-spring-in 0.26s cubic-bezier(0.25, 1, 0.5, 1) both;
         }
         #dock-restore-pill {
             position: fixed;
@@ -1038,17 +1131,17 @@
             font-weight: 800;
             color: var(--accent-blue);
             box-shadow: var(--shadow-dock);
-            transition: transform 0.25s cubic-bezier(0.34, 1.45, 0.64, 1);
+            transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1);
         }
         #dock-restore-pill:hover {
-            transform: scale(1.08) translateY(-2px);
+            transform: translateY(-2px) scale(1.03);
         }
         #dock-restore-pill.visible {
             display: flex;
-            animation: dock-restore-bounce 0.4s cubic-bezier(0.34, 1.45, 0.64, 1) both;
+            animation: dock-restore-bounce 0.34s cubic-bezier(0.25, 1, 0.5, 1) both;
         }
         @keyframes dock-restore-bounce {
-            0% { transform: scale(0.6) translateY(24px); opacity: 0; }
+            0% { transform: scale(0.90) translateY(12px); opacity: 0; }
             100% { transform: scale(1) translateY(0); opacity: 1; }
         }
 
@@ -1833,7 +1926,7 @@
                 </div>
 
                 <!-- Notebook Cards Grid -->
-                <div id="shelf-notebook-grid" class="no-scrollbar" style="flex: 1; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 32px; padding-bottom: 60px;">
+                <div id="shelf-notebook-grid" class="no-scrollbar" style="flex: 1; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 220px)); gap: 36px 30px; align-items: start; padding-bottom: 60px;">
                     <!-- Dynamically rendered notebook cards -->
                 </div>
             </div>
@@ -3574,9 +3667,9 @@
                         </div>
                     </div>
                     <div style="margin-top: 12px; text-align: center; width: 100%;">
-                        <strong style="font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 4px; color: var(--text-primary);">
+                        <strong style="font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 4px; color: var(--text-primary);" title="${escapeHtml(nb.title)}">
                             ${nb.isFavorite ? '<span style="color:#FFD60A; display:flex;">' + SF_ICONS['star'] + '</span>' : ''}
-                            ${escapeHtml(nb.title)}
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 175px;">${escapeHtml(nb.title)}</span>
                         </strong>
                         <span style="font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-top: 2px; display:block;">${nb.pages.length} Page${nb.pages.length === 1 ? '' : 's'}</span>
                     </div>
@@ -4015,10 +4108,24 @@
             ['pan', 'pen', 'highlighter', 'eraser', 'shape', 'laser'].forEach(t => {
                 const btn = document.getElementById(`tool-${t}`);
                 if (btn) {
-                    if (t === currentTool) btn.classList.add('active');
-                    else btn.classList.remove('active');
+                    if (t === currentTool) {
+                        btn.classList.add('active');
+                        btn.classList.remove('water-drop-jiggle');
+                        void btn.offsetWidth;
+                        btn.classList.add('water-drop-jiggle');
+                    } else {
+                        btn.classList.remove('active');
+                    }
                 }
             });
+
+            const dockGlass = document.querySelector('#apple-pencil-dock .apple-dock-glass');
+            if (dockGlass) {
+                dockGlass.classList.remove('dock-morphing');
+                void dockGlass.offsetWidth;
+                dockGlass.classList.add('dock-morphing');
+                setTimeout(() => dockGlass.classList.remove('dock-morphing'), 460);
+            }
 
             const tray = document.getElementById('dock-customization-tray');
             if (tray) {
@@ -5478,6 +5585,35 @@
             }
         }, { passive: true });
 
+        /* IPADOS 27.0.1 REFINED HYDRO-ELASTIC WATER DROP RIPPLE & JIGGLE ENGINE */
+        function setupWaterDropPhysics() {
+            document.addEventListener('pointerdown', (e) => {
+                const target = e.target.closest('.spring-btn, .dock-tool-btn, .settings-seg-btn, .accent-color-circle');
+                if (!target) return;
+
+                // Subtle, gentle water droplet ripple with low opacity
+                const rect = target.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                ripple.className = 'water-drop-ripple';
+                const size = Math.max(rect.width, rect.height) * 1.2;
+                ripple.style.width = `${size}px`;
+                ripple.style.height = `${size}px`;
+                ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+                ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+                target.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 700);
+            }, { passive: true });
+
+            document.addEventListener('pointerup', (e) => {
+                const target = e.target.closest('.spring-btn, .dock-tool-btn');
+                if (!target) return;
+                target.classList.remove('water-drop-jiggle');
+                void target.offsetWidth; // trigger reflow for smooth re-trigger
+                target.classList.add('water-drop-jiggle');
+                setTimeout(() => target.classList.remove('water-drop-jiggle'), 460);
+            }, { passive: true });
+        }
+
         /* Global Application Bootstrapper */
         async function bootGreatNotesPro() {
             // 1. Restore Accent Color
@@ -5552,6 +5688,7 @@
             setupKeyboardShortcuts();
             setupMultitouchGestures();
             setupDragDropListeners();
+            setupWaterDropPhysics();
 
             await openDatabase();
             await loadNotebooks();

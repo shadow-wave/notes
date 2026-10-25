@@ -1,7 +1,7 @@
 {
-  "name": "GreatNotes Studio Pro - iPad Notes & PDF Study",
+  "name": "GreatNotes Studio Pro - iPadOS 27.0.1 Notes & PDF Study",
   "short_name": "GreatNotes",
-  "description": "High-performance Apple Pencil note taking, PDF highlighting, and study notebook for iPadOS.",
+  "description": "High-performance Apple Pencil note taking, PDF highlighting, and study notebook engineered for iPadOS 27.0.1 with Liquid Glass water drop physics.",
   "start_url": "./index.html",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone"],
