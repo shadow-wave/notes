@@ -124,6 +124,95 @@
             --paper-dark: #121522;
         }
 
+        /* PURE OBSIDIAN TRUE OLED BLACK MODE (#000000 INFINITE CONTRAST) */
+        html.pure-black {
+            color-scheme: dark;
+            --bg-base: #000000;
+            --bg-elevated: rgba(10, 10, 14, 0.85);
+            --bg-glass-heavy: rgba(0, 0, 0, 0.94);
+            --bg-glass-pill: rgba(12, 12, 16, 0.90);
+            --bg-card: rgba(8, 8, 12, 0.90);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(241, 245, 249, 0.78);
+            --text-tertiary: rgba(148, 163, 184, 0.60);
+            --border-subtle: rgba(255, 255, 255, 0.14);
+            --border-glass: rgba(255, 255, 255, 0.22);
+            --border-specular: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+            --shadow-glass: 0 4px 28px rgba(0, 0, 0, 1), 0 0 1px rgba(255, 255, 255, 0.22);
+            --shadow-dock: 0 20px 60px rgba(0, 0, 0, 1), 0 0 35px rgba(var(--accent-blue-rgb), 0.28);
+            --shadow-page: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 20px 60px rgba(0, 0, 0, 1), 0 6px 20px rgba(0, 0, 0, 0.85);
+            --bg-interactive: rgba(255, 255, 255, 0.10);
+            --bg-interactive-hover: rgba(255, 255, 255, 0.18);
+            --bg-interactive-active: rgba(255, 255, 255, 0.24);
+            --bg-input: rgba(255, 255, 255, 0.08);
+            --border-input: rgba(255, 255, 255, 0.20);
+            --dialog-card-bg: rgba(10, 10, 14, 0.94);
+            --dialog-card-border: rgba(255, 255, 255, 0.22);
+            --paper-dark: #000000;
+        }
+
+        html.pure-black body,
+        html.pure-black #app-viewport,
+        html.pure-black #canvas-viewport {
+            background-color: #000000 !important;
+        }
+
+        html.pure-black .apple-dock-glass {
+            background: rgba(10, 10, 14, 0.88) !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 1), inset 0 1px 0 rgba(255, 255, 255, 0.32) !important;
+        }
+
+        html.pure-black .apple-glass {
+            background: rgba(12, 12, 16, 0.88) !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.28) !important;
+        }
+
+        html.pure-black .apple-glass-heavy {
+            background: rgba(0, 0, 0, 0.95) !important;
+            border-right: 1px solid rgba(255, 255, 255, 0.12) !important;
+        }
+
+        html.pure-black .settings-sheet-box,
+        html.pure-black .matrix-modal-content,
+        html.pure-black .shortcuts-hud-box,
+        html.pure-black .apple-modal-box {
+            background: rgba(8, 8, 12, 0.96) !important;
+            border: 1px solid rgba(255, 255, 255, 0.20) !important;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 1), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+        }
+
+        html.pure-black .page-wrapper.paper-dark {
+            background: #000000 !important;
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 25px 65px rgba(0, 0, 0, 1) !important;
+        }
+
+        html.pure-black #canvas-viewport.smart-dark-doc .page-wrapper.pdf-page,
+        html.pure-black #canvas-viewport.smart-dark-doc .page-wrapper:not(.paper-cream):not(.paper-white) {
+            background: #000000 !important;
+        }
+
+        html.pure-black .notebook-title-badge {
+            background: rgba(0, 0, 0, 0.80) !important;
+            border: 1px solid rgba(255, 255, 255, 0.26) !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 1), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+        }
+
+        html.pure-black .liquid-ambient-mesh {
+            opacity: 0.18 !important;
+        }
+        html.pure-black .orb-1 {
+            background: radial-gradient(circle, rgba(var(--accent-blue-rgb), 0.35) 0%, transparent 70%) !important;
+        }
+        html.pure-black .orb-2 {
+            background: radial-gradient(circle, rgba(191, 90, 242, 0.25) 0%, transparent 70%) !important;
+        }
+        html.pure-black .orb-3 {
+            background: radial-gradient(circle, rgba(48, 209, 88, 0.20) 0%, transparent 70%) !important;
+        }
+
         /* ==========================================================================
            LUXURY APPLE DUAL-THEME TRANSITION ENGINE (OPTICAL FLUID WAVE)
            ========================================================================== */
@@ -1456,13 +1545,23 @@
                 <div class="settings-group">
                     <div class="settings-item">
                         <div>
-                            <div class="settings-label-title">Theme Mode</div>
-                            <div class="settings-label-sub">Fluid dark/light appearance engine</div>
+                            <div class="settings-label-title">Theme Appearance</div>
+                            <div class="settings-label-sub">Fluid light, midnight space, or pure OLED obsidian</div>
                         </div>
                         <div class="settings-seg-control">
                             <button id="theme-seg-light" onclick="window.setThemeMode('light')" class="settings-seg-btn">Light</button>
-                            <button id="theme-seg-dark" onclick="window.setThemeMode('dark')" class="settings-seg-btn">Dark</button>
+                            <button id="theme-seg-midnight" onclick="window.setThemeMode('midnight')" class="settings-seg-btn">Midnight</button>
+                            <button id="theme-seg-oled" onclick="window.setThemeMode('oled')" class="settings-seg-btn">Pure OLED</button>
                         </div>
+                    </div>
+                    <div class="settings-item">
+                        <div>
+                            <div class="settings-label-title">Pure Obsidian True Black</div>
+                            <div class="settings-label-sub">#000000 pitch-black OLED contrast with liquid glass specular rim reflections</div>
+                        </div>
+                        <button id="pure-black-toggle-btn" onclick="window.togglePureBlackMode()" class="settings-seg-btn" style="padding: 6px 14px; border-radius: 14px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary); font-weight: 700;">
+                            Off
+                        </button>
                     </div>
                     <div class="settings-item">
                         <div>
@@ -2077,6 +2176,7 @@
 
         /* Application State */
         let isDarkMode = false;
+        let isPureBlack = false; // Pure Obsidian OLED (#000000) Mode
         let activeView = 'library'; // 'library' or 'document'
         let currentFilter = 'all'; // 'all', 'favorites', 'trash'
         let notebookCollection = [];
@@ -2106,37 +2206,43 @@
                 id: 'sapphire',
                 name: 'Oceanic Sapphire',
                 light: 'linear-gradient(145deg, #2563EB 0%, #1D4ED8 50%, #1E40AF 100%)',
-                dark: 'linear-gradient(145deg, #16243B 0%, #0B1320 100%)'
+                dark: 'linear-gradient(145deg, #16243B 0%, #0B1320 100%)',
+                pure: 'linear-gradient(145deg, #101B2E 0%, #000000 100%)'
             },
             {
                 id: 'sage',
                 name: 'Botanical Sage',
                 light: 'linear-gradient(145deg, #10B981 0%, #059669 50%, #047857 100%)',
-                dark: 'linear-gradient(145deg, #133324 0%, #081B12 100%)'
+                dark: 'linear-gradient(145deg, #133324 0%, #081B12 100%)',
+                pure: 'linear-gradient(145deg, #092618 0%, #000000 100%)'
             },
             {
                 id: 'caramel',
                 name: 'Saddle Caramel',
                 light: 'linear-gradient(145deg, #D97706 0%, #B45309 50%, #92400E 100%)',
-                dark: 'linear-gradient(145deg, #321F17 0%, #160D09 100%)'
+                dark: 'linear-gradient(145deg, #321F17 0%, #160D09 100%)',
+                pure: 'linear-gradient(145deg, #24140D 0%, #000000 100%)'
             },
             {
                 id: 'wine',
                 name: 'Tuscan Wine',
                 light: 'linear-gradient(145deg, #E11D48 0%, #BE123C 50%, #881337 100%)',
-                dark: 'linear-gradient(145deg, #3B1822 0%, #1A090F 100%)'
+                dark: 'linear-gradient(145deg, #3B1822 0%, #1A090F 100%)',
+                pure: 'linear-gradient(145deg, #2A0F17 0%, #000000 100%)'
             },
             {
                 id: 'amethyst',
                 name: 'Royal Amethyst',
                 light: 'linear-gradient(145deg, #7C3AED 0%, #6D28D9 50%, #4C1D95 100%)',
-                dark: 'linear-gradient(145deg, #2A1B3D 0%, #130B1C 100%)'
+                dark: 'linear-gradient(145deg, #2A1B3D 0%, #130B1C 100%)',
+                pure: 'linear-gradient(145deg, #1A0F2B 0%, #000000 100%)'
             },
             {
                 id: 'titanium',
                 name: 'Obsidian Slate',
                 light: 'linear-gradient(145deg, #64748B 0%, #475569 50%, #334155 100%)',
-                dark: 'linear-gradient(145deg, #222631 0%, #0E1015 100%)'
+                dark: 'linear-gradient(145deg, #222631 0%, #0E1015 100%)',
+                pure: 'linear-gradient(145deg, #151821 0%, #000000 100%)'
             }
         ];
         const LUXURY_COVERS = NOTEBOOK_THEMES.map(t => t.dark);
@@ -2147,7 +2253,9 @@
                 themeIdx = fallbackIndex % NOTEBOOK_THEMES.length;
             }
             const theme = NOTEBOOK_THEMES[themeIdx];
-            return isDarkMode ? theme.dark : theme.light;
+            if (!isDarkMode) return theme.light;
+            if (isPureBlack && theme.pure) return theme.pure;
+            return theme.dark;
         }
 
         /* Color Palettes tailored for Apple Retina Displays */
@@ -4967,9 +5075,24 @@
         }
 
         function setThemeMode(mode) {
-            const shouldBeDark = (mode === 'dark');
-            if (shouldBeDark === isDarkMode) return;
             toggleAppTheme(mode);
+            if (mode === 'oled') {
+                showToastNotification("Pure Obsidian OLED Active", "moon");
+            } else if (mode === 'midnight' || mode === 'dark') {
+                showToastNotification("Midnight Space Active", "moon");
+            } else {
+                showToastNotification("Luminous Light Active", "sun");
+            }
+        }
+
+        function togglePureBlackMode() {
+            if (isPureBlack && isDarkMode) {
+                toggleAppTheme('midnight');
+                showToastNotification("Midnight Space Dark Active", "moon");
+            } else {
+                toggleAppTheme('oled');
+                showToastNotification("Pure Obsidian OLED #000000 Active", "moon");
+            }
         }
 
         function toggleHoverIndicator() {
@@ -5060,14 +5183,33 @@
 
         function updateSettingsUI() {
             const lightBtn = document.getElementById('theme-seg-light');
-            const darkBtn = document.getElementById('theme-seg-dark');
-            if (lightBtn && darkBtn) {
-                if (isDarkMode) {
-                    darkBtn.classList.add('active');
-                    lightBtn.classList.remove('active');
+            const midnightBtn = document.getElementById('theme-seg-midnight');
+            const oledBtn = document.getElementById('theme-seg-oled');
+            if (lightBtn) {
+                if (!isDarkMode) lightBtn.classList.add('active');
+                else lightBtn.classList.remove('active');
+            }
+            if (midnightBtn) {
+                if (isDarkMode && !isPureBlack) midnightBtn.classList.add('active');
+                else midnightBtn.classList.remove('active');
+            }
+            if (oledBtn) {
+                if (isDarkMode && isPureBlack) oledBtn.classList.add('active');
+                else oledBtn.classList.remove('active');
+            }
+
+            const pureBlackToggle = document.getElementById('pure-black-toggle-btn');
+            if (pureBlackToggle) {
+                if (isPureBlack && isDarkMode) {
+                    pureBlackToggle.innerText = 'Active (OLED #000000)';
+                    pureBlackToggle.style.background = 'var(--accent-blue)';
+                    pureBlackToggle.style.color = '#FFFFFF';
+                    pureBlackToggle.style.borderColor = 'var(--accent-blue)';
                 } else {
-                    lightBtn.classList.add('active');
-                    darkBtn.classList.remove('active');
+                    pureBlackToggle.innerText = 'Off (Midnight #080A11)';
+                    pureBlackToggle.style.background = 'var(--bg-interactive)';
+                    pureBlackToggle.style.color = 'var(--text-primary)';
+                    pureBlackToggle.style.borderColor = 'var(--border-subtle)';
                 }
             }
             const palmBtn = document.getElementById('palm-toggle-btn');
@@ -5139,7 +5281,7 @@
             }
 
             // 2. Ambient Luminous Wave Pulse
-            const targetIsDark = (forceMode !== null) ? (forceMode === 'dark') : !isDarkMode;
+            const targetIsDark = (forceMode !== null) ? (forceMode === 'dark' || forceMode === 'midnight' || forceMode === 'oled') : !isDarkMode;
             const flashEl = document.getElementById('theme-ambient-flash');
             if (flashEl) {
                 flashEl.className = targetIsDark ? 'flash-dark' : 'flash-light';
@@ -5150,24 +5292,53 @@
 
             const executeThemeChange = () => {
                 if (forceMode !== null) {
-                    isDarkMode = (forceMode === 'dark');
+                    if (forceMode === 'light') {
+                        isDarkMode = false;
+                        isPureBlack = false;
+                    } else if (forceMode === 'midnight' || forceMode === 'dark') {
+                        isDarkMode = true;
+                        isPureBlack = false;
+                    } else if (forceMode === 'oled') {
+                        isDarkMode = true;
+                        isPureBlack = true;
+                    }
                 } else {
-                    isDarkMode = !isDarkMode;
+                    if (!isDarkMode) {
+                        isDarkMode = true;
+                    } else {
+                        isDarkMode = false;
+                        isPureBlack = false;
+                    }
                 }
 
                 if (isDarkMode) {
                     document.documentElement.classList.remove('light');
                     document.documentElement.classList.add('dark');
-                    document.getElementById('meta-theme-color').setAttribute('content', '#080A11');
-                    document.getElementById('theme-btn-label').innerText = 'Light Mode';
+                    if (isPureBlack) {
+                        document.documentElement.classList.add('pure-black');
+                        const meta = document.getElementById('meta-theme-color');
+                        if (meta) meta.setAttribute('content', '#000000');
+                        const lbl = document.getElementById('theme-btn-label');
+                        if (lbl) lbl.innerText = 'Pure OLED';
+                    } else {
+                        document.documentElement.classList.remove('pure-black');
+                        const meta = document.getElementById('meta-theme-color');
+                        if (meta) meta.setAttribute('content', '#080A11');
+                        const lbl = document.getElementById('theme-btn-label');
+                        if (lbl) lbl.innerText = 'Light Mode';
+                    }
                 } else {
                     document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.remove('pure-black');
                     document.documentElement.classList.add('light');
-                    document.getElementById('meta-theme-color').setAttribute('content', '#F2F2F7');
-                    document.getElementById('theme-btn-label').innerText = 'Dark Mode';
+                    const meta = document.getElementById('meta-theme-color');
+                    if (meta) meta.setAttribute('content', '#F2F2F7');
+                    const lbl = document.getElementById('theme-btn-label');
+                    if (lbl) lbl.innerText = 'Dark Mode';
                 }
 
                 localStorage.setItem('gn_theme_preference', isDarkMode ? 'dark' : 'light');
+                localStorage.setItem('gn_pure_black', isPureBlack ? 'true' : 'false');
                 
                 // Dynamically swap favicon and Apple touch icon to match mode
                 const touchIcon = document.getElementById('dynamic-touch-icon');
@@ -5320,6 +5491,7 @@
 
             // 2. Restore Theme Preference
             const savedTheme = localStorage.getItem('gn_theme_preference');
+            const savedPureBlack = localStorage.getItem('gn_pure_black');
             if (savedTheme) {
                 isDarkMode = (savedTheme === 'dark');
             } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -5327,17 +5499,34 @@
             } else {
                 isDarkMode = false;
             }
+            if (savedPureBlack !== null) {
+                isPureBlack = (savedPureBlack === 'true');
+            }
 
             if (isDarkMode) {
                 document.documentElement.classList.remove('light');
                 document.documentElement.classList.add('dark');
-                document.getElementById('meta-theme-color').setAttribute('content', '#080A11');
-                document.getElementById('theme-btn-label').innerText = 'Light Mode';
+                if (isPureBlack) {
+                    document.documentElement.classList.add('pure-black');
+                    const meta = document.getElementById('meta-theme-color');
+                    if (meta) meta.setAttribute('content', '#000000');
+                    const lbl = document.getElementById('theme-btn-label');
+                    if (lbl) lbl.innerText = 'Pure OLED';
+                } else {
+                    document.documentElement.classList.remove('pure-black');
+                    const meta = document.getElementById('meta-theme-color');
+                    if (meta) meta.setAttribute('content', '#080A11');
+                    const lbl = document.getElementById('theme-btn-label');
+                    if (lbl) lbl.innerText = 'Light Mode';
+                }
             } else {
                 document.documentElement.classList.remove('dark');
+                document.documentElement.classList.remove('pure-black');
                 document.documentElement.classList.add('light');
-                document.getElementById('meta-theme-color').setAttribute('content', '#F2F2F7');
-                document.getElementById('theme-btn-label').innerText = 'Dark Mode';
+                const meta = document.getElementById('meta-theme-color');
+                if (meta) meta.setAttribute('content', '#F2F2F7');
+                const lbl = document.getElementById('theme-btn-label');
+                if (lbl) lbl.innerText = 'Dark Mode';
             }
 
             // Sync dynamic icons on boot
@@ -5380,7 +5569,7 @@
             selectCustomColor, togglePencilMode, adjustViewportZoom,
             performUndoAction, performRedoAction, requestClearActivePage,
             closeAppleDialog, toggleAppTheme, handleSystemFileSelected,
-            openSettingsSheet, closeSettingsSheet, setThemeMode, setAccentColor,
+            openSettingsSheet, closeSettingsSheet, setThemeMode, togglePureBlackMode, setAccentColor,
             toggleHoverIndicator, setLaserDuration, setLaserSize, setDefaultTemplate,
             optimizeStorageCache, toggleDockCollapse, toggleSmartDarkPdf,
             openShortcutsHud, closeShortcutsHud, toggleShortcutsHud, navigateToPage
