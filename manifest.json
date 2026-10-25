@@ -1,0 +1,47 @@
+{
+  "name": "GreatNotes Studio Pro - iPad Notes & PDF Study",
+  "short_name": "GreatNotes",
+  "description": "High-performance Apple Pencil note taking, PDF highlighting, and study notebook for iPadOS.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "background_color": "#F2F2F7",
+  "theme_color": "#0A84FF",
+  "orientation": "any",
+  "scope": "./",
+  "categories": ["education", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-light-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-dark-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon-dark.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
