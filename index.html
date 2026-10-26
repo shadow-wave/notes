@@ -515,17 +515,47 @@
             }
         }
 
-        /* NOTEBOOK COVER 3D HARDCOVER JOURNAL SPECIFICATION */
+        /* NOTEBOOK COVER 3D HARDCOVER JOURNAL SPECIFICATION (IPADOS 27 LIQUID GLASS) */
+        @keyframes shelfItemEnter {
+            0% {
+                opacity: 0;
+                transform: translateY(14px) scale(0.97);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        @keyframes pageArrivePulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(var(--accent-blue-rgb), 0.7);
+                transform: scale(0.995);
+            }
+            50% {
+                box-shadow: 0 0 0 12px rgba(var(--accent-blue-rgb), 0.18);
+                transform: scale(1.002);
+            }
+            100% {
+                box-shadow: none;
+                transform: scale(1);
+            }
+        }
+        .page-arrive-pulse {
+            animation: pageArrivePulse 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
         .notebook-item {
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             cursor: pointer;
-            transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+            perspective: 1200px;
+            animation: shelfItemEnter 0.38s cubic-bezier(0.2, 0.8, 0.2, 1) both;
         }
         .notebook-item:active {
-            transform: scale(0.98) translateY(1px);
+            transform: scale(0.97) translateY(2px);
         }
         .notebook-cover-card {
             width: 100%;
@@ -537,9 +567,18 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12), 0 20px 48px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-            transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, background 0.4s ease;
+            transition: transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.38s ease, background 0.4s ease;
             transform-style: preserve-3d;
             border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        /* Diagonal Specular Sheen on 3D Cover */
+        .notebook-cover-card .cover-specular-sheen {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.05) 35%, transparent 60%);
+            pointer-events: none;
+            z-index: 12;
+            mix-blend-mode: overlay;
         }
         /* Realistic Left Spine Crease Stitch Line */
         .notebook-cover-card::before {
@@ -580,12 +619,12 @@
             box-shadow: inset 1px 0 1px rgba(0, 0, 0, 0.4);
         }
         .notebook-item:hover .notebook-cover-card {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.16), 0 34px 70px rgba(0, 0, 0, 0.16);
+            transform: translateY(-8px) rotateY(-3.5deg) rotateX(1.8deg) scale(1.03);
+            box-shadow: -4px 18px 40px rgba(0, 0, 0, 0.16), 0 32px 70px rgba(0, 0, 0, 0.14);
         }
         html.dark .notebook-item:hover .notebook-cover-card {
-            border-color: rgba(255, 255, 255, 0.20);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85), 0 40px 80px rgba(0, 0, 0, 0.98), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+            border-color: rgba(255, 255, 255, 0.22);
+            box-shadow: -4px 22px 50px rgba(0, 0, 0, 0.85), 0 42px 85px rgba(0, 0, 0, 0.98), inset 0 1px 0 rgba(255, 255, 255, 0.32);
         }
         .notebook-spine {
             position: absolute;
@@ -1068,6 +1107,571 @@
             transform: scale(1.12);
         }
 
+        /* ==========================================================================
+           APPLE INTELLIGENCE & GEMINI AI STUDIO STYLES
+           ========================================================================== */
+        .ai-studio-modal-box {
+            width: 95%;
+            max-width: 720px;
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            border-radius: 30px;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(191, 90, 242, 0.25);
+        }
+        html.dark .ai-studio-modal-box {
+            background: rgba(14, 18, 30, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        html.pure-black .ai-studio-modal-box {
+            background: rgba(8, 8, 12, 0.96) !important;
+            border: 1px solid rgba(255, 255, 255, 0.20) !important;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 1), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+        }
+        .ai-sparkle-halo-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(255, 45, 85, 0.25), rgba(191, 90, 242, 0.30) 40%, rgba(10, 132, 255, 0.30) 100%);
+            color: #BF5AF2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 16px rgba(191, 90, 242, 0.35);
+            border: 1.5px solid rgba(191, 90, 242, 0.45);
+            position: relative;
+            overflow: hidden;
+        }
+        .ai-sparkle-halo-icon::after {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: aiHaloRotate 6s linear infinite;
+        }
+        @keyframes aiHaloRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .ai-stream-cursor {
+            display: inline-block;
+            width: 2.5px;
+            height: 15px;
+            background: var(--accent-blue);
+            margin-left: 3px;
+            vertical-align: middle;
+            border-radius: 2px;
+            animation: aiCursorBlink 0.75s infinite;
+        }
+        @keyframes aiCursorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .ai-model-pill {
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 9px;
+            border-radius: 12px;
+            background: rgba(191, 90, 242, 0.14);
+            color: #BF5AF2;
+            border: 1px solid rgba(191, 90, 242, 0.30);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+        .ai-key-status-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .ai-key-status-badge:hover {
+            transform: scale(1.05);
+        }
+        .ai-chips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .ai-chip-card {
+            padding: 12px 14px;
+            border-radius: 18px;
+            background: var(--bg-interactive);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+        html.dark .ai-chip-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+        }
+        .ai-chip-card:hover {
+            transform: translateY(-2px);
+            background: var(--bg-interactive-hover);
+            border-color: rgba(191, 90, 242, 0.5);
+            box-shadow: 0 6px 18px rgba(191, 90, 242, 0.22);
+        }
+        .ai-chip-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: rgba(var(--accent-blue-rgb), 0.12);
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+        .ai-chip-card:hover .ai-chip-icon {
+            transform: scale(1.12);
+        }
+        .ai-chip-icon.purple { background: rgba(191, 90, 242, 0.15); color: #BF5AF2; }
+        .ai-chip-icon.green  { background: rgba(48, 209, 88, 0.15); color: #30D158; }
+        .ai-chip-icon.amber  { background: rgba(255, 159, 10, 0.15); color: #FF9F0A; }
+        .ai-chip-icon.pink   { background: rgba(255, 55, 95, 0.15); color: #FF375F; }
+        .ai-chip-icon.blue   { background: rgba(10, 132, 255, 0.15); color: #0A84FF; }
+        .ai-chip-icon.cyan   { background: rgba(100, 210, 255, 0.15); color: #64D2FF; }
+
+        .ai-chip-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            overflow: hidden;
+        }
+        .ai-chip-text strong {
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .ai-chip-text small {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 3D INTERACTIVE FLIP FLASHCARDS */
+        .ai-flashcard-deck {
+            background: var(--bg-interactive);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            padding: 16px 18px;
+            margin-bottom: 12px;
+        }
+        html.dark .ai-flashcard-deck {
+            background: rgba(20, 26, 42, 0.60);
+            border-color: rgba(255, 255, 255, 0.10);
+        }
+        .ai-flashcard {
+            height: 180px;
+            perspective: 1000px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .ai-fc-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-style: preserve-3d;
+            border-radius: 20px;
+        }
+        .ai-fc-inner.flipped {
+            transform: rotateY(180deg);
+        }
+        .ai-fc-front, .ai-fc-back {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 18px 22px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            border: 1.5px solid var(--border-subtle);
+        }
+        .ai-fc-front {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+        html.dark .ai-fc-front {
+            background: rgba(26, 34, 54, 0.90);
+            border-color: rgba(255, 255, 255, 0.14);
+        }
+        .ai-fc-back {
+            background: linear-gradient(145deg, rgba(191, 90, 242, 0.18), rgba(10, 132, 255, 0.18));
+            color: var(--text-primary);
+            transform: rotateY(180deg);
+            border-color: rgba(191, 90, 242, 0.40);
+        }
+        html.dark .ai-fc-back {
+            background: linear-gradient(145deg, rgba(45, 22, 68, 0.92), rgba(16, 32, 68, 0.92));
+            border-color: rgba(191, 90, 242, 0.45);
+        }
+        .ai-fc-badge {
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+        .ai-fc-back .ai-fc-badge {
+            color: #BF5AF2;
+        }
+        .ai-fc-content {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin: auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ai-fc-hint {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* SHIMMER SKELETON WAVE */
+        .ai-shimmer-container {
+            padding: 20px;
+            border-radius: 20px;
+            background: var(--bg-interactive);
+            border: 1px solid var(--border-subtle);
+        }
+        html.dark .ai-shimmer-container {
+            background: rgba(20, 26, 42, 0.50);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+        .ai-shimmer-line {
+            height: 13px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.06) 100%);
+            background-size: 200% 100%;
+            animation: aiShimmerWave 1.4s infinite ease-in-out;
+        }
+        html.light .ai-shimmer-line {
+            background: linear-gradient(90deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.12) 50%, rgba(0,0,0,0.04) 100%);
+            background-size: 200% 100%;
+        }
+        @keyframes aiShimmerWave {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* CONVERSATION HISTORY BUBBLE */
+        .ai-chat-thread {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ai-bubble-user {
+            align-self: flex-end;
+            background: var(--accent-blue);
+            color: #FFFFFF;
+            padding: 10px 16px;
+            border-radius: 18px 18px 4px 18px;
+            max-width: 82%;
+            font-size: 13.5px;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.28);
+        }
+        .ai-bubble-model {
+            align-self: flex-start;
+            background: var(--bg-interactive);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: 14px 18px;
+            border-radius: 18px 18px 18px 4px;
+            max-width: 95%;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+        html.dark .ai-bubble-model {
+            background: rgba(22, 28, 46, 0.70);
+            border-color: rgba(255, 255, 255, 0.10);
+        }
+        .ai-studio-modal-box {
+            width: 94%;
+            max-width: 660px;
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            border-radius: 30px;
+        }
+        html.dark .ai-studio-modal-box {
+            background: rgba(14, 18, 30, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        html.pure-black .ai-studio-modal-box {
+            background: rgba(8, 8, 12, 0.96) !important;
+            border: 1px solid rgba(255, 255, 255, 0.20) !important;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 1), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+        }
+        .ai-sparkle-halo-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(191, 90, 242, 0.22), rgba(10, 132, 255, 0.22));
+            color: #BF5AF2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 14px rgba(191, 90, 242, 0.25);
+            border: 1px solid rgba(191, 90, 242, 0.35);
+        }
+        .ai-model-pill {
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 9px;
+            border-radius: 12px;
+            background: rgba(191, 90, 242, 0.14);
+            color: #BF5AF2;
+            border: 1px solid rgba(191, 90, 242, 0.30);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+        .ai-chips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(136px, 1fr));
+            gap: 10px;
+        }
+        .ai-chip-card {
+            padding: 12px 14px;
+            border-radius: 18px;
+            background: var(--bg-interactive);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+        html.dark .ai-chip-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+        }
+        .ai-chip-card:hover {
+            transform: translateY(-2px);
+            background: var(--bg-interactive-hover);
+            border-color: rgba(191, 90, 242, 0.5);
+            box-shadow: 0 6px 18px rgba(191, 90, 242, 0.18);
+        }
+        .ai-chip-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .ai-chip-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            overflow: hidden;
+        }
+        .ai-chip-text strong {
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .ai-chip-text small {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .ai-prompt-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-interactive);
+            border: 1.5px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 4px 6px 4px 16px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        html.dark .ai-prompt-input-wrapper {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        .ai-prompt-input-wrapper:focus-within {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(var(--accent-blue-rgb), 0.25);
+        }
+        .ai-prompt-input-wrapper input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: inherit;
+            padding: 8px 0;
+        }
+        .ai-prompt-input-wrapper button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #BF5AF2, var(--accent-blue));
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            box-shadow: 0 2px 8px rgba(191, 90, 242, 0.35);
+            transition: transform 0.18s ease;
+        }
+        .ai-prompt-input-wrapper button:hover {
+            transform: scale(1.08);
+        }
+        .ai-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            box-shadow: 0 0 8px var(--accent-blue);
+            display: inline-block;
+        }
+        .ai-status-dot.pulsing {
+            animation: aiPulse 1.2s infinite ease-in-out;
+            background: #BF5AF2;
+            box-shadow: 0 0 10px #BF5AF2;
+        }
+        @keyframes aiPulse {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+        .ai-action-pill-btn {
+            padding: 6px 14px;
+            border-radius: 14px;
+            background: var(--bg-interactive);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+        html.dark .ai-action-pill-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.14);
+        }
+        .ai-action-pill-btn:hover {
+            background: var(--bg-interactive-hover);
+            transform: scale(1.04);
+        }
+        .ai-action-pill-btn.accent {
+            background: linear-gradient(135deg, #BF5AF2, var(--accent-blue));
+            color: #FFFFFF;
+            border-color: transparent;
+            box-shadow: 0 2px 8px rgba(191, 90, 242, 0.30);
+        }
+        .ai-markdown-box {
+            background: var(--bg-interactive);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 18px 20px;
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--text-primary);
+            max-height: 48vh;
+            overflow-y: auto;
+            word-wrap: break-word;
+        }
+        html.dark .ai-markdown-box {
+            background: rgba(20, 26, 42, 0.55);
+            border-color: rgba(255, 255, 255, 0.10);
+        }
+        .ai-markdown-box h2, .ai-markdown-box h3, .ai-markdown-box h4 {
+            margin: 14px 0 6px 0;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.2px;
+        }
+        .ai-markdown-box h2:first-child, .ai-markdown-box h3:first-child {
+            margin-top: 0;
+        }
+        .ai-markdown-box p {
+            margin: 6px 0 10px 0;
+        }
+        .ai-markdown-box ul, .ai-markdown-box ol {
+            margin: 6px 0 10px 22px;
+            padding: 0;
+        }
+        .ai-markdown-box li {
+            margin-bottom: 4px;
+        }
+        .ai-markdown-box strong {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .ai-markdown-box code {
+            font-family: ui-monospace, Menlo, Monaco, Consolas, monospace;
+            font-size: 12.5px;
+            background: rgba(var(--accent-blue-rgb), 0.10);
+            color: var(--accent-blue);
+            padding: 2px 6px;
+            border-radius: 6px;
+            border: 1px solid rgba(var(--accent-blue-rgb), 0.20);
+        }
+        .ai-markdown-box pre {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 12px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        .ai-markdown-box pre code {
+            background: transparent;
+            padding: 0;
+            border: none;
+            color: inherit;
+        }
+        .ai-markdown-box blockquote {
+            border-left: 3px solid var(--accent-blue);
+            padding-left: 12px;
+            margin: 10px 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
         /* DOCK COLLAPSE, MINIMIZE & SUBTLE MORPHING ANIMATIONS */
         #apple-pencil-dock {
             transition: transform 0.38s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.30s ease;
@@ -1429,11 +2033,356 @@
         .preview-mini-btn.btn-delete:hover {
             color: var(--accent-red);
         }
-        .preview-mini-btn:hover {
-            transform: scale(1.15);
+
+        /* ==========================================================================
+           IPAD A16 (10.9-INCH LIQUID RETINA) ADAPTIVE LAYOUT & CONTROLS SPECIFICATION
+           ========================================================================== */
+        
+        /* 1. Collapsible iPadOS Library Sidebar */
+        .library-sidebar-panel {
+            width: 280px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding-top: calc(var(--safe-top) + 24px);
+            padding-bottom: calc(var(--safe-bottom) + 20px);
+            padding-left: calc(var(--safe-left) + 18px);
+            padding-right: 18px;
+            flex-shrink: 0;
+            transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1), margin-left 0.38s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.3s ease;
+            z-index: 45;
         }
-        .preview-mini-btn.btn-delete:hover {
+        .library-sidebar-panel.collapsed {
+            margin-left: -280px;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .sidebar-mobile-close {
+            display: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg-interactive);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .sidebar-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.38);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 90;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.32s ease;
+        }
+        .sidebar-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Responsive Breakpoints for iPad A16 Portrait (820px) & Split View */
+        @media (max-width: 900px) {
+            .library-sidebar-panel {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+                box-shadow: 12px 0 40px rgba(0, 0, 0, 0.35);
+                margin-left: 0 !important;
+                transform: translateX(0);
+                opacity: 1;
+            }
+            .library-sidebar-panel.collapsed {
+                transform: translateX(-100%);
+                opacity: 0;
+                pointer-events: none;
+            }
+            .sidebar-mobile-close {
+                display: flex;
+            }
+            .library-shelf-main {
+                padding-left: calc(var(--safe-left) + 18px) !important;
+                padding-right: calc(var(--safe-right) + 18px) !important;
+            }
+        }
+
+        /* 2. Library Shelf Instant Search Bar */
+        .shelf-search-bar {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: var(--bg-interactive);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 0 12px;
+            height: 38px;
+            min-width: 220px;
+            max-width: 320px;
+            flex: 1;
+            transition: all 0.25s ease;
+        }
+        .shelf-search-bar:focus-within {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(var(--accent-blue-rgb), 0.25);
+            background: var(--bg-base);
+            max-width: 400px;
+        }
+        .shelf-search-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            width: 100%;
+            padding-left: 8px;
+        }
+        .shelf-search-input::placeholder {
+            color: var(--text-tertiary);
+        }
+        .shelf-search-clear {
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-tertiary);
+            display: none;
+            padding: 2px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+        }
+        .shelf-search-clear:hover {
+            color: var(--text-primary);
+        }
+
+        /* 3. Shelf Filter & View Mode Controls */
+        .shelf-control-group {
+            display: flex;
+            align-items: center;
+            background: var(--bg-interactive);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 3px;
+            gap: 2px;
+        }
+        .shelf-control-btn {
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            padding: 6px 11px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+        }
+        .shelf-control-btn.active {
+            background: var(--accent-blue);
+            color: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(var(--accent-blue-rgb), 0.35);
+        }
+        .shelf-control-btn:not(.active):hover {
+            color: var(--text-primary);
+            background: rgba(var(--accent-blue-rgb), 0.08);
+        }
+
+        /* 4. Notebook Card Context 3-Dot Button & Interactive Menu */
+        .notebook-context-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.40);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 15;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s;
+        }
+        .notebook-item:hover .notebook-context-btn,
+        .notebook-context-btn.active {
+            opacity: 1;
+        }
+        @media (hover: none) {
+            /* Touch screens (iPad): Always show button with subtle glass transparency */
+            .notebook-context-btn {
+                opacity: 0.85;
+            }
+        }
+        .notebook-context-btn:active {
+            transform: scale(0.92);
+        }
+
+        /* Floating Glass Context Menu */
+        .notebook-context-menu {
+            position: fixed;
+            z-index: 2500;
+            min-width: 210px;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(35px) saturate(210%);
+            -webkit-backdrop-filter: blur(35px) saturate(210%);
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            border-radius: 18px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.08);
+            padding: 6px;
+            display: none;
+            flex-direction: column;
+            gap: 2px;
+            animation: menuSpring 0.24s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes menuSpring {
+            0% { opacity: 0; transform: scale(0.92) translateY(-6px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        html.dark .notebook-context-menu {
+            background: rgba(26, 32, 48, 0.90);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.70), 0 4px 14px rgba(0, 0, 0, 0.40);
+        }
+        html.pure-black .notebook-context-menu {
+            background: rgba(12, 12, 14, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+        }
+        .context-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            width: 100%;
+            text-align: left;
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+        .context-menu-item:hover, .context-menu-item:active {
+            background: rgba(var(--accent-blue-rgb), 0.12);
+            color: var(--accent-blue);
+        }
+        .context-menu-item.danger {
             color: var(--accent-red);
+        }
+        .context-menu-item.danger:hover, .context-menu-item.danger:active {
+            background: rgba(255, 69, 58, 0.14);
+            color: var(--accent-red);
+        }
+        .context-menu-divider {
+            height: 1px;
+            background: var(--border-subtle);
+            margin: 4px 6px;
+        }
+
+        /* 5. Library Shelf Grid & List Transitions */
+        #shelf-notebook-grid {
+            transition: opacity 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+        #shelf-notebook-grid.shelf-list-view {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 12px !important;
+        }
+        .notebook-list-row {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 18px;
+            border-radius: 18px;
+            background: var(--bg-interactive);
+            border: 1px solid var(--border-subtle);
+            cursor: pointer;
+            transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s ease, border-color 0.2s ease;
+            animation: shelfItemEnter 0.34s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+        .notebook-list-row:hover {
+            background: rgba(var(--accent-blue-rgb), 0.08);
+            border-color: rgba(var(--accent-blue-rgb), 0.35);
+            transform: translateX(4px);
+        }
+        .notebook-list-row:active {
+            transform: scale(0.985);
+        }
+        .notebook-list-thumb {
+            width: 44px;
+            height: 58px;
+            border-radius: 3px 8px 8px 3px;
+            flex-shrink: 0;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .notebook-list-spine {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.25) 100%);
+            mix-blend-mode: overlay;
+        }
+
+        /* 6. Spatial View Transitions (Home Screen Grid <-> Document Workspace) */
+        #library-view {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            z-index: 40;
+            transition: transform 0.46s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.42s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.46s ease;
+            overflow: hidden;
+            will-change: transform, opacity, filter;
+        }
+        #document-view {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 50;
+            opacity: 0;
+            transform: scale(0.95) translateY(24px);
+            visibility: hidden;
+            pointer-events: none;
+            transition: transform 0.48s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.42s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.48s;
+            background-color: var(--bg-base);
+            will-change: transform, opacity;
+        }
+        #document-view.active-workspace {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        /* 7. iPad A16 High-Precision Touch Ergonomics (Apple HIG 44pt targets) */
+        @media (pointer: coarse) {
+            .spring-btn, .dock-tool-btn, .shelf-control-btn {
+                min-height: 44px;
+            }
         }
     </style>
 </head>
@@ -1616,7 +2565,7 @@
     <div id="settings-sheet" class="apple-overlay" onclick="if(event.target === this) window.closeSettingsSheet()">
         <div class="apple-glass apple-modal-box settings-sheet-box">
             <!-- Settings Header -->
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px 24px 18px; border-bottom: 1px solid var(--border-subtle); position: relative;">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; border-bottom: 1px solid var(--border-subtle); position: relative;">
                 <div style="display: flex; align-items: center; gap: 14px;">
                     <div style="width: 44px; height: 44px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.18); flex-shrink: 0; border: 1px solid var(--border-glass);">
                         <img id="settings-app-icon-img" src="./apple-touch-icon-light.png" alt="GreatNotes Pro" style="width: 100%; height: 100%; object-fit: cover;">
@@ -1626,13 +2575,18 @@
                         <span style="font-size: 12px; font-weight: 600; color: var(--text-secondary);">Customize inking, display themes and storage</span>
                     </div>
                 </div>
-                <button onclick="window.closeSettingsSheet()" class="modal-corner-close spring-btn" title="Close Settings">
-                    <span id="settings-close-icon"></span>
-                </button>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <button onclick="window.closeSettingsSheet()" class="spring-btn" style="padding: 7px 18px; border-radius: 20px; background: var(--accent-blue); color: #FFFFFF; font-size: 14px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.35);">
+                        Done
+                    </button>
+                    <button onclick="window.closeSettingsSheet()" class="modal-corner-close spring-btn" title="Close Settings">
+                        <span id="settings-close-icon"></span>
+                    </button>
+                </div>
             </div>
 
             <!-- Settings Scrollable Content -->
-            <div class="no-scrollbar" style="flex: 1; overflow-y: auto; padding: 20px 24px;">
+            <div class="no-scrollbar" style="flex: 1; overflow-y: auto; padding: 20px 24px 28px;">
                 <!-- SECTION 1: APPEARANCE & THEME -->
                 <span style="display:block; font-size: 11px; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; margin-left: 4px;">Appearance & Interface</span>
                 <div class="settings-group">
@@ -1664,6 +2618,58 @@
                         <div style="display: flex; gap: 8px;" id="settings-accent-palette">
                             <!-- Populated with color dots dynamically -->
                         </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 1B: APPLE INTELLIGENCE & GEMINI AI STUDIO -->
+                <span style="display:block; font-size: 11px; font-weight: 800; color: #BF5AF2; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; margin-left: 4px;">✨ Apple Intelligence & Gemini AI Studio</span>
+                <div class="settings-group">
+                    <div class="settings-item" style="flex-direction: column; align-items: stretch; gap: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div class="settings-label-title" style="display: flex; align-items: center; gap: 6px;">
+                                    <span>Google Gemini API Key</span>
+                                </div>
+                                <div class="settings-label-sub">Used for multimodal page analysis, summaries and active recall quizzes</div>
+                            </div>
+                            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" class="spring-btn" style="font-size: 11px; font-weight: 700; color: var(--accent-blue); text-decoration: none; padding: 4px 10px; border-radius: 10px; background: rgba(var(--accent-blue-rgb), 0.12); display: flex; align-items: center; gap: 4px;">
+                                Get Free Key ↗
+                            </a>
+                        </div>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <div style="position: relative; flex: 1;">
+                                <input type="password" id="settings-ai-api-key" placeholder="Paste AIzaSy... API key" spellcheck="false" autocomplete="off" oninput="window.syncAndSaveApiKey(this.value)" onpaste="setTimeout(() => window.syncAndSaveApiKey(this.value), 20)" style="width: 100%; padding: 10px 40px 10px 12px; border-radius: 14px; border: 1.5px solid var(--border-subtle); background: var(--bg-card); color: var(--text-primary); font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; outline: none; transition: border-color 0.2s ease;">
+                                <button type="button" onclick="window.toggleApiKeyVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: transparent; border: none; cursor: pointer; font-size: 14px; padding: 4px;" title="Reveal/Mask Key">
+                                    <span id="api-key-eye-icon">👁️</span>
+                                </button>
+                            </div>
+                            <button onclick="window.testGeminiApiKey()" id="settings-ai-test-btn" class="spring-btn" style="padding: 10px 16px; border-radius: 14px; background: var(--accent-blue); color: #FFFFFF; font-size: 12px; font-weight: 700; border: none; cursor: pointer; white-space: nowrap; box-shadow: 0 2px 8px rgba(var(--accent-blue-rgb), 0.35);">
+                                Test Key
+                            </button>
+                        </div>
+                        <div id="settings-ai-status-pill" style="display: none; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 10px;"></div>
+                    </div>
+
+                    <div class="settings-item">
+                        <div>
+                            <div class="settings-label-title">Intelligence Model</div>
+                            <div class="settings-label-sub">Official Google Gemini multimodal reasoning models</div>
+                        </div>
+                        <div class="settings-seg-control">
+                            <button id="ai-model-35-lite" onclick="window.setGeminiModel('gemini-3.5-flash-lite')" class="settings-seg-btn active" title="Gemini 3.5 Flash-Lite (High Speed & Zero Spikes)">3.5 Lite ⚡</button>
+                            <button id="ai-model-38-flash" onclick="window.setGeminiModel('gemini-3.8-flash')" class="settings-seg-btn" title="Gemini 3.8 Flash (Deep Reasoning)">3.8 Flash 🧠</button>
+                            <button id="ai-model-25-flash" onclick="window.setGeminiModel('gemini-2.5-flash')" class="settings-seg-btn" title="Gemini 2.5 Flash (Proven Stability)">2.5 Flash 🛡️</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-item">
+                        <div>
+                            <div class="settings-label-title">Multimodal Canvas Vision</div>
+                            <div class="settings-label-sub">Inspect handwriting, sketches, math formulas and PDF figures</div>
+                        </div>
+                        <button id="ai-vision-toggle-btn" onclick="window.toggleAiMultimodalVision()" class="settings-seg-btn active" style="padding: 6px 14px; border-radius: 14px; background: var(--accent-blue); color: white;">
+                            Enabled
+                        </button>
                     </div>
                 </div>
 
@@ -1773,20 +2779,13 @@
                     <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px; font-weight: 500;">Apple A16 Bionic GPU Accelerated • PWA Offline Ready</div>
                 </div>
             </div>
-
-            <!-- Settings Footer -->
-            <div style="padding: 16px 24px 20px; border-top: 1px solid var(--border-subtle);">
-                <button onclick="window.closeSettingsSheet()" class="spring-btn" style="width: 100%; padding: 14px; border-radius: 16px; background: var(--accent-blue); color: white; font-weight: 700; font-size: 15px; box-shadow: 0 4px 14px rgba(var(--accent-blue-rgb), 0.35);">
-                    Done
-                </button>
-            </div>
         </div>
     </div>
 
     <!-- iPadOS Magic Keyboard Shortcuts HUD Sheet Modal -->
     <div id="shortcuts-hud-sheet" class="apple-overlay" onclick="if(event.target === this) window.closeShortcutsHud()">
         <div class="apple-glass apple-modal-box shortcuts-hud-box">
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px 24px 18px; border-bottom: 1px solid var(--border-subtle); position: relative;">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; border-bottom: 1px solid var(--border-subtle); position: relative;">
                 <div style="display: flex; align-items: center; gap: 14px;">
                     <div style="width: 44px; height: 44px; border-radius: 14px; background: rgba(var(--accent-blue-rgb), 0.14); color: var(--accent-blue); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; box-shadow: 0 4px 14px rgba(var(--accent-blue-rgb), 0.25);">
                         ⌘
@@ -1796,12 +2795,17 @@
                         <span style="font-size: 12px; font-weight: 600; color: var(--text-secondary);">Magic Keyboard & Hardware Key Combos</span>
                     </div>
                 </div>
-                <button onclick="window.closeShortcutsHud()" class="modal-corner-close spring-btn" title="Close">
-                    <span id="shortcuts-close-icon"></span>
-                </button>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <button onclick="window.closeShortcutsHud()" class="spring-btn" style="padding: 7px 18px; border-radius: 20px; background: var(--accent-blue); color: #FFFFFF; font-size: 14px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.35);">
+                        Done
+                    </button>
+                    <button onclick="window.closeShortcutsHud()" class="modal-corner-close spring-btn" title="Close">
+                        <span id="shortcuts-close-icon"></span>
+                    </button>
+                </div>
             </div>
 
-            <div class="no-scrollbar" style="flex: 1; overflow-y: auto; padding: 20px 24px; display: flex; flex-direction: column; gap: 20px;">
+            <div class="no-scrollbar" style="flex: 1; overflow-y: auto; padding: 20px 24px 28px; display: flex; flex-direction: column; gap: 20px;">
                 <!-- Section 1: Inking & Tools -->
                 <div>
                     <span style="display:block; font-size: 11px; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; margin-left: 4px;">Inking Tools & Canvas</span>
@@ -1830,6 +2834,7 @@
                 <div>
                     <span style="display:block; font-size: 11px; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; margin-left: 4px;">Document & Study Pages</span>
                     <div class="shortcuts-grid">
+                        <div class="shortcut-row" style="border: 1px solid rgba(191,90,242,0.35); background: rgba(191,90,242,0.08);"><span style="color: #BF5AF2; font-weight: 700;">✨ AI Studio Assistant</span><div><kbd>⌘</kbd><kbd>J</kbd></div></div>
                         <div class="shortcut-row"><span>Toggle Document Outline</span><div><kbd>⌘</kbd><kbd>B</kbd></div></div>
                         <div class="shortcut-row"><span>Page Sorter Matrix</span><div><kbd>⌘</kbd><kbd>M</kbd></div></div>
                         <div class="shortcut-row"><span>Add Study Page / Notebook</span><div><kbd>⌘</kbd><kbd>N</kbd></div></div>
@@ -1845,6 +2850,8 @@
                 <div>
                     <span style="display:block; font-size: 11px; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; margin-left: 4px;">System & Appearance</span>
                     <div class="shortcuts-grid">
+                        <div class="shortcut-row"><span>Toggle Sidebar</span><div><kbd>⌘</kbd><kbd>S</kbd><span class="kbd-alt">or</span><kbd>[</kbd></div></div>
+                        <div class="shortcut-row"><span>Search Notes / Shelf</span><div><kbd>⌘</kbd><kbd>F</kbd></div></div>
                         <div class="shortcut-row"><span>Export PDF / PNG / .gn</span><div><kbd>⌘</kbd><kbd>⇧</kbd><kbd>E</kbd></div></div>
                         <div class="shortcut-row"><span>Settings & Preferences</span><div><kbd>⌘</kbd><kbd>,</kbd></div></div>
                         <div class="shortcut-row"><span>Toggle Light / Dark Mode</span><div><kbd>⌘</kbd><kbd>⇧</kbd><kbd>T</kbd></div></div>
@@ -1853,13 +2860,232 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div style="padding: 16px 24px 20px; border-top: 1px solid var(--border-subtle);">
-                <button onclick="window.closeShortcutsHud()" class="spring-btn" style="width: 100%; padding: 14px; border-radius: 16px; background: var(--accent-blue); color: white; font-weight: 700; font-size: 15px; box-shadow: 0 4px 14px rgba(var(--accent-blue-rgb), 0.35);">
-                    Done
-                </button>
+    <!-- iPadOS Liquid Glass Apple Intelligence & Gemini AI Studio Sheet -->
+    <div id="ai-studio-sheet" class="apple-overlay" onclick="if(event.target === this) window.closeAiStudioSheet()">
+        <div class="apple-glass apple-modal-box ai-studio-modal-box">
+            <!-- AI Sheet Header -->
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; border-bottom: 1px solid var(--border-subtle); position: relative;">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                    <div class="ai-sparkle-halo-icon">
+                        <span id="ai-modal-header-sparkle"></span>
+                    </div>
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <h2 style="font-size: 19px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.3px;">AI Studio Assistant</h2>
+                            <button id="ai-sheet-model-badge" onclick="window.cycleGeminiModel()" class="ai-model-pill spring-btn" style="border: none; cursor: pointer;" title="Tap to switch model: Gemini 3.5 Lite / 3.8 Flash / 2.5 Flash">Gemini 3.5 Lite ⚡</button>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-top: 2px;">
+                            <span id="ai-sheet-page-context" style="font-size: 12px; font-weight: 600; color: var(--text-secondary);">Active Notebook • Page 1</span>
+                            <span id="ai-header-key-pill" onclick="window.toggleInlineKeyDrawer()" class="ai-key-status-badge" title="Tap to view or change Gemini API Key">
+                                <span>●</span> Key Verified
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <button onclick="window.toggleInlineKeyDrawer()" class="spring-btn" style="padding: 7px 12px; border-radius: 16px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary); font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 4px;" title="Quick API Key Setup & Test">
+                        <span>🔑</span> Key
+                    </button>
+                    <button onclick="window.closeAiStudioSheet()" class="spring-btn" style="padding: 7px 18px; border-radius: 20px; background: var(--accent-blue); color: #FFFFFF; font-size: 14px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.35);">
+                        Done
+                    </button>
+                    <button onclick="window.closeAiStudioSheet()" class="modal-corner-close spring-btn" title="Close AI Assistant">
+                        <span id="ai-close-icon"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- AI Scrollable Body -->
+            <div class="no-scrollbar" style="flex: 1; overflow-y: auto; padding: 18px 24px 28px; display: flex; flex-direction: column; gap: 16px;">
+                
+                <!-- Inline Quick Key Drawer (Can be toggled anytime or appears when key missing) -->
+                <div id="ai-inline-key-drawer" style="display: none; background: rgba(var(--accent-blue-rgb), 0.08); border: 1.5px solid rgba(var(--accent-blue-rgb), 0.30); border-radius: 20px; padding: 14px 18px; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="font-size: 13px; font-weight: 800; color: var(--text-primary); display: flex; align-items: center; gap: 6px;">
+                            <span style="color: #BF5AF2;">🔑</span> Google Gemini API Key
+                        </span>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" style="font-size: 11px; font-weight: 700; color: var(--accent-blue); text-decoration: none; padding: 3px 8px; border-radius: 8px; background: rgba(var(--accent-blue-rgb), 0.12);">
+                                Get Free Key ↗
+                            </a>
+                            <button onclick="window.toggleInlineKeyDrawer()" style="background: transparent; border: none; color: var(--text-secondary); cursor: pointer; font-size: 14px; padding: 2px 6px;">✕</button>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <div style="position: relative; flex: 1;">
+                            <input type="password" id="modal-ai-api-key" placeholder="Paste AIzaSy... API key here" spellcheck="false" autocomplete="off" oninput="window.syncAndSaveApiKey(this.value)" onpaste="setTimeout(() => window.syncAndSaveApiKey(this.value), 20)" style="width: 100%; padding: 8px 36px 8px 12px; border-radius: 12px; border: 1px solid var(--border-subtle); background: var(--bg-card); color: var(--text-primary); font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px; outline: none;">
+                            <button type="button" onclick="window.toggleModalApiKeyVisibility()" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: transparent; border: none; cursor: pointer; padding: 2px; font-size: 13px;" title="Reveal/Mask Key">
+                                <span id="modal-api-key-eye">👁️</span>
+                            </button>
+                        </div>
+                        <button onclick="window.testGeminiApiKey('modal')" id="modal-ai-test-btn" class="spring-btn" style="padding: 8px 14px; border-radius: 12px; background: var(--accent-blue); color: #FFFFFF; font-size: 12px; font-weight: 700; border: none; cursor: pointer; white-space: nowrap;">
+                            Save & Test
+                        </button>
+                    </div>
+                    <div id="modal-ai-status-pill" style="display: none; font-size: 11.5px; font-weight: 600; padding: 5px 10px; border-radius: 8px;"></div>
+                </div>
+
+                <!-- One-Tap Study Accelerators (6 High-Yield Modules) -->
+                <div>
+                    <span style="display:block; font-size: 11px; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; margin-left: 2px;">One-Tap Study Accelerators</span>
+                    <div class="ai-chips-grid">
+                        <button onclick="window.runAiTask('summarize')" class="ai-chip-card spring-btn">
+                            <span class="ai-chip-icon blue"><span id="ai-chip-icon-summary"></span></span>
+                            <div class="ai-chip-text">
+                                <strong>Summarize Page</strong>
+                                <small>Synthesis & takeaways</small>
+                            </div>
+                        </button>
+                        <button onclick="window.runAiTask('math_ocr')" class="ai-chip-card spring-btn">
+                            <span class="ai-chip-icon green"><span id="ai-chip-icon-math"></span></span>
+                            <div class="ai-chip-text">
+                                <strong>Math & LaTeX OCR</strong>
+                                <small>Solve & clean formulas</small>
+                            </div>
+                        </button>
+                        <button onclick="window.runAiTask('explain')" class="ai-chip-card spring-btn">
+                            <span class="ai-chip-icon purple"><span id="ai-chip-icon-explain"></span></span>
+                            <div class="ai-chip-text">
+                                <strong>Explain Diagram</strong>
+                                <small>Visual reasoning breakdown</small>
+                            </div>
+                        </button>
+                        <button onclick="window.runAiTask('quiz')" class="ai-chip-card spring-btn">
+                            <span class="ai-chip-icon amber"><span id="ai-chip-icon-quiz"></span></span>
+                            <div class="ai-chip-text">
+                                <strong>Cards & Practice Quiz</strong>
+                                <small>Active recall flip cards</small>
+                            </div>
+                        </button>
+                        <button onclick="window.runAiTask('tree')" class="ai-chip-card spring-btn">
+                            <span class="ai-chip-icon cyan"><span id="ai-chip-icon-tree"></span></span>
+                            <div class="ai-chip-text">
+                                <strong>Concept Tree</strong>
+                                <small>Visual knowledge mind map</small>
+                            </div>
+                        </button>
+                        <button onclick="window.runAiTask('polish')" class="ai-chip-card spring-btn">
+                            <span class="ai-chip-icon pink"><span id="ai-chip-icon-polish"></span></span>
+                            <div class="ai-chip-text">
+                                <strong>Polish Notes</strong>
+                                <small>Executive Cornell notes</small>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3D Interactive Flashcards Deck View (Rendered when quiz cards are ready) -->
+                <div id="ai-flashcard-deck" class="ai-flashcard-deck" style="display: none;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                        <span id="ai-fc-counter" style="font-size: 12px; font-weight: 800; color: #BF5AF2; text-transform: uppercase; letter-spacing: 0.8px;">Card 1 of 5</span>
+                        <button onclick="window.shuffleFlashcards()" class="spring-btn" style="background: transparent; border: none; color: var(--text-secondary); font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                            <span id="ai-fc-shuffle-icon"></span> Shuffle
+                        </button>
+                    </div>
+                    <div class="ai-flashcard" onclick="window.flipCurrentFlashcard()">
+                        <div class="ai-fc-inner" id="ai-fc-inner">
+                            <div class="ai-fc-front">
+                                <div class="ai-fc-badge">QUESTION / CONCEPT</div>
+                                <div class="ai-fc-content" id="ai-fc-front-text">What is the central concept on this study page?</div>
+                                <div class="ai-fc-hint">Tap card to flip ↻</div>
+                            </div>
+                            <div class="ai-fc-back">
+                                <div class="ai-fc-badge">ANSWER / REVELATION</div>
+                                <div class="ai-fc-content" id="ai-fc-back-text">Answer will appear here.</div>
+                                <div class="ai-fc-hint">Tap to flip back ↻</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 14px;">
+                        <button onclick="window.prevFlashcard()" class="spring-btn ai-action-pill-btn" id="ai-fc-prev-btn">
+                            ← Previous
+                        </button>
+                        <button onclick="window.flipCurrentFlashcard()" class="spring-btn ai-action-pill-btn" style="background: rgba(var(--accent-blue-rgb), 0.15); color: var(--accent-blue);">
+                            ↻ Flip Card
+                        </button>
+                        <button onclick="window.nextFlashcard()" class="spring-btn ai-action-pill-btn accent" id="ai-fc-next-btn">
+                            Next Card →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Prompt & Conversational Follow-up Input Bar -->
+                <div class="ai-prompt-input-wrapper">
+                    <input type="text" id="ai-custom-prompt-input" placeholder="Ask follow-up or any question about this page..." onkeydown="if(event.key === 'Enter') window.runAiTask('custom')" autocomplete="off" spellcheck="false">
+                    <button onclick="window.runAiTask('custom')" id="ai-submit-prompt-btn" class="spring-btn" title="Send Prompt to Gemini">
+                        <span>✨</span>
+                    </button>
+                </div>
+
+                <!-- Shimmer Skeleton Loading Indicator (Visible during generation) -->
+                <div id="ai-skeleton-loader" class="ai-shimmer-container" style="display: none;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                        <span class="ai-status-dot pulsing"></span>
+                        <span id="ai-skeleton-label" style="font-size: 13px; font-weight: 700; color: #BF5AF2;">Gemini Multimodal Neural Reasoning...</span>
+                    </div>
+                    <div class="ai-shimmer-line" style="width: 82%;"></div>
+                    <div class="ai-shimmer-line" style="width: 94%;"></div>
+                    <div class="ai-shimmer-line" style="width: 68%;"></div>
+                    <div class="ai-shimmer-line" style="width: 88%;"></div>
+                </div>
+
+                <!-- Live Response & Chat Thread Container -->
+                <div id="ai-response-container" style="display: none; flex-direction: column; gap: 12px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span id="ai-status-indicator" class="ai-status-dot"></span>
+                            <span id="ai-response-status-label" style="font-size: 13px; font-weight: 700; color: var(--text-primary);">Gemini Response</span>
+                        </div>
+                        <div id="ai-response-actions" style="display: flex; align-items: center; gap: 6px;">
+                            <button onclick="window.toggleAudioStudyTutor()" id="ai-audio-tutor-btn" class="spring-btn ai-action-pill-btn" title="Read summary aloud in high-definition voice">
+                                <span>🎧</span> Read Aloud
+                            </button>
+                            <button onclick="window.copyAiResponseText()" class="spring-btn ai-action-pill-btn" title="Copy text to clipboard">
+                                <span>📋</span> Copy
+                            </button>
+                            <button onclick="window.insertAiResponseAsPage()" class="spring-btn ai-action-pill-btn accent" title="Insert response directly into notebook as a new Cornell study page">
+                                <span>📄</span> Insert as Page
+                            </button>
+                            <button onclick="window.clearAiSessionHistory()" class="spring-btn ai-action-pill-btn" title="Reset chat thread">
+                                <span>🔄</span> Reset
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Conversational Multi-turn Chat Thread -->
+                    <div id="ai-chat-thread" class="ai-chat-thread" style="display: none;"></div>
+                    <!-- Primary Markdown Content Box -->
+                    <div id="ai-response-markdown" class="ai-markdown-box no-scrollbar"></div>
+                </div>
+
+                <!-- API Key Missing Prompt Banner -->
+                <div id="ai-api-key-notice" style="display: none; background: rgba(var(--accent-blue-rgb), 0.08); border: 1.5px solid rgba(var(--accent-blue-rgb), 0.28); border-radius: 20px; padding: 20px; text-align: center;">
+                    <div style="font-size: 32px; margin-bottom: 6px;">✨</div>
+                    <div style="font-size: 16px; font-weight: 800; color: var(--text-primary); margin-bottom: 6px;">Google Gemini API Key Needed</div>
+                    <div style="font-size: 12.5px; color: var(--text-secondary); max-width: 440px; margin: 0 auto 16px; line-height: 1.55;">
+                        Paste your free Google AI Studio key below to instantly activate handwriting recognition, math solving, summaries, and active recall quizzes.
+                    </div>
+                    <div style="max-width: 440px; margin: 0 auto 14px; display: flex; gap: 8px;">
+                        <input type="password" id="notice-ai-api-key" placeholder="Paste AIzaSy... API key here" spellcheck="false" autocomplete="off" oninput="window.syncAndSaveApiKey(this.value)" onpaste="setTimeout(() => window.syncAndSaveApiKey(this.value), 20)" style="flex: 1; padding: 9px 12px; border-radius: 12px; border: 1px solid var(--border-subtle); background: var(--bg-card); color: var(--text-primary); font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px; outline: none;">
+                        <button onclick="window.testGeminiApiKey('notice')" class="spring-btn" style="padding: 9px 16px; border-radius: 12px; background: var(--accent-blue); color: #FFFFFF; font-weight: 700; font-size: 13px; border: none; cursor: pointer; white-space: nowrap;">
+                            Activate
+                        </button>
+                    </div>
+                    <div style="display: flex; justify-content: center; gap: 10px;">
+                        <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" class="spring-btn" style="padding: 6px 14px; border-radius: 12px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary); font-weight: 700; font-size: 12px; text-decoration: none; display: flex; align-items: center; gap: 4px;">
+                            Get Free Key from Google AI Studio ↗
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+
+    <!-- Global Notebook Card 3-Dot Context Action Menu -->
+    <div id="notebook-context-menu" class="notebook-context-menu" onclick="event.stopPropagation()">
+        <!-- Dynamically populated via openNotebookContextMenu() -->
     </div>
 
     <!-- MAIN APP CANVAS & SPATIAL TRANSITIONS -->
@@ -1868,18 +3094,26 @@
         <!-- ======================================================================
              VIEW 1: NOTEBOOK LIBRARY & DOCUMENT SHELF
              ====================================================================== -->
-        <div id="library-view" style="position: absolute; inset: 0; display: flex; z-index: 40; transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.45s ease;">
+        <div id="library-view">
             
-            <!-- Library Sidebar -->
-            <div class="apple-glass-heavy" style="width: 280px; height: 100%; display: flex; flex-direction: column; padding-top: calc(var(--safe-top) + 24px); padding-bottom: calc(var(--safe-bottom) + 20px); padding-left: calc(var(--safe-left) + 18px); padding-right: 18px; flex-shrink: 0;">
-                <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 30px; padding-left: 6px;">
-                    <div style="width: 52px; height: 52px; border-radius: 14px; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(var(--accent-blue-rgb), 0.35); flex-shrink: 0; border: 1px solid var(--border-glass);">
-                        <img id="sidebar-app-logo" src="./apple-touch-icon-light.png" alt="GreatNotes Studio Pro" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);">
+            <!-- Library Sidebar Backdrop (Mobile/iPad portrait overlay dismiss) -->
+            <div id="library-sidebar-backdrop" class="sidebar-backdrop" onclick="window.toggleSidebar(false)"></div>
+
+            <!-- Collapsible iPadOS Library Sidebar -->
+            <aside id="library-sidebar" class="apple-glass-heavy library-sidebar-panel">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 26px; padding-left: 6px;">
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <div style="width: 48px; height: 48px; border-radius: 13px; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(var(--accent-blue-rgb), 0.35); flex-shrink: 0; border: 1px solid var(--border-glass);">
+                            <img id="sidebar-app-logo" src="./apple-touch-icon-light.png" alt="GreatNotes Studio Pro" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);">
+                        </div>
+                        <div>
+                            <h2 style="font-size: 20px; font-weight: 800; letter-spacing: -0.4px;">GreatNotes</h2>
+                            <span style="font-size: 11px; font-weight: 800; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.8px;">Studio Pro</span>
+                        </div>
                     </div>
-                    <div>
-                        <h2 style="font-size: 21px; font-weight: 800; letter-spacing: -0.4px;">GreatNotes</h2>
-                        <span style="font-size: 11px; font-weight: 800; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.8px;">Studio Pro</span>
-                    </div>
+                    <button onclick="window.toggleSidebar(false)" class="spring-btn icon-btn sidebar-mobile-close" title="Close Sidebar">
+                        <span id="sidebar-close-icon"></span>
+                    </button>
                 </div>
 
                 <nav style="display: flex; flex-direction: column; gap: 6px; flex: 1;">
@@ -1904,38 +3138,80 @@
                         <span id="theme-btn-label">Dark Mode</span>
                     </button>
                 </div>
-            </div>
+            </aside>
 
-            <!-- Library Main Shelf Grid -->
-            <div style="flex: 1; display: flex; flex-direction: column; overflow: hidden; padding-top: calc(var(--safe-top) + 24px); padding-bottom: calc(var(--safe-bottom) + 20px); padding-left: 32px; padding-right: calc(var(--safe-right) + 32px);">
+            <!-- Library Main Shelf Area -->
+            <main class="library-shelf-main" style="flex: 1; display: flex; flex-direction: column; overflow: hidden; padding-top: calc(var(--safe-top) + 20px); padding-bottom: calc(var(--safe-bottom) + 20px); padding-left: 28px; padding-right: calc(var(--safe-right) + 28px);">
+                
                 <!-- Shelf Header Toolbar -->
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px;">
-                    <div>
-                        <h1 id="library-title-text" style="font-size: 32px; font-weight: 800; letter-spacing: -0.6px;">All Notes</h1>
-                        <span id="library-subtitle-text" style="font-size: 13px; font-weight: 600; color: var(--text-secondary);">Your collection of study materials and PDFs</span>
+                <div class="shelf-header-container" style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px;">
+                    <!-- Top Row: Sidebar Toggle + Title + Primary Action Buttons -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+                        <div style="display: flex; align-items: center; gap: 14px;">
+                            <button id="shelf-sidebar-toggle" onclick="window.toggleSidebar()" class="spring-btn icon-btn" title="Toggle Sidebar (⌘S)" style="width: 42px; height: 42px; border-radius: 14px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: var(--text-primary); cursor: pointer;">
+                                <span id="sidebar-toggle-icon"></span>
+                            </button>
+                            <div>
+                                <h1 id="library-title-text" style="font-size: 28px; font-weight: 800; letter-spacing: -0.6px; line-height: 1.15;">All Notes</h1>
+                                <span id="library-subtitle-text" style="font-size: 13px; font-weight: 600; color: var(--text-secondary);">Your collection of study materials and PDFs</span>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                            <button onclick="document.getElementById('general-file-picker').click()" class="apple-glass spring-btn" style="display: flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 30px; font-weight: 700; font-size: 14px; color: inherit;">
+                                <span id="import-btn-icon" style="color: var(--accent-blue);"></span> Import PDF / .gn
+                            </button>
+                            <button onclick="window.requestNewNotebook()" class="spring-btn" style="display: flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 30px; background: var(--accent-blue); color: white; font-weight: 700; font-size: 14px; box-shadow: 0 6px 18px rgba(var(--accent-blue-rgb), 0.38);">
+                                <span id="plus-btn-icon"></span> New Notebook
+                            </button>
+                        </div>
                     </div>
-                    
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <button onclick="document.getElementById('general-file-picker').click()" class="apple-glass spring-btn" style="display: flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 14px; color: inherit;">
-                            <span id="import-btn-icon" style="color: var(--accent-blue);"></span> Import PDF / .gn
-                        </button>
-                        <button onclick="window.requestNewNotebook()" class="spring-btn" style="display: flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 30px; background: var(--accent-blue); color: white; font-weight: 700; font-size: 14px; box-shadow: 0 6px 18px rgba(var(--accent-blue-rgb), 0.38);">
-                            <span id="plus-btn-icon"></span> New Notebook
-                        </button>
+
+                    <!-- Second Row: Instant Search + Sort Selector + View Switcher (Grid/List) -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                        <!-- Live Search Bar -->
+                        <div class="shelf-search-bar" id="shelf-search-bar">
+                            <span id="shelf-search-icon" style="color: var(--text-tertiary); display: flex;"></span>
+                            <input type="text" id="shelf-search-input" class="shelf-search-input" placeholder="Search notes, PDFs..." oninput="window.handleShelfSearch(this.value)">
+                            <button id="shelf-search-clear" class="shelf-search-clear" onclick="window.clearShelfSearch()" title="Clear Search">
+                                <span id="shelf-search-clear-icon"></span>
+                            </button>
+                        </div>
+
+                        <!-- Controls: Sort & Grid/List Switcher -->
+                        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                            <!-- Sort Filter Control -->
+                            <div class="shelf-control-group">
+                                <span id="shelf-sort-icon" style="color: var(--text-tertiary); margin-left: 6px; display: flex;"></span>
+                                <button id="shelf-sort-recent" onclick="window.setShelfSort('recent')" class="shelf-control-btn active" title="Sort by Recently Modified">Recent</button>
+                                <button id="shelf-sort-name" onclick="window.setShelfSort('name')" class="shelf-control-btn" title="Sort by Name (A-Z)">Name</button>
+                                <button id="shelf-sort-pages" onclick="window.setShelfSort('pages')" class="shelf-control-btn" title="Sort by Page Count">Pages</button>
+                            </div>
+
+                            <!-- View Mode Switcher -->
+                            <div class="shelf-control-group">
+                                <button id="shelf-view-grid-btn" onclick="window.toggleShelfViewMode('grid')" class="shelf-control-btn active" title="Grid View">
+                                    <span id="shelf-view-grid-icon"></span>
+                                </button>
+                                <button id="shelf-view-list-btn" onclick="window.toggleShelfViewMode('list')" class="shelf-control-btn" title="List View">
+                                    <span id="shelf-view-list-icon"></span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Notebook Cards Grid -->
-                <div id="shelf-notebook-grid" class="no-scrollbar" style="flex: 1; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 220px)); gap: 36px 30px; align-items: start; padding-bottom: 60px;">
-                    <!-- Dynamically rendered notebook cards -->
+                <!-- Notebook Cards Grid / List Container -->
+                <div id="shelf-notebook-grid" class="no-scrollbar" style="flex: 1; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 225px)); gap: 32px 24px; align-items: start; padding-bottom: 60px;">
+                    <!-- Dynamically rendered notebook cards or list rows -->
                 </div>
-            </div>
+            </main>
         </div>
 
         <!-- ======================================================================
              VIEW 2: DOCUMENT & PDF STUDY WORKSPACE
              ====================================================================== -->
-        <div id="document-view" style="position: absolute; inset: 0; display: flex; flex-direction: column; z-index: 50; transform: translateY(100%); transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1); background-color: var(--bg-base);">
+        <div id="document-view">
             
             <!-- TOP SYSTEM BAR (GLASS PILL NAVIGATION) -->
             <div style="position: absolute; top: calc(var(--safe-top) + 12px); left: calc(var(--safe-left) + 14px); right: calc(var(--safe-right) + 14px); z-index: 1000; display: flex; align-items: center; justify-content: space-between; pointer-events: none;">
@@ -1976,6 +3252,12 @@
                         <span id="zoom-label" style="font-size: 12px; font-weight: 700; width: 44px; text-align: center;">100%</span>
                         <button onclick="window.adjustViewportZoom(0.2)" class="spring-btn" style="padding: 6px; border-radius: 50%; background: transparent; color: inherit;"><span id="zoom-in-icon"></span></button>
                     </div>
+
+                    <!-- Apple Intelligence & Gemini AI Studio Button -->
+                    <button onclick="window.openAiStudioSheet()" id="top-ai-btn" class="spring-btn" style="padding: 7px 12px; border-radius: 20px; background: linear-gradient(135deg, rgba(191,90,242,0.18), rgba(10,132,255,0.18)); border: 1.5px solid rgba(191,90,242,0.38); color: var(--text-primary); display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 2px 10px rgba(191,90,242,0.20);" title="Apple Intelligence & Gemini AI Studio (⌘J)">
+                        <span id="top-ai-icon" style="color: #BF5AF2; display: flex;"></span>
+                        <span style="font-weight: 800; font-size: 12.5px; letter-spacing: -0.2px; background: linear-gradient(135deg, #BF5AF2, #0A84FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">AI Studio</span>
+                    </button>
 
                     <button onclick="window.openPaperStudioSheet()" class="spring-btn" style="padding: 8px 10px; border-radius: 20px; background: transparent; color: inherit;" title="Paper Template & Tone">
                         <span id="top-palette-icon"></span>
@@ -2022,6 +3304,9 @@
                         </button>
                         <button onclick="window.selectDockTool('laser')" id="tool-laser" class="dock-tool-btn spring-btn" title="Laser Presentation Pointer">
                             <span id="icon-tool-laser"></span>
+                        </button>
+                        <button onclick="window.openAiStudioSheet()" id="dock-tool-ai" class="dock-tool-btn spring-btn" title="Apple Intelligence & Gemini AI Studio (⌘J)" style="color: #BF5AF2;">
+                            <span id="icon-tool-ai"></span>
                         </button>
                     </div>
 
@@ -2157,11 +3442,30 @@
             'shape-arrow': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="19" x2="19" y2="5"/><polyline points="10 5 19 5 19 14"/></svg>',
             'shape-rect': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="5" rx="2"/></svg>',
             'shape-circle': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/></svg>',
-            'shape-triangle': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 3 21 20 3 20"/></svg>'
+            'shape-triangle': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 3 21 20 3 20"/></svg>',
+            'sidebar': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>',
+            'search': '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+            'list': '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>',
+            'more-horizontal': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/><circle cx="5" cy="12" r="1.5"/></svg>',
+            'sort': '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="m21 8-4-4-4 4"/><path d="M17 4v16"/></svg>',
+            'sparkles': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/><path d="M19 3v4"/><path d="M21 5h-4"/></svg>',
+            'math': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h4l3-14 3 8h6"/><path d="m18 7 3-3"/><path d="m18 4 3 3"/></svg>',
+            'cards': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="2" y="7" rx="2"/><path d="M6 7V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-4"/></svg>',
+            'headphones': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>',
+            'tree': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="6" cy="19" r="3"/><circle cx="18" cy="19" r="3"/><path d="M12 8v4"/><path d="M6 16v-2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>',
+            'diamond': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9Z"/><path d="M11 3 8 9l4 12 4-12-3-6"/><path d="M2 9h20"/></svg>',
+            'repeat': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>'
         };
 
         function injectIcons() {
             const map = {
+                'sidebar-toggle-icon': 'sidebar',
+                'sidebar-close-icon': 'close',
+                'shelf-search-icon': 'search',
+                'shelf-search-clear-icon': 'close',
+                'shelf-sort-icon': 'sort',
+                'shelf-view-grid-icon': 'grid',
+                'shelf-view-list-icon': 'list',
                 'nav-icon-all': 'library',
                 'nav-icon-fav': 'star',
                 'nav-icon-trash': 'trash',
@@ -2178,6 +3482,17 @@
                 'top-add-page-icon': 'plus',
                 'top-share-icon': 'share',
                 'top-settings-icon': 'settings',
+                'top-ai-icon': 'sparkles',
+                'icon-tool-ai': 'sparkles',
+                'ai-modal-header-sparkle': 'sparkles',
+                'ai-close-icon': 'close',
+                'ai-chip-icon-summary': 'ruled',
+                'ai-chip-icon-math': 'math',
+                'ai-chip-icon-explain': 'sparkles',
+                'ai-chip-icon-quiz': 'cards',
+                'ai-chip-icon-tree': 'tree',
+                'ai-chip-icon-polish': 'diamond',
+                'ai-fc-shuffle-icon': 'repeat',
                 'dock-stylus-icon': 'pen-stylus',
                 'icon-tool-pan': 'hand',
                 'icon-tool-pen': 'pen-tool',
@@ -2276,6 +3591,11 @@
         let activeNotebookId = null;
         let activePageIndex = 0;
         let isDrawerOpen = false;
+        let isSidebarCollapsed = (window.innerWidth < 900); // Auto-collapsed on portrait iPad / Split View
+        let librarySearchQuery = '';
+        let librarySortOrder = 'recent'; // 'recent', 'name', 'pages'
+        let libraryViewMode = 'grid'; // 'grid' or 'list'
+        let activeContextMenuNbId = null;
 
         /* Inking, Tools & Palm Rejection State */
         let currentTool = 'pen'; // 'pan', 'pen', 'highlighter', 'eraser', 'shape', 'laser'
@@ -2528,11 +3848,29 @@
             }, { passive: false });
         }
 
+        let lastPenTapTime = 0;
+        let lastPenTapPos = { x: 0, y: 0 };
+
         function onInkingPointerDown(e, canvas, pageIndex) {
             if (currentTool === 'pan') return;
 
             // HARDWARE PALM REJECTION: If in Pencil Mode, reject single finger touches
             if (stylusOnlyMode && e.pointerType !== 'pen') return;
+
+            // Apple Pencil Gesture: Rapid double-tap toggle between Pen <-> Eraser
+            if (e.pointerType === 'pen') {
+                const now = performance.now();
+                const dist = Math.hypot(e.clientX - lastPenTapPos.x, e.clientY - lastPenTapPos.y);
+                if (now - lastPenTapTime < 280 && dist < 12) {
+                    const nextTool = (currentTool === 'eraser') ? 'pen' : 'eraser';
+                    selectDockTool(nextTool);
+                    showToastNotification(nextTool === 'eraser' ? 'Eraser' : 'Fountain Pen', nextTool === 'eraser' ? 'eraser' : 'pen-tool');
+                    lastPenTapTime = 0;
+                    return;
+                }
+                lastPenTapTime = now;
+                lastPenTapPos = { x: e.clientX, y: e.clientY };
+            }
 
             isDrawingNow = true;
             currentDrawingPageIdx = pageIndex;
@@ -2619,6 +3957,30 @@
             const events = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
             for (let ev of events) {
                 renderIncrementalSplinePoint(ev, canvas, pageIndex);
+            }
+
+            // Apple Neural Trajectory Predictor (A16 Bionic Ultra-Low Latency Inking)
+            if (e.getPredictedEvents && e.pointerType === 'pen' && currentTool === 'pen') {
+                const predicted = e.getPredictedEvents();
+                if (predicted && predicted.length > 0) {
+                    const actCtx = canvas.getContext('2d');
+                    actCtx.save();
+                    actCtx.lineCap = 'round';
+                    actCtx.lineJoin = 'round';
+                    actCtx.strokeStyle = activeColor;
+                    for (let pev of predicted) {
+                        const ppt = extractPointerCoordinates(pev, canvas);
+                        if (ppt && Math.hypot(ppt.x - lastMidpoint.x, ppt.y - lastMidpoint.y) < 35) {
+                            const dynWidth = activeSize * (0.35 + 0.9 * (ppt.pressure || 0.5));
+                            actCtx.lineWidth = dynWidth;
+                            actCtx.beginPath();
+                            actCtx.moveTo(lastMidpoint.x, lastMidpoint.y);
+                            actCtx.lineTo(ppt.x, ppt.y);
+                            actCtx.stroke();
+                        }
+                    }
+                    actCtx.restore();
+                }
             }
 
             // Apple Hold-to-Snap Shape Timer (400ms dwell detection for Pen or Auto-Shape)
@@ -3325,7 +4687,71 @@
         /* ==========================================================================
            6. TEMPLATE DRAWING ENGINE (RULED, CORNELL, GRID, DOTTED, BLANK)
            ========================================================================== */
-        function drawPageBackgroundTemplate(ctx, width, height, type, paperColor) {
+        function drawAiNotesOnCanvas(ctx, text, width, height, isDark) {
+            if (!text) return;
+            ctx.save();
+            // Header Banner
+            ctx.fillStyle = isDark ? 'rgba(191, 90, 242, 0.16)' : 'rgba(168, 85, 247, 0.12)';
+            ctx.fillRect(40, 24, width - 80, 44);
+            ctx.strokeStyle = isDark ? 'rgba(191, 90, 242, 0.45)' : 'rgba(168, 85, 247, 0.40)';
+            ctx.lineWidth = 1.2;
+            ctx.strokeRect(40, 24, width - 80, 44);
+
+            ctx.fillStyle = isDark ? '#BF5AF2' : '#8B5CF6';
+            ctx.font = '700 13px system-ui, -apple-system, sans-serif';
+            ctx.fillText('✨ Apple Intelligence & Gemini • Study Synthesis Notes', 56, 51);
+
+            const startX = 60;
+            let startY = 102;
+            const maxTextWidth = width - 120;
+            const lineHeight = 26;
+
+            const paragraphs = text.split('\n');
+            for (const para of paragraphs) {
+                if (!para.trim()) {
+                    startY += lineHeight * 0.6;
+                    continue;
+                }
+
+                let lineText = para.trim();
+                if (lineText.startsWith('### ')) {
+                    ctx.font = '700 15px system-ui, -apple-system, sans-serif';
+                    ctx.fillStyle = isDark ? '#60A5FA' : '#2563EB';
+                    lineText = lineText.replace(/^###\s*/, '');
+                    startY += 8;
+                } else if (lineText.startsWith('## ') || lineText.startsWith('# ')) {
+                    ctx.font = '800 17px system-ui, -apple-system, sans-serif';
+                    ctx.fillStyle = isDark ? '#C084FC' : '#7C3AED';
+                    lineText = lineText.replace(/^#+\s*/, '');
+                    startY += 12;
+                } else {
+                    ctx.font = '13.5px system-ui, -apple-system, sans-serif';
+                    ctx.fillStyle = isDark ? '#E2E8F0' : '#334155';
+                }
+
+                lineText = lineText.replace(new RegExp('\\*\\*(.*?)\\*\\*', 'g'), '$1');
+                const words = lineText.split(' ');
+                let currentLine = '';
+                for (let n = 0; n < words.length; n++) {
+                    const testLine = currentLine + words[n] + ' ';
+                    const metrics = ctx.measureText(testLine);
+                    if (metrics.width > maxTextWidth && n > 0) {
+                        ctx.fillText(currentLine, startX, startY);
+                        currentLine = words[n] + ' ';
+                        startY += lineHeight;
+                        if (startY > height - 60) break;
+                    } else {
+                        currentLine = testLine;
+                    }
+                }
+                if (startY > height - 60) break;
+                ctx.fillText(currentLine, startX, startY);
+                startY += lineHeight;
+            }
+            ctx.restore();
+        }
+
+        function drawPageBackgroundTemplate(ctx, width, height, type, paperColor, page = null) {
             const isDark = (paperColor === 'dark');
             ctx.fillStyle = isDark ? '#121522' : (paperColor === 'cream' ? '#F8F5EB' : '#FFFFFF');
             ctx.fillRect(0, 0, width, height);
@@ -3398,6 +4824,10 @@
                         ctx.fill();
                     }
                 }
+            }
+
+            if (page && page.aiNotes) {
+                drawAiNotesOnCanvas(ctx, page.aiNotes, width, height, isDark);
             }
         }
 
@@ -3485,7 +4915,7 @@
             if (page.pdfPageIndex && nb.pdfBlobId) {
                 renderPdfPageToCanvas(nb.pdfBlobId, page.pdfPageIndex, bgCanvas, page.width, page.height);
             } else {
-                drawPageBackgroundTemplate(bgCtx, page.width, page.height, page.paperType, page.paperColor || 'white');
+                drawPageBackgroundTemplate(bgCtx, page.width, page.height, page.paperType, page.paperColor || 'white', page);
             }
 
             // Render committed inking
@@ -3627,10 +5057,270 @@
         }
 
         /* ==========================================================================
-           9. UI & SHELF GRID CONTROLS
+           9. UI & SHELF GRID CONTROLS (IPAD A16 RETINA ENGINE)
            ========================================================================== */
+        function formatRelativeDate(ts) {
+            if (!ts) return 'Recently';
+            const diff = Date.now() - ts;
+            const mins = Math.floor(diff / 60000);
+            if (mins < 2) return 'Just now';
+            if (mins < 60) return `${mins}m ago`;
+            const hours = Math.floor(mins / 3600000);
+            if (hours < 24) return `${hours}h ago`;
+            const days = Math.floor(hours / 24);
+            if (days < 7) return `${days}d ago`;
+            return new Date(ts).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+        }
+
+        function toggleSidebar(forceState) {
+            const sidebar = document.getElementById('library-sidebar');
+            const backdrop = document.getElementById('library-sidebar-backdrop');
+            if (!sidebar) return;
+            if (typeof forceState === 'boolean') {
+                isSidebarCollapsed = !forceState;
+            } else {
+                isSidebarCollapsed = !isSidebarCollapsed;
+            }
+            if (isSidebarCollapsed) {
+                sidebar.classList.add('collapsed');
+                if (backdrop) backdrop.classList.remove('active');
+            } else {
+                sidebar.classList.remove('collapsed');
+                if (window.innerWidth < 900 && backdrop) {
+                    backdrop.classList.add('active');
+                }
+            }
+        }
+
+        function handleShelfSearch(query) {
+            librarySearchQuery = (query || '').trim();
+            const clearBtn = document.getElementById('shelf-search-clear');
+            if (clearBtn) {
+                clearBtn.style.display = librarySearchQuery ? 'flex' : 'none';
+            }
+            renderShelfGrid();
+        }
+
+        function clearShelfSearch() {
+            const input = document.getElementById('shelf-search-input');
+            if (input) input.value = '';
+            handleShelfSearch('');
+        }
+
+        function setShelfSort(order) {
+            librarySortOrder = order;
+            ['recent', 'name', 'pages'].forEach(o => {
+                const btn = document.getElementById(`shelf-sort-${o}`);
+                if (btn) {
+                    if (o === order) btn.classList.add('active');
+                    else btn.classList.remove('active');
+                }
+            });
+            renderShelfGrid();
+        }
+
+        function toggleShelfViewMode(mode) {
+            if (libraryViewMode === mode) return;
+            libraryViewMode = mode;
+            const gridBtn = document.getElementById('shelf-view-grid-btn');
+            const listBtn = document.getElementById('shelf-view-list-btn');
+            if (gridBtn && listBtn) {
+                if (mode === 'grid') {
+                    gridBtn.classList.add('active');
+                    listBtn.classList.remove('active');
+                } else {
+                    gridBtn.classList.remove('active');
+                    listBtn.classList.add('active');
+                }
+            }
+
+            const grid = document.getElementById('shelf-notebook-grid');
+            if (grid) {
+                grid.style.opacity = '0';
+                grid.style.transform = 'scale(0.985) translateY(6px)';
+                setTimeout(() => {
+                    renderShelfGrid();
+                    requestAnimationFrame(() => {
+                        grid.style.opacity = '1';
+                        grid.style.transform = 'scale(1) translateY(0)';
+                    });
+                }, 130);
+            } else {
+                renderShelfGrid();
+            }
+        }
+
+        function openNotebookContextMenu(e, nbId) {
+            if (e) {
+                e.stopPropagation();
+                e.preventDefault();
+            }
+            activeContextMenuNbId = nbId;
+            const nb = notebookCollection.find(n => n.id === nbId);
+            if (!nb) return;
+
+            const menu = document.getElementById('notebook-context-menu');
+            if (!menu) return;
+
+            const nextThemeIdx = ((nb.coverThemeIndex || 0) + 1) % NOTEBOOK_THEMES.length;
+            const nextThemeName = NOTEBOOK_THEMES[nextThemeIdx].name;
+
+            menu.innerHTML = `
+                <button class="context-menu-item" onclick="window.toggleFavoriteNotebook('${nb.id}'); window.closeNotebookContextMenu();">
+                    <span style="color: #FFD60A; display:flex;">${SF_ICONS['star']}</span>
+                    <span>${nb.isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}</span>
+                </button>
+                <button class="context-menu-item" onclick="window.renameNotebookDirect('${nb.id}'); window.closeNotebookContextMenu();">
+                    <span style="color: var(--accent-blue); display:flex;">${SF_ICONS['edit']}</span>
+                    <span>Rename Notebook</span>
+                </button>
+                <button class="context-menu-item" onclick="window.cycleNotebookCoverTheme('${nb.id}'); window.closeNotebookContextMenu();">
+                    <span style="color: #BF5AF2; display:flex;">${SF_ICONS['palette']}</span>
+                    <span>Change Cover (${nextThemeName})</span>
+                </button>
+                <button class="context-menu-item" onclick="window.duplicateNotebookDirect('${nb.id}'); window.closeNotebookContextMenu();">
+                    <span style="color: #30D158; display:flex;">${SF_ICONS['copy']}</span>
+                    <span>Duplicate Notebook</span>
+                </button>
+                <button class="context-menu-item" onclick="window.exportNativeGNBackup('${nb.id}'); window.closeNotebookContextMenu();">
+                    <span style="color: var(--accent-blue); display:flex;">${SF_ICONS['file-db']}</span>
+                    <span>Export .gn Package</span>
+                </button>
+                <div class="context-menu-divider"></div>
+                ${nb.isTrashed ? `
+                    <button class="context-menu-item" onclick="window.restoreNotebookDirect('${nb.id}'); window.closeNotebookContextMenu();">
+                        <span style="color: #30D158; display:flex;">${SF_ICONS['undo']}</span>
+                        <span>Restore Notebook</span>
+                    </button>
+                    <button class="context-menu-item danger" onclick="window.trashOrDeleteNotebook('${nb.id}'); window.closeNotebookContextMenu();">
+                        <span style="color: #FF453A; display:flex;">${SF_ICONS['trash']}</span>
+                        <span>Delete Permanently</span>
+                    </button>
+                ` : `
+                    <button class="context-menu-item danger" onclick="window.trashOrDeleteNotebook('${nb.id}'); window.closeNotebookContextMenu();">
+                        <span style="color: #FF453A; display:flex;">${SF_ICONS['trash']}</span>
+                        <span>Move to Trash</span>
+                    </button>
+                `}
+            `;
+
+            let x = 120;
+            let y = 120;
+            if (e && e.clientX !== undefined && e.clientX !== 0) {
+                x = e.clientX;
+                y = e.clientY;
+            } else if (e && e.target) {
+                const rect = e.target.getBoundingClientRect();
+                x = rect.left;
+                y = rect.bottom + 8;
+            }
+
+            const menuWidth = 230;
+            const menuHeight = 260;
+            if (x + menuWidth > window.innerWidth - 16) {
+                x = window.innerWidth - menuWidth - 16;
+            }
+            if (y + menuHeight > window.innerHeight - 16) {
+                y = window.innerHeight - menuHeight - 16;
+            }
+
+            menu.style.left = `${Math.max(16, x)}px`;
+            menu.style.top = `${Math.max(16, y)}px`;
+            menu.style.display = 'flex';
+        }
+
+        function closeNotebookContextMenu() {
+            const menu = document.getElementById('notebook-context-menu');
+            if (menu) menu.style.display = 'none';
+            activeContextMenuNbId = null;
+        }
+
+        window.addEventListener('click', (e) => {
+            if (!e.target.closest('#notebook-context-menu') && !e.target.closest('.notebook-context-btn')) {
+                closeNotebookContextMenu();
+            }
+        });
+
+        function toggleFavoriteNotebook(nbId) {
+            const nb = notebookCollection.find(n => n.id === nbId);
+            if (!nb) return;
+            nb.isFavorite = !nb.isFavorite;
+            saveNotebookDirect(nb);
+            renderShelfGrid();
+            showToastNotification(nb.isFavorite ? "Added to Favorites" : "Removed from Favorites", "star");
+        }
+
+        function renameNotebookDirect(nbId) {
+            const nb = notebookCollection.find(n => n.id === nbId);
+            if (!nb) return;
+            showAppleDialog("Rename Notebook", "Enter new name for your notebook:", "Save", (newName) => {
+                if (newName && newName.trim()) {
+                    nb.title = newName.trim();
+                    saveNotebookDirect(nb);
+                    renderShelfGrid();
+                    showToastNotification("Notebook Renamed", "check");
+                }
+            }, true, nb.title);
+        }
+
+        function cycleNotebookCoverTheme(nbId) {
+            const nb = notebookCollection.find(n => n.id === nbId);
+            if (!nb) return;
+            const nextIdx = ((nb.coverThemeIndex || 0) + 1) % NOTEBOOK_THEMES.length;
+            nb.coverThemeIndex = nextIdx;
+            nb.cover = getNotebookCoverBackground(nb, nextIdx);
+            saveNotebookDirect(nb);
+            renderShelfGrid();
+            showToastNotification(`Cover: ${NOTEBOOK_THEMES[nextIdx].name}`, "palette");
+        }
+
+        function duplicateNotebookDirect(nbId) {
+            const orig = notebookCollection.find(n => n.id === nbId);
+            if (!orig) return;
+            const cloned = JSON.parse(JSON.stringify(orig));
+            cloned.id = 'nb_' + Date.now();
+            cloned.title = `${orig.title} (Copy)`;
+            cloned.updatedAt = Date.now();
+            cloned.isFavorite = false;
+            notebookCollection.unshift(cloned);
+            saveNotebookDirect(cloned);
+            renderShelfGrid();
+            showToastNotification(`Duplicated "${orig.title}"`, "copy");
+        }
+
+        function trashOrDeleteNotebook(nbId) {
+            const nb = notebookCollection.find(n => n.id === nbId);
+            if (!nb) return;
+            if (nb.isTrashed) {
+                showAppleDialog("Delete Permanently?", `Are you sure you want to permanently delete "${nb.title}"? This cannot be undone.`, "Delete", () => {
+                    if (idb) {
+                        const tx = idb.transaction(STORE_NOTEBOOKS, 'readwrite');
+                        tx.objectStore(STORE_NOTEBOOKS).delete(nb.id);
+                    }
+                    notebookCollection = notebookCollection.filter(n => n.id !== nb.id);
+                    renderShelfGrid();
+                    showToastNotification("Permanently Deleted", "trash");
+                });
+            } else {
+                nb.isTrashed = true;
+                saveNotebookDirect(nb);
+                renderShelfGrid();
+                showToastNotification("Moved to Trash", "trash");
+            }
+        }
+
+        function restoreNotebookDirect(nbId) {
+            const nb = notebookCollection.find(n => n.id === nbId);
+            if (!nb) return;
+            nb.isTrashed = false;
+            saveNotebookDirect(nb);
+            renderShelfGrid();
+            showToastNotification("Restored from Trash", "check");
+        }
+
         function renderShelfGrid() {
             const grid = document.getElementById('shelf-notebook-grid');
+            if (!grid) return;
             grid.innerHTML = '';
 
             let filtered = notebookCollection;
@@ -3638,44 +5328,140 @@
             else if (currentFilter === 'trash') filtered = notebookCollection.filter(n => n.isTrashed);
             else filtered = notebookCollection.filter(n => !n.isTrashed);
 
+            // Real-Time Search Filter
+            if (librarySearchQuery) {
+                const q = librarySearchQuery.toLowerCase();
+                filtered = filtered.filter(n => (n.title || '').toLowerCase().includes(q));
+            }
+
+            // Real-Time Sort Order
+            if (librarySortOrder === 'name') {
+                filtered.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+            } else if (librarySortOrder === 'pages') {
+                filtered.sort((a, b) => (b.pages?.length || 0) - (a.pages?.length || 0));
+            } else {
+                // Default: Recently modified
+                filtered.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+            }
+
+            // Update Dynamic Subtitle
+            const subTitle = document.getElementById('library-subtitle-text');
+            if (subTitle) {
+                const countText = `${filtered.length} notebook${filtered.length === 1 ? '' : 's'}`;
+                if (librarySearchQuery) {
+                    subTitle.innerText = `${countText} matching "${librarySearchQuery}"`;
+                } else if (currentFilter === 'favorites') {
+                    subTitle.innerText = `${countText} in Favorites`;
+                } else if (currentFilter === 'trash') {
+                    subTitle.innerText = `${countText} in Trash`;
+                } else {
+                    subTitle.innerText = `Your collection of ${countText} & study PDFs`;
+                }
+            }
+
             if (filtered.length === 0) {
+                grid.className = 'no-scrollbar';
                 grid.innerHTML = `
-                    <div style="grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 100px; opacity: 0.45;">
+                    <div style="grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 100px; opacity: 0.5;">
                         <span style="display:block; margin-bottom: 14px;">${SF_ICONS['book-open']}</span>
-                        <h3 style="font-size: 19px; font-weight: 700;">No notebooks found</h3>
+                        <h3 style="font-size: 19px; font-weight: 700;">${librarySearchQuery ? 'No notes matching search' : 'No notebooks found'}</h3>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">${librarySearchQuery ? 'Try searching for a different title or keyword.' : 'Create a new notebook or import a PDF to get started.'}</p>
                     </div>`;
                 return;
             }
 
-            filtered.forEach((nb, idx) => {
-                const item = document.createElement('div');
-                item.className = 'notebook-item';
-                if (!nb.isTrashed) {
-                    item.onclick = () => openNotebookView(nb.id);
-                }
-
-                const coverBackground = getNotebookCoverBackground(nb, idx);
-
-                item.innerHTML = `
-                    <div class="notebook-cover-card" style="background: ${coverBackground};">
-                        <div class="notebook-spine"></div>
-                        <div class="notebook-title-badge">
-                            <div style="display: flex; align-items: center; justify-content: center; gap: 5px; margin-bottom: 3px; opacity: 0.75;">
-                                ${SF_ICONS['book-open']}
-                            </div>
-                            <span style="font-size: 13px; font-weight: 800; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(nb.title)}</span>
+            if (libraryViewMode === 'list') {
+                grid.className = 'no-scrollbar shelf-list-view';
+                filtered.forEach((nb, idx) => {
+                    const row = document.createElement('div');
+                    row.className = 'notebook-list-row';
+                    row.style.animationDelay = `${Math.min(idx * 0.035, 0.28)}s`;
+                    if (!nb.isTrashed) {
+                        row.onclick = (e) => {
+                            if (e.target.closest('button')) return;
+                            row.style.transform = 'scale(0.985) translateX(6px)';
+                            setTimeout(() => {
+                                row.style.transform = '';
+                                openNotebookView(nb.id);
+                            }, 110);
+                        };
+                    }
+                    const coverBackground = getNotebookCoverBackground(nb, idx);
+                    row.innerHTML = `
+                        <div class="notebook-list-thumb" style="background: ${coverBackground};">
+                            <div class="notebook-list-spine"></div>
+                            <div style="color: #fff; opacity: 0.9; font-size: 18px;">${SF_ICONS['book-open']}</div>
                         </div>
-                    </div>
-                    <div style="margin-top: 12px; text-align: center; width: 100%;">
-                        <strong style="font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 4px; color: var(--text-primary);" title="${escapeHtml(nb.title)}">
-                            ${nb.isFavorite ? '<span style="color:#FFD60A; display:flex;">' + SF_ICONS['star'] + '</span>' : ''}
-                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 175px;">${escapeHtml(nb.title)}</span>
-                        </strong>
-                        <span style="font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-top: 2px; display:block;">${nb.pages.length} Page${nb.pages.length === 1 ? '' : 's'}</span>
-                    </div>
-                `;
-                grid.appendChild(item);
-            });
+                        <div style="flex: 1; min-width: 0;">
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                ${nb.isFavorite ? '<span style="color:#FFD60A; display:flex;">' + SF_ICONS['star'] + '</span>' : ''}
+                                <span style="font-size: 15px; font-weight: 800; color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(nb.title)}</span>
+                            </div>
+                            <div style="font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-top: 2px;">
+                                ${nb.pages.length} Page${nb.pages.length === 1 ? '' : 's'} • ${formatRelativeDate(nb.updatedAt)}
+                            </div>
+                        </div>
+                        <button class="spring-btn icon-btn" onclick="window.openNotebookContextMenu(event, '${nb.id}')" title="Actions" style="width: 36px; height: 36px; border-radius: 50%; color: var(--text-secondary); background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                            ${SF_ICONS['more-horizontal']}
+                        </button>
+                    `;
+                    grid.appendChild(row);
+                });
+            } else {
+                grid.className = 'no-scrollbar';
+                filtered.forEach((nb, idx) => {
+                    const item = document.createElement('div');
+                    item.className = 'notebook-item';
+                    item.style.animationDelay = `${Math.min(idx * 0.04, 0.32)}s`;
+                    if (!nb.isTrashed) {
+                        item.onclick = (e) => {
+                            if (e.target.closest('.notebook-context-btn')) return;
+                            item.style.transform = 'scale(1.035)';
+                            setTimeout(() => {
+                                item.style.transform = '';
+                                openNotebookView(nb.id);
+                            }, 110);
+                        };
+                    }
+
+                    // Long-press Touch Support for iPad
+                    let touchPressTimer = null;
+                    item.addEventListener('touchstart', (e) => {
+                        touchPressTimer = setTimeout(() => {
+                            if (navigator.vibrate) navigator.vibrate(20);
+                            openNotebookContextMenu(e.touches[0] || e, nb.id);
+                        }, 500);
+                    }, { passive: true });
+                    item.addEventListener('touchmove', () => clearTimeout(touchPressTimer), { passive: true });
+                    item.addEventListener('touchend', () => clearTimeout(touchPressTimer), { passive: true });
+
+                    const coverBackground = getNotebookCoverBackground(nb, idx);
+
+                    item.innerHTML = `
+                        <div class="notebook-cover-card" style="background: ${coverBackground};">
+                            <div class="cover-specular-sheen"></div>
+                            <button class="notebook-context-btn" onclick="window.openNotebookContextMenu(event, '${nb.id}')" title="Notebook Actions">
+                                ${SF_ICONS['more-horizontal']}
+                            </button>
+                            <div class="notebook-spine"></div>
+                            <div class="notebook-title-badge">
+                                <div style="display: flex; align-items: center; justify-content: center; gap: 5px; margin-bottom: 3px; opacity: 0.75;">
+                                    ${SF_ICONS['book-open']}
+                                </div>
+                                <span style="font-size: 13px; font-weight: 800; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(nb.title)}</span>
+                            </div>
+                        </div>
+                        <div style="margin-top: 12px; text-align: center; width: 100%;">
+                            <strong style="font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 4px; color: var(--text-primary);" title="${escapeHtml(nb.title)}">
+                                ${nb.isFavorite ? '<span style="color:#FFD60A; display:flex;">' + SF_ICONS['star'] + '</span>' : ''}
+                                <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 175px;">${escapeHtml(nb.title)}</span>
+                            </strong>
+                            <span style="font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-top: 2px; display:block;">${nb.pages.length} Page${nb.pages.length === 1 ? '' : 's'}</span>
+                        </div>
+                    `;
+                    grid.appendChild(item);
+                });
+            }
         }
 
         function setFilter(filter) {
@@ -3707,9 +5493,17 @@
             if (!nb) return;
 
             document.getElementById('doc-active-name').innerText = nb.title;
-            document.getElementById('library-view').style.transform = 'translateY(-2%) scale(0.94)';
-            document.getElementById('library-view').style.opacity = '0.5';
-            document.getElementById('document-view').style.transform = 'translateY(0)';
+
+            // Fluid Spatial Zoom Transition (iPadOS 27 specification)
+            const lib = document.getElementById('library-view');
+            const doc = document.getElementById('document-view');
+
+            lib.style.transform = 'scale(0.93) translateY(-14px)';
+            lib.style.opacity = '0';
+            lib.style.filter = 'blur(10px)';
+            lib.style.pointerEvents = 'none';
+
+            doc.classList.add('active-workspace');
 
             buildWorkspacePages();
             renderDrawerThumbnails();
@@ -3717,14 +5511,27 @@
             updateUndoRedoButtons();
             activeView = 'document';
             updateSmartDarkPdfUI();
+
+            setTimeout(() => {
+                const el = document.getElementById('page-wrapper-0');
+                if (el) el.scrollIntoView({ behavior: 'auto', block: 'center' });
+            }, 40);
         }
 
         function returnToShelf() {
             activeView = 'library';
             activeNotebookId = null;
-            document.getElementById('library-view').style.transform = 'translateY(0) scale(1)';
-            document.getElementById('library-view').style.opacity = '1';
-            document.getElementById('document-view').style.transform = 'translateY(100%)';
+
+            const lib = document.getElementById('library-view');
+            const doc = document.getElementById('document-view');
+
+            doc.classList.remove('active-workspace');
+
+            lib.style.transform = 'scale(1) translateY(0)';
+            lib.style.opacity = '1';
+            lib.style.filter = 'none';
+            lib.style.pointerEvents = 'auto';
+
             renderShelfGrid();
         }
 
@@ -3899,7 +5706,7 @@
             } else {
                 tCtx.save();
                 tCtx.scale((thumbW * dpr) / p.width, (thumbH * dpr) / p.height);
-                drawPageBackgroundTemplate(tCtx, p.width, p.height, p.paperType, p.paperColor || 'white');
+                drawPageBackgroundTemplate(tCtx, p.width, p.height, p.paperType, p.paperColor || 'white', p);
                 const highlighters = (p.paths || []).filter(item => item.tool === 'highlighter');
                 const penStrokes = (p.paths || []).filter(item => item.tool !== 'highlighter');
                 highlighters.forEach(path => renderSinglePath(tCtx, path, p.paperColor));
@@ -3916,9 +5723,14 @@
                     closePageMatrixSheet();
                 }
                 const el = document.getElementById(`page-wrapper-${idx}`);
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    el.classList.add('page-arrive-pulse');
+                    setTimeout(() => el.classList.remove('page-arrive-pulse'), 850);
+                }
                 updateScrubberPill();
                 updateThumbnailPreview(idx);
+                updateUndoRedoButtons();
             };
 
             return card;
@@ -4538,7 +6350,7 @@
                 } else {
                     ctx.save();
                     ctx.scale(exportScale, exportScale);
-                    drawPageBackgroundTemplate(ctx, page.width, page.height, page.paperType, page.paperColor || 'white');
+                    drawPageBackgroundTemplate(ctx, page.width, page.height, page.paperType, page.paperColor || 'white', page);
                     ctx.restore();
                 }
 
@@ -4602,7 +6414,7 @@
                     } else {
                         ctx.save();
                         ctx.scale(exportScale, exportScale);
-                        drawPageBackgroundTemplate(ctx, p.width, p.height, p.paperType, p.paperColor || 'white');
+                        drawPageBackgroundTemplate(ctx, p.width, p.height, p.paperType, p.paperColor || 'white', p);
                         ctx.restore();
                     }
 
@@ -4630,8 +6442,8 @@
             }
         }
 
-        function exportNativeGNBackup() {
-            const nb = getActiveNotebook();
+        function exportNativeGNBackup(nbId) {
+            const nb = nbId ? notebookCollection.find(n => n.id === nbId) : getActiveNotebook();
             if (!nb) return;
             showScreenLoader("Creating Backup", "Packaging .gn file...");
 
@@ -4640,15 +6452,16 @@
                 const blob = new Blob([data], { type: 'application/json' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
-                a.download = `${nb.title}.gn`;
+                const safeTitle = (nb.title || 'Untitled Note').replace(/[^\w\s-]/g, '_');
+                a.download = `${safeTitle}.gn`;
                 a.href = url;
                 a.click();
                 URL.revokeObjectURL(url);
 
                 hideScreenLoader();
                 closeExportSheet();
-                showToastNotification("Backup Created", "check");
-            }, 300);
+                showToastNotification("Backup Exported (.gn)", "check");
+            }, 250);
         }
 
         /* ==========================================================================
@@ -4804,6 +6617,7 @@
             closePaperStudioSheet();
             closePageMatrixSheet();
             closeSettingsSheet();
+            closeAiStudioSheet();
             closeShortcutsHud();
             if (isDrawerOpen) {
                 toggleDrawer();
@@ -4832,6 +6646,15 @@
                 if (isInputActive) return;
 
                 const isCmdOrCtrl = e.metaKey || e.ctrlKey;
+
+                // 0. AI Studio Assistant (Cmd + J)
+                if (isCmdOrCtrl && e.key.toLowerCase() === 'j') {
+                    e.preventDefault();
+                    if (activeView === 'document') {
+                        toggleAiStudioSheet();
+                    }
+                    return;
+                }
 
                 // 1. Shortcuts HUD (Cmd + / or ?)
                 if ((isCmdOrCtrl && e.key === '/') || (!isCmdOrCtrl && e.key === '?')) {
@@ -4940,6 +6763,28 @@
                         openPaperStudioSheet();
                     }
                     return;
+                }
+
+                // 11B. Toggle Sidebar (Cmd + S or Cmd + [)
+                if (isCmdOrCtrl && (e.key.toLowerCase() === 's' || e.key === '[')) {
+                    e.preventDefault();
+                    if (activeView === 'library') {
+                        toggleSidebar();
+                    }
+                    return;
+                }
+
+                // 11C. Search Notes (Cmd + F)
+                if (isCmdOrCtrl && e.key.toLowerCase() === 'f') {
+                    if (activeView === 'library') {
+                        e.preventDefault();
+                        const searchInput = document.getElementById('shelf-search-input');
+                        if (searchInput) {
+                            searchInput.focus();
+                            searchInput.select();
+                        }
+                        return;
+                    }
                 }
 
                 // 12. Zoom Controls
@@ -5124,6 +6969,1253 @@
             if (modal) modal.classList.remove('active');
         }
 
+
+/* ==========================================================================
+           14B. APPLE INTELLIGENCE & GEMINI AI STUDIO ENGINE (ULTRA-FAST STREAMING & RESILIENT)
+           ========================================================================== */
+        let currentAiResponseText = '';
+        let isAiBusy = false;
+        let isAiMultimodal = true;
+        let aiChatHistory = [];
+        let activeFlashcards = [];
+        let currentFlashcardIndex = 0;
+        let isFlashcardFlipped = false;
+        let isAudioTutorSpeaking = false;
+        let audioTutorUtterance = null;
+
+        // Cascade of models for automatic failover when a model experiences 503 (High Demand) or 429
+        const GEMINI_MODELS_CASCADE = [
+            'gemini-3.5-flash-lite',
+            'gemini-2.5-flash',
+            'gemini-3.8-flash',
+            'gemini-2.0-flash'
+        ];
+
+        function cleanApiKeyString(raw) {
+            if (!raw || typeof raw !== 'string') return '';
+            let clean = raw.trim();
+            if ((clean.startsWith('"') && clean.endsWith('"')) || (clean.startsWith("'") && clean.endsWith("'"))) {
+                clean = clean.slice(1, -1).trim();
+            }
+            clean = clean.replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
+            return clean;
+        }
+
+        function getGeminiApiKey() {
+            return cleanApiKeyString(localStorage.getItem('gn_gemini_api_key') || '');
+        }
+
+        function saveGeminiApiKey(key) {
+            syncAndSaveApiKey(key);
+        }
+
+        function syncAndSaveApiKey(val) {
+            const clean = cleanApiKeyString(val);
+            localStorage.setItem('gn_gemini_api_key', clean);
+
+            // Sync to all input elements across the app
+            const setInputVal = (id) => {
+                const el = document.getElementById(id);
+                if (el && el.value !== clean) {
+                    el.value = clean;
+                }
+            };
+            setInputVal('settings-ai-api-key');
+            setInputVal('modal-ai-api-key');
+            setInputVal('notice-ai-api-key');
+
+            updateApiKeyStatusUI(clean);
+        }
+
+        function updateApiKeyStatusUI(key) {
+            const clean = cleanApiKeyString(key !== undefined ? key : getGeminiApiKey());
+            const hasKey = clean.length > 10;
+
+            // 1. Header pill in AI sheet
+            const headerPill = document.getElementById('ai-header-key-pill');
+            if (headerPill) {
+                if (hasKey) {
+                    headerPill.innerHTML = '<span style="width: 7px; height: 7px; border-radius: 50%; background: #30D158; box-shadow: 0 0 6px #30D158; display: inline-block;"></span> <span>AI Ready</span>';
+                    headerPill.style.background = 'rgba(48, 209, 88, 0.12)';
+                    headerPill.style.color = '#30D158';
+                    headerPill.style.borderColor = 'rgba(48, 209, 88, 0.3)';
+                } else {
+                    headerPill.innerHTML = '<span style="width: 7px; height: 7px; border-radius: 50%; background: #FF9F0A; display: inline-block;"></span> <span>Key Needed</span>';
+                    headerPill.style.background = 'rgba(255, 159, 10, 0.12)';
+                    headerPill.style.color = '#FF9F0A';
+                    headerPill.style.borderColor = 'rgba(255, 159, 10, 0.3)';
+                }
+            }
+
+            // 2. Bottom Notice in AI Studio Sheet
+            const notice = document.getElementById('ai-api-key-notice');
+            if (notice) {
+                notice.style.display = hasKey ? 'none' : 'block';
+            }
+
+            // 3. Settings Status Pill
+            const settingsPill = document.getElementById('settings-ai-status-pill');
+            if (settingsPill && !settingsPill.dataset.testing) {
+                if (hasKey) {
+                    settingsPill.style.display = 'flex';
+                    settingsPill.style.background = 'rgba(48, 209, 88, 0.14)';
+                    settingsPill.style.color = '#30D158';
+                    settingsPill.innerText = '✓ Gemini API Key Configured';
+                } else {
+                    settingsPill.style.display = 'flex';
+                    settingsPill.style.background = 'rgba(255, 159, 10, 0.12)';
+                    settingsPill.style.color = '#FF9F0A';
+                    settingsPill.innerText = '⚠️ API Key is not set';
+                }
+            }
+
+            // 4. Modal Inline Status Pill
+            const modalPill = document.getElementById('modal-ai-status-pill');
+            if (modalPill && !modalPill.dataset.testing) {
+                if (hasKey) {
+                    modalPill.style.display = 'block';
+                    modalPill.style.background = 'rgba(48, 209, 88, 0.12)';
+                    modalPill.style.color = '#30D158';
+                    modalPill.innerText = '✓ Key Active & Ready';
+                } else {
+                    modalPill.style.display = 'none';
+                }
+            }
+        }
+
+        function toggleInlineKeyDrawer() {
+            const drawer = document.getElementById('ai-inline-key-drawer');
+            if (!drawer) return;
+            const isVisible = drawer.style.display === 'block';
+            drawer.style.display = isVisible ? 'none' : 'block';
+            if (!isVisible) {
+                const input = document.getElementById('modal-ai-api-key');
+                if (input) {
+                    input.value = getGeminiApiKey();
+                    input.focus();
+                }
+            }
+        }
+
+        function toggleApiKeyVisibility() {
+            const input = document.getElementById('settings-ai-api-key');
+            const eye = document.getElementById('api-key-eye-icon');
+            if (!input) return;
+            if (input.type === 'password') {
+                input.type = 'text';
+                if (eye) eye.innerText = '🙈';
+            } else {
+                input.type = 'password';
+                if (eye) eye.innerText = '👁️';
+            }
+        }
+
+        function toggleModalApiKeyVisibility() {
+            const input = document.getElementById('modal-ai-api-key');
+            const eye = document.getElementById('modal-api-key-eye');
+            if (!input) return;
+            if (input.type === 'password') {
+                input.type = 'text';
+                if (eye) eye.innerText = '🙈';
+            } else {
+                input.type = 'password';
+                if (eye) eye.innerText = '👁️';
+            }
+        }
+
+        function formatModelDisplayName(model) {
+            if (model === 'gemini-3.5-flash-lite') return 'Gemini 3.5 Lite ⚡';
+            if (model === 'gemini-2.5-flash') return 'Gemini 2.5 Flash 🛡️';
+            if (model === 'gemini-3.8-flash') return 'Gemini 3.8 Flash 🧠';
+            if (model === 'gemini-2.0-flash') return 'Gemini 2.0 Flash';
+            return model;
+        }
+
+        function getGeminiModel() {
+            // Default to ultra-fast, high-capacity Gemini 3.5 Flash-Lite
+            const saved = localStorage.getItem('gn_gemini_model');
+            return saved || 'gemini-3.5-flash-lite';
+        }
+
+        function setGeminiModel(model, silent = false) {
+            localStorage.setItem('gn_gemini_model', model);
+            const m35 = document.getElementById('ai-model-35-lite');
+            const m25 = document.getElementById('ai-model-25-flash');
+            const m38 = document.getElementById('ai-model-38-flash');
+            if (m35) {
+                if (model === 'gemini-3.5-flash-lite') m35.classList.add('active');
+                else m35.classList.remove('active');
+            }
+            if (m25) {
+                if (model === 'gemini-2.5-flash') m25.classList.add('active');
+                else m25.classList.remove('active');
+            }
+            if (m38) {
+                if (model === 'gemini-3.8-flash') m38.classList.add('active');
+                else m38.classList.remove('active');
+            }
+            const modelBadge = document.getElementById('ai-sheet-model-badge');
+            if (modelBadge) {
+                modelBadge.innerText = formatModelDisplayName(model);
+                if (model === 'gemini-3.5-flash-lite') {
+                    modelBadge.style.background = 'rgba(48, 209, 88, 0.16)';
+                    modelBadge.style.color = '#30D158';
+                    modelBadge.style.borderColor = 'rgba(48, 209, 88, 0.35)';
+                } else if (model === 'gemini-2.5-flash') {
+                    modelBadge.style.background = 'rgba(10, 132, 255, 0.16)';
+                    modelBadge.style.color = '#0A84FF';
+                    modelBadge.style.borderColor = 'rgba(10, 132, 255, 0.35)';
+                } else {
+                    modelBadge.style.background = 'rgba(191, 90, 242, 0.16)';
+                    modelBadge.style.color = '#BF5AF2';
+                    modelBadge.style.borderColor = 'rgba(191, 90, 242, 0.35)';
+                }
+            }
+            if (!silent) {
+                showToastNotification(`Active Model: ${formatModelDisplayName(model)}`, "sparkles");
+            }
+        }
+
+        function cycleGeminiModel() {
+            const current = getGeminiModel();
+            let next = 'gemini-3.5-flash-lite';
+            if (current === 'gemini-3.5-flash-lite') next = 'gemini-2.5-flash';
+            else if (current === 'gemini-2.5-flash') next = 'gemini-3.8-flash';
+            else next = 'gemini-3.5-flash-lite';
+            setGeminiModel(next);
+        }
+
+        function isAiMultimodalEnabled() {
+            const saved = localStorage.getItem('gn_gemini_multimodal');
+            return saved !== null ? (saved === 'true') : true;
+        }
+
+        function toggleAiMultimodalVision() {
+            isAiMultimodal = !isAiMultimodalEnabled();
+            localStorage.setItem('gn_gemini_multimodal', isAiMultimodal ? 'true' : 'false');
+            const btn = document.getElementById('ai-vision-toggle-btn');
+            if (btn) {
+                btn.innerText = isAiMultimodal ? 'Enabled' : 'Disabled';
+                btn.style.background = isAiMultimodal ? 'var(--accent-blue)' : 'var(--bg-interactive)';
+                btn.style.color = isAiMultimodal ? '#FFFFFF' : 'var(--text-primary)';
+            }
+            showToastNotification(`Multimodal Vision ${isAiMultimodal ? 'Enabled' : 'Disabled'}`, "sparkles");
+        }
+
+        /* High-Throughput Streaming Dispatcher with Auto-Failover & Low-Latency Thinking */
+        async function executeGeminiStreamCall(apiKey, preferredModel, contentsPayload, onChunk) {
+            const candidateModels = [
+                preferredModel,
+                'gemini-3.5-flash-lite',
+                'gemini-2.5-flash',
+                'gemini-2.0-flash'
+            ];
+            // Filter unique models while preserving priority order
+            const modelQueue = [];
+            candidateModels.forEach(m => {
+                if (m && !modelQueue.includes(m)) modelQueue.push(m);
+            });
+
+            let lastError = null;
+            let lastStatus = 0;
+
+            for (let i = 0; i < modelQueue.length; i++) {
+                const currentModel = modelQueue[i];
+                let fullAccumulatedText = '';
+
+                try {
+                    // Use Server-Sent Events (SSE) streaming for sub-second first-token latency
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/${currentModel}:streamGenerateContent?alt=sse&key=${encodeURIComponent(apiKey)}`;
+
+                    // If this is a fallback attempt, update UI
+                    if (i > 0) {
+                        const statusLabel = document.getElementById('ai-response-status-label');
+                        const skeletonLabel = document.getElementById('ai-skeleton-label');
+                        const fallbackMsg = `Auto-switching to ${formatModelDisplayName(currentModel)}...`;
+                        if (statusLabel) statusLabel.innerText = fallbackMsg;
+                        if (skeletonLabel) skeletonLabel.innerText = fallbackMsg;
+                        await new Promise(r => setTimeout(r, 200));
+                    }
+
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 20000);
+
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        signal: controller.signal,
+                        body: JSON.stringify({
+                            contents: contentsPayload,
+                            generationConfig: {
+                                maxOutputTokens: 2500,
+                                thinkingConfig: {
+                                    thinkingLevel: "low"
+                                }
+                            }
+                        })
+                    });
+
+                    clearTimeout(timeoutId);
+
+                    if (!response.ok) {
+                        lastStatus = response.status;
+                        let errText = '';
+                        try {
+                            const errJson = await response.json();
+                            errText = errJson.error?.message || `HTTP ${response.status}`;
+                        } catch (e) {
+                            errText = `HTTP ${response.status} Error`;
+                        }
+                        lastError = errText;
+
+                        // If 400 or 403, key is invalid -> stop retrying other models
+                        if (response.status === 400 || response.status === 403) {
+                            return {
+                                ok: false,
+                                status: response.status,
+                                error: lastError,
+                                modelUsed: currentModel
+                            };
+                        }
+
+                        // 503 (High Demand) or 429: log and immediately try next model in cascade
+                        console.warn(`Model ${currentModel} returned ${response.status} (${lastError}). Failing over...`);
+                        continue;
+                    }
+
+                    // Read SSE stream chunks in real-time
+                    if (response.body && response.body.getReader) {
+                        const reader = response.body.getReader();
+                        const decoder = new TextDecoder('utf-8');
+                        let buffer = '';
+
+                        while (true) {
+                            const { done, value } = await reader.read();
+                            if (done) break;
+
+                            buffer += decoder.decode(value, { stream: true });
+                            const lines = buffer.split('\n');
+                            buffer = lines.pop(); // keep last incomplete line
+
+                            for (const line of lines) {
+                                const trimmed = line.trim();
+                                if (!trimmed || !trimmed.startsWith('data: ')) continue;
+                                const jsonStr = trimmed.slice(6).trim();
+                                if (jsonStr === '[DONE]') continue;
+
+                                try {
+                                    const parsed = JSON.parse(jsonStr);
+                                    const parts = parsed.candidates?.[0]?.content?.parts || [];
+                                    let delta = '';
+                                    for (const p of parts) {
+                                        if (p.text) delta += p.text;
+                                    }
+
+                                    if (delta) {
+                                        fullAccumulatedText += delta;
+                                        if (onChunk) onChunk(fullAccumulatedText, delta, currentModel);
+                                    }
+                                } catch (jsonErr) {
+                                    // ignore partial or unparseable SSE line
+                                }
+                            }
+                        }
+                    } else {
+                        // Fallback for environments where ReadableStream is unavailable
+                        const data = await response.json();
+                        if (data.candidates && data.candidates[0]?.content?.parts) {
+                            fullAccumulatedText = data.candidates[0].content.parts.map(p => p.text || '').join('');
+                            if (onChunk) onChunk(fullAccumulatedText, fullAccumulatedText, currentModel);
+                        }
+                    }
+
+                    if (fullAccumulatedText.trim().length > 0) {
+                        return {
+                            ok: true,
+                            text: fullAccumulatedText,
+                            modelUsed: currentModel,
+                            wasFallback: i > 0
+                        };
+                    }
+
+                    console.warn(`Model ${currentModel} returned empty stream. Trying fallback...`);
+
+                } catch (netErr) {
+                    lastError = netErr.message;
+                    console.warn(`Network/stream error with model ${currentModel}:`, netErr);
+                    if (!navigator.onLine) {
+                        return {
+                            ok: false,
+                            status: 0,
+                            error: "Network connection lost. Please connect to internet.",
+                            modelUsed: currentModel
+                        };
+                    }
+                }
+            }
+
+            return {
+                ok: false,
+                status: lastStatus,
+                error: lastError || "All Gemini models are temporarily at capacity. Please try again shortly.",
+                modelUsed: modelQueue[0]
+            };
+        }
+
+        async function testGeminiApiKey(source = 'settings') {
+            let key = '';
+            if (source === 'modal') {
+                const input = document.getElementById('modal-ai-api-key');
+                key = input ? input.value : '';
+            } else if (source === 'notice') {
+                const input = document.getElementById('notice-ai-api-key');
+                key = input ? input.value : '';
+            } else {
+                const input = document.getElementById('settings-ai-api-key');
+                key = input ? input.value : '';
+            }
+
+            key = cleanApiKeyString(key) || getGeminiApiKey();
+
+            const settingsPill = document.getElementById('settings-ai-status-pill');
+            const modalPill = document.getElementById('modal-ai-status-pill');
+            const settingsBtn = document.getElementById('settings-ai-test-btn');
+            const modalBtn = document.getElementById('modal-ai-test-btn');
+
+            if (!key) {
+                showToastNotification("Please enter a Gemini API Key first", "info");
+                const setErr = (pill) => {
+                    if (pill) {
+                        pill.style.display = 'flex';
+                        pill.style.background = 'rgba(255, 69, 58, 0.15)';
+                        pill.style.color = 'var(--accent-red)';
+                        pill.innerText = '⚠️ API Key is empty';
+                    }
+                };
+                setErr(settingsPill);
+                setErr(modalPill);
+                return;
+            }
+
+            if (settingsBtn) { settingsBtn.disabled = true; settingsBtn.innerText = 'Testing...'; }
+            if (modalBtn) { modalBtn.disabled = true; modalBtn.innerText = 'Testing...'; }
+
+            if (settingsPill) {
+                settingsPill.dataset.testing = "1";
+                settingsPill.style.display = 'flex';
+                settingsPill.style.background = 'rgba(10, 132, 255, 0.12)';
+                settingsPill.style.color = 'var(--accent-blue)';
+                settingsPill.innerText = 'Connecting to Google Gemini...';
+            }
+            if (modalPill) {
+                modalPill.dataset.testing = "1";
+                modalPill.style.display = 'block';
+                modalPill.style.background = 'rgba(10, 132, 255, 0.12)';
+                modalPill.style.color = 'var(--accent-blue)';
+                modalPill.innerText = 'Validating key...';
+            }
+
+            const testPayload = [{
+                role: 'user',
+                parts: [{ text: 'Respond with: "Connected"' }]
+            }];
+
+            try {
+                const result = await executeGeminiStreamCall(key, getGeminiModel(), testPayload, null);
+                if (result.ok) {
+                    syncAndSaveApiKey(key);
+                    if (result.wasFallback) {
+                        setGeminiModel(result.modelUsed, true);
+                    }
+                    if (settingsPill) {
+                        settingsPill.style.background = 'rgba(48, 209, 88, 0.16)';
+                        settingsPill.style.color = '#30D158';
+                        settingsPill.innerText = `✓ Verified via ${formatModelDisplayName(result.modelUsed)}`;
+                    }
+                    if (modalPill) {
+                        modalPill.style.background = 'rgba(48, 209, 88, 0.16)';
+                        modalPill.style.color = '#30D158';
+                        modalPill.innerText = `✓ Key Active (${formatModelDisplayName(result.modelUsed)})`;
+                    }
+                    showToastNotification(`✓ Gemini API Key Verified (${formatModelDisplayName(result.modelUsed)})!`, "check");
+                    if (source === 'modal' || source === 'notice') {
+                        setTimeout(() => {
+                            const drawer = document.getElementById('ai-inline-key-drawer');
+                            if (drawer) drawer.style.display = 'none';
+                        }, 1200);
+                    }
+                } else {
+                    const setErr = (pill) => {
+                        if (pill) {
+                            pill.style.background = 'rgba(255, 69, 58, 0.15)';
+                            pill.style.color = 'var(--accent-red)';
+                            pill.innerText = `⚠️ ${result.error.slice(0, 55)}`;
+                        }
+                    };
+                    setErr(settingsPill);
+                    setErr(modalPill);
+                    showToastNotification("API Key Validation Failed", "info");
+                }
+            } catch (err) {
+                const setErr = (pill) => {
+                    if (pill) {
+                        pill.style.background = 'rgba(255, 69, 58, 0.15)';
+                        pill.style.color = 'var(--accent-red)';
+                        pill.innerText = `⚠️ Network error: ${err.message}`;
+                    }
+                };
+                setErr(settingsPill);
+                setErr(modalPill);
+                showToastNotification("Network connection error", "info");
+            } finally {
+                if (settingsPill) delete settingsPill.dataset.testing;
+                if (modalPill) delete modalPill.dataset.testing;
+                if (settingsBtn) { settingsBtn.disabled = false; settingsBtn.innerText = 'Test Key'; }
+                if (modalBtn) { modalBtn.disabled = false; modalBtn.innerText = 'Activate'; }
+            }
+        }
+
+        function openAiStudioSheet() {
+            if (activeView !== 'document') {
+                showToastNotification("Open a document to use AI Studio", "info");
+                return;
+            }
+            const sheet = document.getElementById('ai-studio-sheet');
+            if (!sheet) return;
+
+            const nb = getActiveNotebook();
+            const pageContext = document.getElementById('ai-sheet-page-context');
+            if (pageContext && nb) {
+                pageContext.innerText = `${nb.title} • Page ${activePageIndex + 1} of ${nb.pages.length}`;
+            }
+
+            const model = getGeminiModel();
+            setGeminiModel(model, true);
+
+            const key = getGeminiApiKey();
+            const modalInput = document.getElementById('modal-ai-api-key');
+            if (modalInput) modalInput.value = key;
+            const noticeInput = document.getElementById('notice-ai-api-key');
+            if (noticeInput) noticeInput.value = key;
+
+            updateApiKeyStatusUI(key);
+
+            sheet.classList.add('active');
+            injectIcons();
+        }
+
+        function closeAiStudioSheet() {
+            const sheet = document.getElementById('ai-studio-sheet');
+            if (sheet) sheet.classList.remove('active');
+            if (isAudioTutorSpeaking && 'speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                updateAudioTutorUI(false);
+            }
+        }
+
+        function toggleAiStudioSheet() {
+            const sheet = document.getElementById('ai-studio-sheet');
+            if (sheet && sheet.classList.contains('active')) {
+                closeAiStudioSheet();
+            } else {
+                openAiStudioSheet();
+            }
+        }
+
+        /* 3D Flip Flashcards Engine */
+        function parseFlashcardsFromMarkdown(text) {
+            if (!text) return [];
+            const cards = [];
+
+            // Match [CARD] Front: ... Back: ... [/CARD]
+            const cardBlockRegex = /\[CARD\]\s*Front:\s*([\s\S]*?)\s*Back:\s*([\s\S]*?)\s*\[\/CARD\]/gi;
+            let match;
+            while ((match = cardBlockRegex.exec(text)) !== null) {
+                cards.push({
+                    front: match[1].trim(),
+                    back: match[2].trim()
+                });
+            }
+
+            // Match **Front**: ... **Back**: ...
+            if (cards.length === 0) {
+                const boldPattern = /\*\*Front\*\*:\s*([^\n]+)\s*\n+\s*\*\*Back\*\*:\s*([^\n]+)/gi;
+                while ((match = boldPattern.exec(text)) !== null) {
+                    cards.push({
+                        front: match[1].trim(),
+                        back: match[2].trim()
+                    });
+                }
+            }
+
+            // Match Front: ... Back: ...
+            if (cards.length === 0) {
+                const plainPattern = /(?:^|\n)Front:\s*([^\n]+)\s*\n+Back:\s*([^\n]+)/gi;
+                while ((match = plainPattern.exec(text)) !== null) {
+                    cards.push({
+                        front: match[1].trim(),
+                        back: match[2].trim()
+                    });
+                }
+            }
+
+            return cards;
+        }
+
+        function renderFlashcardUI() {
+            const deck = document.getElementById('ai-flashcard-deck');
+            if (!deck) return;
+
+            if (!activeFlashcards || activeFlashcards.length === 0) {
+                deck.style.display = 'none';
+                return;
+            }
+
+            deck.style.display = 'block';
+            const counter = document.getElementById('ai-fc-counter');
+            const inner = document.getElementById('ai-fc-inner');
+            const frontEl = document.getElementById('ai-fc-front-text');
+            const backEl = document.getElementById('ai-fc-back-text');
+            const prevBtn = document.getElementById('ai-fc-prev-btn');
+            const nextBtn = document.getElementById('ai-fc-next-btn');
+
+            if (counter) {
+                counter.innerText = `Card ${currentFlashcardIndex + 1} of ${activeFlashcards.length}`;
+            }
+
+            if (inner) {
+                inner.classList.remove('flipped');
+                isFlashcardFlipped = false;
+            }
+
+            const currentCard = activeFlashcards[currentFlashcardIndex];
+            if (frontEl) frontEl.innerText = currentCard.front || '';
+            if (backEl) backEl.innerText = currentCard.back || '';
+
+            if (prevBtn) {
+                prevBtn.disabled = currentFlashcardIndex === 0;
+                prevBtn.style.opacity = currentFlashcardIndex === 0 ? '0.4' : '1';
+                prevBtn.style.cursor = currentFlashcardIndex === 0 ? 'default' : 'pointer';
+            }
+            if (nextBtn) {
+                nextBtn.disabled = currentFlashcardIndex === activeFlashcards.length - 1;
+                nextBtn.style.opacity = currentFlashcardIndex === activeFlashcards.length - 1 ? '0.4' : '1';
+                nextBtn.style.cursor = currentFlashcardIndex === activeFlashcards.length - 1 ? 'default' : 'pointer';
+            }
+        }
+
+        function flipCurrentFlashcard() {
+            const inner = document.getElementById('ai-fc-inner');
+            if (!inner) return;
+            isFlashcardFlipped = !isFlashcardFlipped;
+            if (isFlashcardFlipped) {
+                inner.classList.add('flipped');
+            } else {
+                inner.classList.remove('flipped');
+            }
+        }
+
+        function nextFlashcard() {
+            if (currentFlashcardIndex < activeFlashcards.length - 1) {
+                currentFlashcardIndex++;
+                renderFlashcardUI();
+            }
+        }
+
+        function prevFlashcard() {
+            if (currentFlashcardIndex > 0) {
+                currentFlashcardIndex--;
+                renderFlashcardUI();
+            }
+        }
+
+        function shuffleFlashcards() {
+            if (!activeFlashcards || activeFlashcards.length < 2) return;
+            for (let i = activeFlashcards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [activeFlashcards[i], activeFlashcards[j]] = [activeFlashcards[j], activeFlashcards[i]];
+            }
+            currentFlashcardIndex = 0;
+            renderFlashcardUI();
+            showToastNotification("Flashcards Shuffled 🔀", "check");
+        }
+
+        /* Audio Study Tutor (Web Speech API) */
+        function updateAudioTutorUI(speaking) {
+            isAudioTutorSpeaking = speaking;
+            const btn = document.getElementById('ai-audio-tutor-btn');
+            if (!btn) return;
+            if (speaking) {
+                btn.innerHTML = '<span>⏹</span> <span>Stop Audio</span>';
+                btn.style.background = 'rgba(255, 55, 95, 0.15)';
+                btn.style.color = 'var(--accent-red)';
+                btn.style.borderColor = 'rgba(255, 55, 95, 0.4)';
+            } else {
+                btn.innerHTML = '<span>🔊</span> <span>Read Aloud</span>';
+                btn.style.background = 'var(--bg-interactive)';
+                btn.style.color = 'var(--text-primary)';
+                btn.style.borderColor = 'var(--border-subtle)';
+            }
+        }
+
+        function toggleAudioStudyTutor() {
+            if (!('speechSynthesis' in window)) {
+                showToastNotification("Audio Speech Synthesis not supported on this browser", "info");
+                return;
+            }
+
+            if (isAudioTutorSpeaking) {
+                window.speechSynthesis.cancel();
+                updateAudioTutorUI(false);
+                showToastNotification("Audio Tutor Paused", "info");
+                return;
+            }
+
+            if (!currentAiResponseText) {
+                showToastNotification("No AI study notes to read aloud", "info");
+                return;
+            }
+
+            let spokenText = currentAiResponseText
+                .replace(/\[CARD\][\s\S]*?\[\/CARD\]/gi, '')
+                .replace(/```[\s\S]*?```/g, '')
+                .replace(new RegExp('`([^`]+)`', 'g'), '$1')
+                .replace(/^#{1,6}\s+/gm, '')
+                .replace(new RegExp('\\*\\*([^*]+)\\*\\*', 'g'), '$1')
+                .replace(new RegExp('\\*([^*]+)\\*', 'g'), '$1')
+                .replace(/^\s*[-*+]\s+/gm, '')
+                .replace(/^\s*>\s+/gm, '')
+                .trim();
+
+            if (!spokenText) {
+                showToastNotification("No readable text found", "info");
+                return;
+            }
+
+            window.speechSynthesis.cancel();
+            audioTutorUtterance = new SpeechSynthesisUtterance(spokenText);
+            audioTutorUtterance.rate = 1.0;
+            audioTutorUtterance.pitch = 1.0;
+
+            const voices = window.speechSynthesis.getVoices();
+            const preferredVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Samantha') || v.name.includes('Karen') || v.name.includes('Natural') || v.name.includes('Google'))) || voices.find(v => v.lang.startsWith('en'));
+            if (preferredVoice) {
+                audioTutorUtterance.voice = preferredVoice;
+            }
+
+            audioTutorUtterance.onend = () => {
+                updateAudioTutorUI(false);
+            };
+
+            audioTutorUtterance.onerror = () => {
+                updateAudioTutorUI(false);
+            };
+
+            window.speechSynthesis.speak(audioTutorUtterance);
+            updateAudioTutorUI(true);
+            showToastNotification("Audio Study Tutor Reading...", "sparkles");
+        }
+
+        /* Multi-turn Chat & History */
+        function clearAiSessionHistory() {
+            aiChatHistory = [];
+            currentAiResponseText = '';
+            activeFlashcards = [];
+            if (isAudioTutorSpeaking && 'speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                updateAudioTutorUI(false);
+            }
+            const thread = document.getElementById('ai-chat-thread');
+            if (thread) thread.innerHTML = '';
+            const mdBox = document.getElementById('ai-response-markdown');
+            if (mdBox) mdBox.innerHTML = '';
+            const container = document.getElementById('ai-response-container');
+            if (container) container.style.display = 'none';
+            const deck = document.getElementById('ai-flashcard-deck');
+            if (deck) deck.style.display = 'none';
+            const statusLabel = document.getElementById('ai-response-status-label');
+            if (statusLabel) statusLabel.innerText = 'Gemini AI Studio Ready';
+            showToastNotification("AI Session History Cleared", "check");
+        }
+
+        function renderMarkdownToHtml(md) {
+            if (!md) return '';
+
+            // Clean flashcard tags for main markdown view (handled by flashcard deck)
+            let text = md.replace(/\[CARD\][\s\S]*?\[\/CARD\]/gi, () => {
+                return '<div style="padding: 6px 12px; margin: 4px 0; border-radius: 8px; background: rgba(10, 132, 255, 0.08); border-left: 3px solid var(--accent-blue); font-size: 12px; font-weight: 600; color: var(--accent-blue);">🃏 Flashcard generated in 3D deck above</div>';
+            });
+
+            let html = text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+
+            // Display math $$ ... $$
+            html = html.replace(/\$\$([\s\S]*?)\$\$/g, (match, formula) => {
+                return `<div style="padding: 12px 16px; margin: 10px 0; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; font-family: 'Cambria Math', 'KaTeX_Main', Georgia, serif; font-size: 15px; color: var(--text-primary); overflow-x: auto; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">${formula.trim()}</div>`;
+            });
+
+            // Inline math $ ... $
+            html = html.replace(/\$([^$\n]+)\$/g, (match, formula) => {
+                return `<code style="font-family: 'Cambria Math', 'KaTeX_Main', Georgia, serif; font-size: 14px; background: var(--bg-interactive); padding: 2px 6px; border-radius: 6px; color: var(--accent-blue); font-weight: 600;">${formula.trim()}</code>`;
+            });
+
+            // Code blocks
+            html = html.replace(/```([\s\S]*?)```/g, (match, code) => {
+                return `<pre style="background: var(--bg-canvas); border: 1px solid var(--border-subtle); padding: 12px; border-radius: 12px; overflow-x: auto; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px;"><code>${code.trim()}</code></pre>`;
+            });
+
+            // Inline code
+            html = html.replace(new RegExp('`([^`]+)`', 'g'), '<code style="background: var(--bg-interactive); padding: 2px 6px; border-radius: 6px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px;">$1</code>');
+
+            // Headings
+            html = html.replace(/^### (.*$)/gim, '<h4 style="margin: 14px 0 6px 0; font-size: 15px; font-weight: 700; color: var(--text-primary);">$1</h4>');
+            html = html.replace(/^## (.*$)/gim, '<h3 style="margin: 18px 0 8px 0; font-size: 17px; font-weight: 800; color: var(--text-primary); border-bottom: 1px solid var(--border-subtle); padding-bottom: 4px;">$1</h3>');
+            html = html.replace(/^# (.*$)/gim, '<h2 style="margin: 20px 0 10px 0; font-size: 19px; font-weight: 800; color: var(--accent-blue);">$1</h2>');
+
+            // Bold & Italic
+            html = html.replace(new RegExp('\\*\\*([^*]+)\\*\\*', 'g'), '<strong style="font-weight: 700; color: var(--text-primary);">$1</strong>');
+            html = html.replace(new RegExp('\\*([^*]+)\\*', 'g'), '<em>$1</em>');
+
+            // Blockquote
+            html = html.replace(/^\> (.*$)/gim, '<blockquote style="border-left: 3px solid var(--accent-blue); margin: 8px 0; padding: 6px 12px; background: rgba(10, 132, 255, 0.05); border-radius: 0 8px 8px 0; color: var(--text-secondary);">$1</blockquote>');
+
+            // Lists
+            html = html.replace(/^\s*[\-\*]\s+(.*$)/gim, '<li style="margin-bottom: 4px;">$1</li>');
+            html = html.replace(/(<li>.*<\/li>)/gims, (match) => {
+                return `<ul style="margin: 6px 0 10px 20px; padding-left: 0; line-height: 1.55;">${match}</ul>`;
+            });
+            html = html.replace(/<\/ul>\s*<ul>/g, '');
+
+            const lines = html.split('\n');
+            const processed = [];
+            for (let line of lines) {
+                line = line.trim();
+                if (!line) continue;
+                if (line.startsWith('<h') || line.startsWith('<ul') || line.startsWith('<pre') || line.startsWith('<blockquote') || line.startsWith('<li>') || line.startsWith('</') || line.startsWith('<div')) {
+                    processed.push(line);
+                } else {
+                    processed.push(`<p style="margin: 6px 0; line-height: 1.6; color: var(--text-primary);">${line}</p>`);
+                }
+            }
+            return processed.join('');
+        }
+
+        async function captureActivePageSnapshot(maxDimension = 720) {
+            const nb = getActiveNotebook();
+            if (!nb || !nb.pages[activePageIndex]) return null;
+            const page = nb.pages[activePageIndex];
+            const pdfDoc = await getCachedOrStoredPdfDoc(nb.pdfBlobId);
+
+            // Extract text from PDF page if available
+            let extractedText = '';
+            if (page.pdfPageIndex && pdfDoc) {
+                try {
+                    const pdfPage = await pdfDoc.getPage(page.pdfPageIndex);
+                    const textContent = await pdfPage.getTextContent();
+                    extractedText = textContent.items.map(item => item.str).join(' ');
+                } catch (e) {}
+            }
+
+            const hasStrokes = Boolean(page.paths && page.paths.length > 0);
+
+            // OPTIMIZATION: If the page already has extracted PDF text and NO user handwriting,
+            // skip the slow canvas rendering & JPEG encoding completely!
+            if (extractedText && extractedText.trim().length > 60 && !hasStrokes) {
+                return {
+                    base64Data: null,
+                    mimeType: null,
+                    extractedText,
+                    pageNumber: activePageIndex + 1,
+                    title: nb.title
+                };
+            }
+
+            // Otherwise, render lightweight snapshot (720px max dimension, 0.70 JPEG)
+            const maxEdge = Math.max(page.width, page.height);
+            const snapScale = Math.min(1.0, maxDimension / maxEdge);
+
+            const outCanvas = document.createElement('canvas');
+            outCanvas.width = Math.round(page.width * snapScale);
+            outCanvas.height = Math.round(page.height * snapScale);
+            const ctx = outCanvas.getContext('2d');
+
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, outCanvas.width, outCanvas.height);
+
+            if (page.pdfPageIndex && pdfDoc) {
+                try {
+                    const pdfPage = await pdfDoc.getPage(page.pdfPageIndex);
+                    const rawViewport = pdfPage.getViewport({ scale: 1.0 });
+                    const renderViewport = pdfPage.getViewport({ scale: (page.width * snapScale) / rawViewport.width });
+                    ctx.save();
+                    ctx.setTransform(1, 0, 0, 1, 0, 0);
+                    await pdfPage.render({ canvasContext: ctx, viewport: renderViewport }).promise;
+                    ctx.restore();
+                } catch (e) {
+                    console.warn("PDF render snapshot fallback", e);
+                }
+            } else {
+                ctx.save();
+                ctx.scale(snapScale, snapScale);
+                drawPageBackgroundTemplate(ctx, page.width, page.height, page.paperType, page.paperColor || 'white', page);
+                ctx.restore();
+            }
+
+            if (hasStrokes) {
+                ctx.save();
+                ctx.scale(snapScale, snapScale);
+                const highlighters = page.paths.filter(item => item.tool === 'highlighter');
+                const penStrokes = page.paths.filter(item => item.tool !== 'highlighter');
+                highlighters.forEach(p => renderSinglePath(ctx, p, page.paperColor));
+                penStrokes.forEach(p => renderSinglePath(ctx, p, page.paperColor));
+                ctx.restore();
+            }
+
+            const dataUrl = outCanvas.toDataURL('image/jpeg', 0.70);
+            const base64Data = dataUrl.split(',')[1];
+            return {
+                base64Data,
+                mimeType: 'image/jpeg',
+                extractedText,
+                pageNumber: activePageIndex + 1,
+                title: nb.title
+            };
+        }
+
+        async function runAiTask(taskType) {
+            if (isAiBusy) return;
+
+            // Offline check
+            if (!navigator.onLine) {
+                showToastNotification("Offline: Connect to Internet for AI Studio", "info");
+                return;
+            }
+
+            const apiKey = getGeminiApiKey();
+            const notice = document.getElementById('ai-api-key-notice');
+            const container = document.getElementById('ai-response-container');
+            const mdBox = document.getElementById('ai-response-markdown');
+            const statusLabel = document.getElementById('ai-response-status-label');
+            const statusDot = document.getElementById('ai-status-indicator');
+            const promptInput = document.getElementById('ai-custom-prompt-input');
+            const skeletonLoader = document.getElementById('ai-skeleton-loader');
+            const skeletonLabel = document.getElementById('ai-skeleton-label');
+            const threadBox = document.getElementById('ai-chat-thread');
+
+            if (!apiKey) {
+                if (notice) notice.style.display = 'block';
+                if (container) container.style.display = 'none';
+                if (skeletonLoader) skeletonLoader.style.display = 'none';
+                showToastNotification("Please enter Gemini API Key to continue", "info");
+                toggleInlineKeyDrawer();
+                return;
+            } else {
+                if (notice) notice.style.display = 'none';
+            }
+
+            const nb = getActiveNotebook();
+            if (!nb || !nb.pages[activePageIndex]) {
+                showToastNotification("No active document page", "info");
+                return;
+            }
+
+            let userPromptText = '';
+            let taskTitle = '';
+
+            if (taskType === 'summarize') {
+                taskTitle = 'Synthesizing Page Summary';
+                userPromptText = `You are Apple Intelligence and Gemini Study Assistant for GreatNotes Pro.
+Analyze the user's active study page (both visual handwritten ink, drawings, and any text).
+Provide a structured, high-yield study synthesis:
+## 📌 Summary Overview
+A concise synopsis of the main core concept on this page.
+
+### 🔑 Key Concepts & Definitions
+- Bullet points breaking down formulas, definitions, key points, or steps.
+
+### 💡 High-Yield Takeaways
+- Practical memory tips, exam-relevant highlights, or mnemonics.
+Use clear, beautiful Markdown with bold terms and bullet lists.`;
+            } else if (taskType === 'math_ocr') {
+                taskTitle = 'Transcribing Math & LaTeX OCR';
+                userPromptText = `You are an expert mathematical and scientific OCR assistant.
+Examine the handwritten math formulas, equations, or calculation steps on this page:
+1. Transcribe every formula accurately into LaTeX display format using $$ ... $$ or inline $ ... $.
+2. Solve the equations or show the step-by-step derivation.
+3. Highlight theorem rules, constants, units, and common algebraic pitfalls.
+Format cleanly with Markdown and LaTeX.`;
+            } else if (taskType === 'explain') {
+                taskTitle = 'Analyzing Diagrams & Concepts';
+                userPromptText = `You are an expert tutor with multimodal vision.
+Carefully examine the user's handwritten ink drawings, schematics, anatomy, circuits, or diagrams on this page:
+## 🔬 Diagram & Concept Breakdown
+Explain each drawing, equation, or visual schema step-by-step.
+### 📐 Underlying Principles & Rules
+Why it works, variables defined, and intuitive explanations.
+### 📝 Clarifications & Common Pitfalls
+What students frequently misunderstand.
+Format cleanly with Markdown.`;
+            } else if (taskType === 'quiz') {
+                taskTitle = 'Generating Quiz & Flashcards';
+                userPromptText = `You are an expert study partner creating an active recall practice quiz and interactive flashcards from this page notes.
+Provide 4 active recall review questions and 3-4 interactive flashcards:
+
+## 🎯 Active Recall Practice Quiz
+1. **Question 1**: Conceptual question
+2. **Question 2**: Application or calculation question
+3. **Question 3**: True / False or Definition question
+4. **Question 4**: Synthesis question
+
+### 💡 Answer Key & Explanations
+Provide the answers and concise rationale for each.
+
+### 🃏 Spaced Repetition Flashcards
+Format each flashcard STRICTLY using this exact tag format:
+[CARD]
+Front: Clear question, prompt, or term
+Back: Concise answer, definition, or formula
+[/CARD]
+
+Format with clean Markdown.`;
+            } else if (taskType === 'tree') {
+                taskTitle = 'Building Concept Tree';
+                userPromptText = `You are a knowledge architecture specialist.
+Synthesize the notes and diagrams on this page into a structured Conceptual Knowledge Tree:
+## 🌳 Knowledge Map & Concept Tree
+- **Root Subject**: Core theme
+  ├── **Foundational Concept**: Prerequisites needed
+  ├── **Primary Branch**: Key mechanism or theorem
+  │   ├── **Component A**: Specific detail / formula
+  │   └── **Component B**: Application / example
+  └── **Related Extensions**: Next logical topics
+Provide a brief roadmap on the optimal order to master these concepts.
+Format with clean Markdown.`;
+            } else if (taskType === 'polish') {
+                taskTitle = 'Polishing & Structuring Notes';
+                userPromptText = `You are an executive note-taking tutor.
+Reorganize and polish the handwritten notes, sketches, and annotations on this page into pristine Cornell-Style Study Notes:
+## 💎 Polished Cornell Study Notes
+### 📝 Main Study Column
+- Clean, structured bulleted breakdown of the material.
+### ❓ Cue & Recall Column
+- Key questions to test yourself on later.
+### 📌 Summary Row
+- 1-2 sentence core takeaway summarizing the entire page.
+Format with clean Markdown.`;
+            } else if (taskType === 'custom') {
+                const query = promptInput ? promptInput.value.trim() : '';
+                if (!query) {
+                    promptInput?.focus();
+                    return;
+                }
+                taskTitle = `Answering: "${query.slice(0, 24)}..."`;
+                userPromptText = query;
+                if (promptInput) promptInput.value = '';
+
+                // Add user bubble to chat thread
+                if (threadBox) {
+                    const userBubble = document.createElement('div');
+                    userBubble.className = 'ai-chat-bubble ai-bubble-user';
+                    userBubble.innerText = query;
+                    threadBox.appendChild(userBubble);
+                    threadBox.scrollTop = threadBox.scrollHeight;
+                }
+            }
+
+            // Initial UI Loading state
+            if (skeletonLoader) {
+                skeletonLoader.style.display = 'block';
+                if (skeletonLabel) skeletonLabel.innerText = `${taskTitle}...`;
+            }
+            if (container) container.style.display = 'none';
+            if (statusLabel) statusLabel.innerText = `${taskTitle}...`;
+            if (statusDot) statusDot.classList.add('pulsing');
+            if (mdBox) mdBox.innerHTML = '';
+
+            isAiBusy = true;
+
+            try {
+                const isVisionEnabled = isAiMultimodalEnabled();
+                const contentsPayload = [];
+
+                // Replay previous turns in history
+                if (aiChatHistory.length > 0) {
+                    aiChatHistory.forEach(turn => {
+                        contentsPayload.push({
+                            role: turn.role,
+                            parts: [{ text: turn.text }]
+                        });
+                    });
+                }
+
+                // Prepare current turn parts
+                const currentParts = [];
+
+                // Attach vision snapshot if enabled and this is the first turn or document context is needed
+                if (isVisionEnabled && contentsPayload.length === 0) {
+                    const snapshot = await captureActivePageSnapshot(720);
+                    if (snapshot) {
+                        if (snapshot.base64Data) {
+                            currentParts.push({
+                                inline_data: {
+                                    mime_type: snapshot.mimeType,
+                                    data: snapshot.base64Data
+                                }
+                            });
+                        }
+                        if (snapshot.extractedText) {
+                            userPromptText += `\n\n[Extracted Page Text Context]:\n${snapshot.extractedText.slice(0, 3000)}`;
+                        }
+                    }
+                }
+
+                userPromptText += `\n\n[Document Context]: Notebook: "${nb.title}", Page ${activePageIndex + 1} of ${nb.pages.length}.`;
+                currentParts.push({ text: userPromptText });
+
+                contentsPayload.push({
+                    role: 'user',
+                    parts: currentParts
+                });
+
+                let firstTokenArrived = false;
+
+                // Stream response chunk callback
+                const onChunkReceived = (accumulatedText, delta, modelUsed) => {
+                    if (!firstTokenArrived) {
+                        firstTokenArrived = true;
+                        // Instant transition: dismiss skeleton loader, reveal container
+                        if (skeletonLoader) skeletonLoader.style.display = 'none';
+                        if (container) container.style.display = 'flex';
+                        if (statusLabel) statusLabel.innerText = `${formatModelDisplayName(modelUsed)} • Generating...`;
+                    }
+                    if (mdBox) {
+                        mdBox.innerHTML = renderMarkdownToHtml(accumulatedText) + '<span class="ai-stream-cursor"></span>';
+                    }
+                };
+
+                const preferredModel = getGeminiModel();
+                const result = await executeGeminiStreamCall(apiKey, preferredModel, contentsPayload, onChunkReceived);
+
+                if (result.ok && result.text) {
+                    const text = result.text;
+                    currentAiResponseText = text;
+
+                    // If auto-failover occurred because of high demand on 3.8, save and display the active model
+                    if (result.wasFallback) {
+                        setGeminiModel(result.modelUsed, true);
+                        showToastNotification(`✨ Auto-switched to ${formatModelDisplayName(result.modelUsed)} (High Speed)`, "sparkles");
+                    }
+
+                    // Update session history
+                    aiChatHistory.push({ role: 'user', text: userPromptText });
+                    aiChatHistory.push({ role: 'model', text: text });
+
+                    // Final clean render without streaming cursor
+                    if (mdBox) {
+                        mdBox.innerHTML = renderMarkdownToHtml(text);
+                    }
+
+                    // Render flashcards if present
+                    const parsedCards = parseFlashcardsFromMarkdown(text);
+                    if (parsedCards.length > 0) {
+                        activeFlashcards = parsedCards;
+                        currentFlashcardIndex = 0;
+                        renderFlashcardUI();
+                    } else if (taskType !== 'custom') {
+                        const deck = document.getElementById('ai-flashcard-deck');
+                        if (deck) deck.style.display = 'none';
+                    }
+
+                    if (statusLabel) statusLabel.innerText = `${formatModelDisplayName(result.modelUsed)} • Complete`;
+                    showToastNotification("✨ AI Analysis Generated", "sparkles");
+                } else {
+                    const statusCode = result.status;
+                    let err = result.error || "Failed to generate AI response";
+                    if (statusCode === 400) {
+                        err = "Invalid API request or key format. Please check your key in Settings.";
+                    } else if (statusCode === 403) {
+                        err = "API Key authentication failed (403). Ensure Gemini API is enabled in your Google AI Studio project.";
+                    } else if (statusCode === 503) {
+                        err = "Google Gemini is currently experiencing extreme global traffic. Please switch to Gemini 3.5 Lite or try again in 1 minute.";
+                    }
+                    if (mdBox) {
+                        mdBox.innerHTML = `<div style="color: var(--accent-red); font-weight: 600; padding: 14px; background: rgba(255, 69, 58, 0.1); border-radius: 12px; border: 1px solid rgba(255, 69, 58, 0.25); line-height: 1.5;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <span>⚠️</span>
+                                <span style="font-size: 14px; font-weight: 700;">Generation Request Issue (${statusCode || 'Error'})</span>
+                            </div>
+                            <div style="font-size: 12.5px; opacity: 0.95;">${escapeHtml(err)}</div>
+                            <div style="margin-top: 10px; display: flex; gap: 8px;">
+                                <button onclick="window.cycleGeminiModel()" class="spring-btn" style="padding: 6px 12px; border-radius: 10px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary); font-size: 11px; font-weight: 700; cursor: pointer;">Switch Model</button>
+                                <button onclick="window.toggleInlineKeyDrawer()" class="spring-btn" style="padding: 6px 12px; border-radius: 10px; background: var(--accent-blue); border: none; color: #fff; font-size: 11px; font-weight: 700; cursor: pointer;">Check API Key</button>
+                            </div>
+                        </div>`;
+                    }
+                    if (statusLabel) statusLabel.innerText = `Generation Error (${statusCode || 'Issue'})`;
+                    showToastNotification("AI Error: Check key or switch model", "info");
+                }
+            } catch (err) {
+                console.error("Gemini AI Task Error:", err);
+                if (mdBox) {
+                    mdBox.innerHTML = `<div style="color: var(--accent-red); font-weight: 600; padding: 12px; background: rgba(255, 69, 58, 0.1); border-radius: 10px;">⚠️ Network error: ${escapeHtml(err.message)}</div>`;
+                }
+                if (statusLabel) statusLabel.innerText = `Network Error`;
+                showToastNotification("Network connection error", "info");
+            } finally {
+                isAiBusy = false;
+                if (skeletonLoader) skeletonLoader.style.display = 'none';
+                if (container) container.style.display = 'flex';
+                if (statusDot) statusDot.classList.remove('pulsing');
+            }
+        }
+
+        function copyAiResponseText() {
+            if (!currentAiResponseText) return;
+            navigator.clipboard.writeText(currentAiResponseText).then(() => {
+                showToastNotification("AI Notes Copied to Clipboard", "check");
+            }).catch(() => {
+                showToastNotification("Failed to copy", "info");
+            });
+        }
+
+        function insertAiResponseAsPage() {
+            if (!currentAiResponseText) {
+                showToastNotification("No AI summary to insert", "info");
+                return;
+            }
+            const nb = getActiveNotebook();
+            if (!nb) return;
+
+            const insertIdx = activePageIndex + 1;
+            const newPage = {
+                id: 'p_' + Date.now(),
+                paperType: 'cornell',
+                paperColor: isDarkMode ? 'dark' : (paperColorMode || 'white'),
+                width: PAGE_WIDTH_BASE,
+                height: PAGE_HEIGHT_BASE,
+                paths: [],
+                redoPaths: [],
+                aiNotes: currentAiResponseText
+            };
+
+            nb.pages.splice(insertIdx, 0, newPage);
+            saveNotebookDirect(nb);
+            closeAiStudioSheet();
+
+            buildWorkspacePages();
+            renderDrawerThumbnails();
+            activePageIndex = insertIdx;
+
+            setTimeout(() => {
+                const el = document.getElementById(`page-wrapper-${insertIdx}`);
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 80);
+
+            showToastNotification("AI Study Page Added to Notebook", "sparkles");
+        }
+
         /* ==========================================================================
            15. COMPREHENSIVE SETTINGS & SYSTEM PREFERENCES ENGINE
            ========================================================================== */
@@ -5303,6 +8395,30 @@
             if (oledBtn) {
                 if (isDarkMode && isPureBlack) oledBtn.classList.add('active');
                 else oledBtn.classList.remove('active');
+            }
+
+            // AI Settings UI Sync
+            const aiKeyInput = document.getElementById('settings-ai-api-key');
+            if (aiKeyInput) {
+                aiKeyInput.value = getGeminiApiKey();
+            }
+            const currentModel = getGeminiModel();
+            const m38 = document.getElementById('ai-model-38-flash');
+            const m35 = document.getElementById('ai-model-35-lite');
+            if (m38) {
+                if (currentModel === 'gemini-3.8-flash') m38.classList.add('active');
+                else m38.classList.remove('active');
+            }
+            if (m35) {
+                if (currentModel === 'gemini-3.5-flash-lite') m35.classList.add('active');
+                else m35.classList.remove('active');
+            }
+            const aiVisionBtn = document.getElementById('ai-vision-toggle-btn');
+            if (aiVisionBtn) {
+                const isVision = isAiMultimodalEnabled();
+                aiVisionBtn.innerText = isVision ? 'Enabled' : 'Disabled';
+                aiVisionBtn.style.background = isVision ? 'var(--accent-blue)' : 'var(--bg-interactive)';
+                aiVisionBtn.style.color = isVision ? '#FFFFFF' : 'var(--text-primary)';
             }
 
             const pureBlackToggle = document.getElementById('pure-black-toggle-btn');
@@ -5535,7 +8651,7 @@
                 }
             }
 
-            const drawer = document.getElementById('document-drawer');
+            const drawer = document.getElementById('page-thumbnails-drawer');
             if (drawer) {
                 if (isDarkMode && smartDarkPdfMode) {
                     drawer.classList.add('smart-dark-outline');
@@ -5693,6 +8809,19 @@
             await openDatabase();
             await loadNotebooks();
             updateSmartDarkPdfUI();
+
+            // Sync AI API Key and Model on boot
+            const initModel = getGeminiModel();
+            setGeminiModel(initModel, true);
+            const initKey = getGeminiApiKey();
+            const setInputVal = (id) => {
+                const el = document.getElementById(id);
+                if (el) el.value = initKey;
+            };
+            setInputVal('settings-ai-api-key');
+            setInputVal('modal-ai-api-key');
+            setInputVal('notice-ai-api-key');
+            updateApiKeyStatusUI(initKey);
         }
 
         // Export globals for inline event handlers
@@ -5709,7 +8838,17 @@
             openSettingsSheet, closeSettingsSheet, setThemeMode, togglePureBlackMode, setAccentColor,
             toggleHoverIndicator, setLaserDuration, setLaserSize, setDefaultTemplate,
             optimizeStorageCache, toggleDockCollapse, toggleSmartDarkPdf,
-            openShortcutsHud, closeShortcutsHud, toggleShortcutsHud, navigateToPage
+            openShortcutsHud, closeShortcutsHud, toggleShortcutsHud, navigateToPage,
+            openAiStudioSheet, closeAiStudioSheet, toggleAiStudioSheet, runAiTask,
+            copyAiResponseText, insertAiResponseAsPage, testGeminiApiKey, saveGeminiApiKey,
+            syncAndSaveApiKey, updateApiKeyStatusUI, toggleInlineKeyDrawer, toggleModalApiKeyVisibility,
+            flipCurrentFlashcard, nextFlashcard, prevFlashcard, shuffleFlashcards,
+            toggleAudioStudyTutor, clearAiSessionHistory,
+            toggleApiKeyVisibility, setGeminiModel, toggleAiMultimodalVision,
+            toggleSidebar, handleShelfSearch, clearShelfSearch, setShelfSort,
+            toggleShelfViewMode, openNotebookContextMenu, closeNotebookContextMenu,
+            toggleFavoriteNotebook, renameNotebookDirect, cycleGeminiModel, formatModelDisplayName, cycleNotebookCoverTheme,
+            duplicateNotebookDirect, trashOrDeleteNotebook, restoreNotebookDirect
         });
 
         document.addEventListener('DOMContentLoaded', bootGreatNotesPro);
