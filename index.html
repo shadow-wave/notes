@@ -1112,22 +1112,74 @@
            ========================================================================== */
         .ai-studio-modal-box {
             width: 95%;
-            max-width: 720px;
-            max-height: 88vh;
+            max-width: 760px;
+            height: 88vh;
+            max-height: 880px;
             display: flex;
             flex-direction: column;
             padding: 0;
-            border-radius: 30px;
-            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(191, 90, 242, 0.25);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(191, 90, 242, 0.25);
+            background: rgba(18, 22, 36, 0.96);
+            backdrop-filter: blur(40px) saturate(190%);
         }
         html.dark .ai-studio-modal-box {
-            background: rgba(14, 18, 30, 0.94);
+            background: rgba(14, 18, 30, 0.96);
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
         html.pure-black .ai-studio-modal-box {
-            background: rgba(8, 8, 12, 0.96) !important;
-            border: 1px solid rgba(255, 255, 255, 0.20) !important;
+            background: #000000 !important;
+            border: 1px solid rgba(255, 255, 255, 0.22) !important;
             box-shadow: 0 24px 70px rgba(0, 0, 0, 1), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+        }
+
+        .ai-sheet-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 22px;
+            border-bottom: 1px solid var(--border-subtle);
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.02);
+            position: relative;
+        }
+
+        .ai-accelerators-container {
+            padding: 12px 22px 10px;
+            border-bottom: 1px solid var(--border-subtle);
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.015);
+            transition: all 0.25s ease;
+        }
+
+        .ai-content-scroll-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 14px 22px;
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .ai-content-scroll-area::-webkit-scrollbar {
+            width: 5px;
+        }
+        .ai-content-scroll-area::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .ai-content-scroll-area::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 10px;
+        }
+
+        .ai-bottom-dock {
+            padding: 12px 22px 14px;
+            border-top: 1px solid var(--border-subtle);
+            background: rgba(10, 14, 26, 0.70);
+            backdrop-filter: blur(20px);
+            flex-shrink: 0;
         }
         .ai-sparkle-halo-icon {
             width: 44px;
@@ -1197,8 +1249,13 @@
         }
         .ai-chips-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
+        }
+        @media (max-width: 640px) {
+            .ai-chips-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         .ai-chip-card {
             padding: 12px 14px;
@@ -1416,101 +1473,6 @@
             background: rgba(22, 28, 46, 0.70);
             border-color: rgba(255, 255, 255, 0.10);
         }
-        .ai-studio-modal-box {
-            width: 94%;
-            max-width: 660px;
-            max-height: 88vh;
-            display: flex;
-            flex-direction: column;
-            padding: 0;
-            border-radius: 30px;
-        }
-        html.dark .ai-studio-modal-box {
-            background: rgba(14, 18, 30, 0.94);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        html.pure-black .ai-studio-modal-box {
-            background: rgba(8, 8, 12, 0.96) !important;
-            border: 1px solid rgba(255, 255, 255, 0.20) !important;
-            box-shadow: 0 24px 70px rgba(0, 0, 0, 1), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
-        }
-        .ai-sparkle-halo-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, rgba(191, 90, 242, 0.22), rgba(10, 132, 255, 0.22));
-            color: #BF5AF2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            box-shadow: 0 4px 14px rgba(191, 90, 242, 0.25);
-            border: 1px solid rgba(191, 90, 242, 0.35);
-        }
-        .ai-model-pill {
-            font-size: 11px;
-            font-weight: 800;
-            padding: 3px 9px;
-            border-radius: 12px;
-            background: rgba(191, 90, 242, 0.14);
-            color: #BF5AF2;
-            border: 1px solid rgba(191, 90, 242, 0.30);
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-        }
-        .ai-chips-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(136px, 1fr));
-            gap: 10px;
-        }
-        .ai-chip-card {
-            padding: 12px 14px;
-            border-radius: 18px;
-            background: var(--bg-interactive);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            text-align: left;
-            transition: all 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
-        }
-        html.dark .ai-chip-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.10);
-        }
-        .ai-chip-card:hover {
-            transform: translateY(-2px);
-            background: var(--bg-interactive-hover);
-            border-color: rgba(191, 90, 242, 0.5);
-            box-shadow: 0 6px 18px rgba(191, 90, 242, 0.18);
-        }
-        .ai-chip-icon {
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-        .ai-chip-text {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            overflow: hidden;
-        }
-        .ai-chip-text strong {
-            font-size: 13px;
-            font-weight: 700;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .ai-chip-text small {
-            font-size: 11px;
-            color: var(--text-secondary);
-            font-weight: 500;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
         .ai-prompt-input-wrapper {
             display: flex;
             align-items: center;
@@ -1606,12 +1568,10 @@
             background: var(--bg-interactive);
             border: 1px solid var(--border-subtle);
             border-radius: 20px;
-            padding: 18px 20px;
-            font-size: 14px;
-            line-height: 1.65;
+            padding: 18px 22px;
+            font-size: 14.5px;
+            line-height: 1.68;
             color: var(--text-primary);
-            max-height: 48vh;
-            overflow-y: auto;
             word-wrap: break-word;
         }
         html.dark .ai-markdown-box {
@@ -2456,9 +2416,13 @@
                     <span class="tpl-icon-box" id="tpl-icon-dotted"></span>
                     <span>Dotted Journal</span>
                 </button>
-                <button onclick="window.confirmAddPage('blank')" class="tpl-card-btn spring-btn" style="grid-column: span 2;">
+                <button onclick="window.confirmAddPage('blank')" class="tpl-card-btn spring-btn" style="grid-column: span 1;">
                     <span class="tpl-icon-box" id="tpl-icon-blank"></span>
                     <span>Blank Canvas</span>
+                </button>
+                <button onclick="window.requestInsertPdfToActiveNotebook()" class="tpl-card-btn spring-btn" style="grid-column: span 1; border-color: rgba(10, 132, 255, 0.4); background: rgba(10, 132, 255, 0.08);">
+                    <span class="tpl-icon-box" id="tpl-icon-pdf-import" style="color: var(--accent-blue); font-size: 16px;">📄</span>
+                    <span style="font-weight: 700; color: var(--accent-blue);">Insert PDF</span>
                 </button>
             </div>
 
@@ -2486,6 +2450,10 @@
                 <button onclick="window.exportActivePagePNG()" class="spring-btn" style="display: flex; align-items: center; padding: 14px 18px; border-radius: 18px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); text-align: left; gap: 14px; color: var(--text-primary);">
                     <div style="background: rgba(var(--accent-blue-rgb), 0.14); color: var(--accent-blue); padding: 10px; border-radius: 14px;" id="export-icon-png"></div>
                     <div><strong style="display:block; font-size: 15px;">High-Res Image (PNG)</strong><span style="font-size: 12px; color: var(--text-secondary); font-weight: 500;">2x Retina snapshot of active page</span></div>
+                </button>
+                <button onclick="window.generateNotebookAiSummaryPdf()" class="spring-btn" style="display: flex; align-items: center; padding: 14px 18px; border-radius: 18px; background: linear-gradient(135deg, rgba(191,90,242,0.12), rgba(10,132,255,0.12)); border: 1.5px solid rgba(191,90,242,0.35); text-align: left; gap: 14px; color: var(--text-primary);">
+                    <div style="background: rgba(191,90,242,0.22); color: #BF5AF2; padding: 10px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 20px;">✨</div>
+                    <div><strong style="display:block; font-size: 15px; color: var(--text-primary);">AI Summarized PDF Report</strong><span style="font-size: 12px; color: var(--text-secondary); font-weight: 500;">Generates executive synthesis & study guide PDF</span></div>
                 </button>
                 <button onclick="window.exportNativeGNBackup()" class="spring-btn" style="display: flex; align-items: center; padding: 14px 18px; border-radius: 18px; background: rgba(48, 209, 88, 0.10); border: 1px solid rgba(48, 209, 88, 0.25); text-align: left; gap: 14px;">
                     <div style="background: rgba(48, 209, 88, 0.22); color: var(--accent-green); padding: 10px; border-radius: 14px;" id="export-icon-gn"></div>
@@ -2656,9 +2624,9 @@
                             <div class="settings-label-sub">Official Google Gemini multimodal reasoning models</div>
                         </div>
                         <div class="settings-seg-control">
-                            <button id="ai-model-35-lite" onclick="window.setGeminiModel('gemini-3.5-flash-lite')" class="settings-seg-btn active" title="Gemini 3.5 Flash-Lite (High Speed & Zero Spikes)">3.5 Lite ⚡</button>
-                            <button id="ai-model-38-flash" onclick="window.setGeminiModel('gemini-3.8-flash')" class="settings-seg-btn" title="Gemini 3.8 Flash (Deep Reasoning)">3.8 Flash 🧠</button>
-                            <button id="ai-model-25-flash" onclick="window.setGeminiModel('gemini-2.5-flash')" class="settings-seg-btn" title="Gemini 2.5 Flash (Proven Stability)">2.5 Flash 🛡️</button>
+                            <button id="ai-model-38-flash" onclick="window.setGeminiModel('gemini-3.8-flash')" class="settings-seg-btn active" title="Gemini 3.8 Flash (Official Flagship)">3.8 Flash 🧠</button>
+                            <button id="ai-model-36-flash" onclick="window.setGeminiModel('gemini-3.6-flash')" class="settings-seg-btn" title="Gemini 3.6 Flash (Fast & Rock-Solid)">3.6 Flash ⚡</button>
+                            <button id="ai-model-35-lite" onclick="window.setGeminiModel('gemini-3.5-flash-lite')" class="settings-seg-btn" title="Gemini 3.5 Flash-Lite (Turbo Speed)">3.5 Lite 🚀</button>
                         </div>
                     </div>
 
@@ -2866,8 +2834,8 @@
     <!-- iPadOS Liquid Glass Apple Intelligence & Gemini AI Studio Sheet -->
     <div id="ai-studio-sheet" class="apple-overlay" onclick="if(event.target === this) window.closeAiStudioSheet()">
         <div class="apple-glass apple-modal-box ai-studio-modal-box">
-            <!-- AI Sheet Header -->
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; border-bottom: 1px solid var(--border-subtle); position: relative;">
+            <!-- 1. Fixed Header -->
+            <div class="ai-sheet-header">
                 <div style="display: flex; align-items: center; gap: 14px;">
                     <div class="ai-sparkle-halo-icon">
                         <span id="ai-modal-header-sparkle"></span>
@@ -2875,12 +2843,12 @@
                     <div>
                         <div style="display: flex; align-items: center; gap: 8px;">
                             <h2 style="font-size: 19px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.3px;">AI Studio Assistant</h2>
-                            <button id="ai-sheet-model-badge" onclick="window.cycleGeminiModel()" class="ai-model-pill spring-btn" style="border: none; cursor: pointer;" title="Tap to switch model: Gemini 3.5 Lite / 3.8 Flash / 2.5 Flash">Gemini 3.5 Lite ⚡</button>
+                            <button id="ai-sheet-model-badge" onclick="window.cycleGeminiModel()" class="ai-model-pill spring-btn" style="border: none; cursor: pointer;" title="Tap to switch model: Gemini 3.8 Flash / 3.6 Flash / 3.5 Lite">Gemini 3.8 Flash 🧠</button>
                         </div>
                         <div style="display: flex; align-items: center; gap: 8px; margin-top: 2px;">
                             <span id="ai-sheet-page-context" style="font-size: 12px; font-weight: 600; color: var(--text-secondary);">Active Notebook • Page 1</span>
                             <span id="ai-header-key-pill" onclick="window.toggleInlineKeyDrawer()" class="ai-key-status-badge" title="Tap to view or change Gemini API Key">
-                                <span>●</span> Key Verified
+                                <span>🔑</span> Key Verified
                             </span>
                         </div>
                     </div>
@@ -2898,136 +2866,170 @@
                 </div>
             </div>
 
-            <!-- AI Scrollable Body -->
-            <div class="no-scrollbar" style="flex: 1; overflow-y: auto; padding: 18px 24px 28px; display: flex; flex-direction: column; gap: 16px;">
-                
-                <!-- Inline Quick Key Drawer (Can be toggled anytime or appears when key missing) -->
-                <div id="ai-inline-key-drawer" style="display: none; background: rgba(var(--accent-blue-rgb), 0.08); border: 1.5px solid rgba(var(--accent-blue-rgb), 0.30); border-radius: 20px; padding: 14px 18px; flex-direction: column; gap: 10px;">
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <span style="font-size: 13px; font-weight: 800; color: var(--text-primary); display: flex; align-items: center; gap: 6px;">
-                            <span style="color: #BF5AF2;">🔑</span> Google Gemini API Key
-                        </span>
-                        <div style="display: flex; align-items: center; gap: 8px;">
-                            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" style="font-size: 11px; font-weight: 700; color: var(--accent-blue); text-decoration: none; padding: 3px 8px; border-radius: 8px; background: rgba(var(--accent-blue-rgb), 0.12);">
-                                Get Free Key ↗
-                            </a>
-                            <button onclick="window.toggleInlineKeyDrawer()" style="background: transparent; border: none; color: var(--text-secondary); cursor: pointer; font-size: 14px; padding: 2px 6px;">✕</button>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: 8px; align-items: center;">
-                        <div style="position: relative; flex: 1;">
-                            <input type="password" id="modal-ai-api-key" placeholder="Paste AIzaSy... API key here" spellcheck="false" autocomplete="off" oninput="window.syncAndSaveApiKey(this.value)" onpaste="setTimeout(() => window.syncAndSaveApiKey(this.value), 20)" style="width: 100%; padding: 8px 36px 8px 12px; border-radius: 12px; border: 1px solid var(--border-subtle); background: var(--bg-card); color: var(--text-primary); font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px; outline: none;">
-                            <button type="button" onclick="window.toggleModalApiKeyVisibility()" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: transparent; border: none; cursor: pointer; padding: 2px; font-size: 13px;" title="Reveal/Mask Key">
-                                <span id="modal-api-key-eye">👁️</span>
-                            </button>
-                        </div>
-                        <button onclick="window.testGeminiApiKey('modal')" id="modal-ai-test-btn" class="spring-btn" style="padding: 8px 14px; border-radius: 12px; background: var(--accent-blue); color: #FFFFFF; font-size: 12px; font-weight: 700; border: none; cursor: pointer; white-space: nowrap;">
-                            Save & Test
-                        </button>
-                    </div>
-                    <div id="modal-ai-status-pill" style="display: none; font-size: 11.5px; font-weight: 600; padding: 5px 10px; border-radius: 8px;"></div>
-                </div>
-
-                <!-- One-Tap Study Accelerators (6 High-Yield Modules) -->
-                <div>
-                    <span style="display:block; font-size: 11px; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; margin-left: 2px;">One-Tap Study Accelerators</span>
-                    <div class="ai-chips-grid">
-                        <button onclick="window.runAiTask('summarize')" class="ai-chip-card spring-btn">
-                            <span class="ai-chip-icon blue"><span id="ai-chip-icon-summary"></span></span>
-                            <div class="ai-chip-text">
-                                <strong>Summarize Page</strong>
-                                <small>Synthesis & takeaways</small>
-                            </div>
-                        </button>
-                        <button onclick="window.runAiTask('math_ocr')" class="ai-chip-card spring-btn">
-                            <span class="ai-chip-icon green"><span id="ai-chip-icon-math"></span></span>
-                            <div class="ai-chip-text">
-                                <strong>Math & LaTeX OCR</strong>
-                                <small>Solve & clean formulas</small>
-                            </div>
-                        </button>
-                        <button onclick="window.runAiTask('explain')" class="ai-chip-card spring-btn">
-                            <span class="ai-chip-icon purple"><span id="ai-chip-icon-explain"></span></span>
-                            <div class="ai-chip-text">
-                                <strong>Explain Diagram</strong>
-                                <small>Visual reasoning breakdown</small>
-                            </div>
-                        </button>
-                        <button onclick="window.runAiTask('quiz')" class="ai-chip-card spring-btn">
-                            <span class="ai-chip-icon amber"><span id="ai-chip-icon-quiz"></span></span>
-                            <div class="ai-chip-text">
-                                <strong>Cards & Practice Quiz</strong>
-                                <small>Active recall flip cards</small>
-                            </div>
-                        </button>
-                        <button onclick="window.runAiTask('tree')" class="ai-chip-card spring-btn">
-                            <span class="ai-chip-icon cyan"><span id="ai-chip-icon-tree"></span></span>
-                            <div class="ai-chip-text">
-                                <strong>Concept Tree</strong>
-                                <small>Visual knowledge mind map</small>
-                            </div>
-                        </button>
-                        <button onclick="window.runAiTask('polish')" class="ai-chip-card spring-btn">
-                            <span class="ai-chip-icon pink"><span id="ai-chip-icon-polish"></span></span>
-                            <div class="ai-chip-text">
-                                <strong>Polish Notes</strong>
-                                <small>Executive Cornell notes</small>
-                            </div>
-                        </button>
+            <!-- 2. Sliding Quick Key Drawer (if opened) -->
+            <div id="ai-inline-key-drawer" style="display: none; background: rgba(var(--accent-blue-rgb), 0.08); border-bottom: 1.5px solid rgba(var(--accent-blue-rgb), 0.30); padding: 12px 22px; flex-direction: column; gap: 10px; flex-shrink: 0;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="font-size: 13px; font-weight: 800; color: var(--text-primary); display: flex; align-items: center; gap: 6px;">
+                        <span style="color: #BF5AF2;">✨</span> Google Gemini API Key
+                    </span>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" style="font-size: 11px; font-weight: 700; color: var(--accent-blue); text-decoration: none; padding: 3px 8px; border-radius: 8px; background: rgba(var(--accent-blue-rgb), 0.12);">
+                            Get Free Key ↗
+                        </a>
+                        <button onclick="window.toggleInlineKeyDrawer()" style="background: transparent; border: none; color: var(--text-secondary); cursor: pointer; font-size: 14px; padding: 2px 6px;">✕</button>
                     </div>
                 </div>
-
-                <!-- 3D Interactive Flashcards Deck View (Rendered when quiz cards are ready) -->
-                <div id="ai-flashcard-deck" class="ai-flashcard-deck" style="display: none;">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-                        <span id="ai-fc-counter" style="font-size: 12px; font-weight: 800; color: #BF5AF2; text-transform: uppercase; letter-spacing: 0.8px;">Card 1 of 5</span>
-                        <button onclick="window.shuffleFlashcards()" class="spring-btn" style="background: transparent; border: none; color: var(--text-secondary); font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 4px;">
-                            <span id="ai-fc-shuffle-icon"></span> Shuffle
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <div style="position: relative; flex: 1;">
+                        <input type="password" id="modal-ai-api-key" placeholder="Paste AIzaSy... API key here" spellcheck="false" autocomplete="off" oninput="window.syncAndSaveApiKey(this.value)" onpaste="setTimeout(() => window.syncAndSaveApiKey(this.value), 20)" style="width: 100%; padding: 8px 36px 8px 12px; border-radius: 12px; border: 1px solid var(--border-subtle); background: var(--bg-card); color: var(--text-primary); font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px; outline: none;">
+                        <button type="button" onclick="window.toggleModalApiKeyVisibility()" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: transparent; border: none; cursor: pointer; padding: 2px; font-size: 13px;" title="Reveal/Mask Key">
+                            <span id="modal-api-key-eye">👁️</span>
                         </button>
                     </div>
-                    <div class="ai-flashcard" onclick="window.flipCurrentFlashcard()">
-                        <div class="ai-fc-inner" id="ai-fc-inner">
-                            <div class="ai-fc-front">
-                                <div class="ai-fc-badge">QUESTION / CONCEPT</div>
-                                <div class="ai-fc-content" id="ai-fc-front-text">What is the central concept on this study page?</div>
-                                <div class="ai-fc-hint">Tap card to flip ↻</div>
-                            </div>
-                            <div class="ai-fc-back">
-                                <div class="ai-fc-badge">ANSWER / REVELATION</div>
-                                <div class="ai-fc-content" id="ai-fc-back-text">Answer will appear here.</div>
-                                <div class="ai-fc-hint">Tap to flip back ↻</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 14px;">
-                        <button onclick="window.prevFlashcard()" class="spring-btn ai-action-pill-btn" id="ai-fc-prev-btn">
-                            ← Previous
-                        </button>
-                        <button onclick="window.flipCurrentFlashcard()" class="spring-btn ai-action-pill-btn" style="background: rgba(var(--accent-blue-rgb), 0.15); color: var(--accent-blue);">
-                            ↻ Flip Card
-                        </button>
-                        <button onclick="window.nextFlashcard()" class="spring-btn ai-action-pill-btn accent" id="ai-fc-next-btn">
-                            Next Card →
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Custom Prompt & Conversational Follow-up Input Bar -->
-                <div class="ai-prompt-input-wrapper">
-                    <input type="text" id="ai-custom-prompt-input" placeholder="Ask follow-up or any question about this page..." onkeydown="if(event.key === 'Enter') window.runAiTask('custom')" autocomplete="off" spellcheck="false">
-                    <button onclick="window.runAiTask('custom')" id="ai-submit-prompt-btn" class="spring-btn" title="Send Prompt to Gemini">
-                        <span>✨</span>
+                    <button onclick="window.testGeminiApiKey('modal')" id="modal-ai-test-btn" class="spring-btn" style="padding: 8px 14px; border-radius: 12px; background: var(--accent-blue); color: #FFFFFF; font-size: 12px; font-weight: 700; border: none; cursor: pointer; white-space: nowrap;">
+                        Save & Test
                     </button>
                 </div>
+                <div id="modal-ai-status-pill" style="display: none; font-size: 11.5px; font-weight: 600; padding: 5px 10px; border-radius: 8px;"></div>
+            </div>
 
-                <!-- Shimmer Skeleton Loading Indicator (Visible during generation) -->
-                <div id="ai-skeleton-loader" class="ai-shimmer-container" style="display: none;">
+            <!-- 3. Fixed Study Accelerators Bar (Top Pinned) -->
+            <div class="ai-accelerators-container">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="font-size: 11px; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px;">One-Tap Study Accelerators</span>
+                    <button onclick="window.toggleAcceleratorsView()" id="ai-toggle-accelerators-btn" class="spring-btn" style="background: transparent; border: none; font-size: 11px; font-weight: 700; color: var(--accent-blue); cursor: pointer; padding: 2px 6px;">
+                        Hide
+                    </button>
+                </div>
+                <div id="ai-chips-grid-wrapper" class="ai-chips-grid">
+                    <button onclick="window.runAiTask('summarize')" class="ai-chip-card spring-btn">
+                        <span class="ai-chip-icon blue"><span id="ai-chip-icon-summary"></span></span>
+                        <div class="ai-chip-text">
+                            <strong>Summarize Page</strong>
+                            <small>Core synopsis & key takeaways</small>
+                        </div>
+                    </button>
+                    <button onclick="window.runAiTask('summary_pdf')" class="ai-chip-card spring-btn" style="border-color: rgba(191,90,242,0.45); background: linear-gradient(135deg, rgba(191,90,242,0.12), rgba(10,132,255,0.08));">
+                        <span class="ai-chip-icon purple"><span id="ai-chip-icon-pdf"></span></span>
+                        <div class="ai-chip-text">
+                            <strong style="color: #BF5AF2;">Summarized PDF</strong>
+                            <small>Executive synthesis & PDF export</small>
+                        </div>
+                    </button>
+                    <button onclick="window.runAiTask('study_guide')" class="ai-chip-card spring-btn">
+                        <span class="ai-chip-icon amber"><span id="ai-chip-icon-guide"></span></span>
+                        <div class="ai-chip-text">
+                            <strong>Exam Study Guide</strong>
+                            <small>High-yield exam review outline</small>
+                        </div>
+                    </button>
+                    <button onclick="window.runAiTask('formula_sheet')" class="ai-chip-card spring-btn">
+                        <span class="ai-chip-icon green"><span id="ai-chip-icon-formula"></span></span>
+                        <div class="ai-chip-text">
+                            <strong>Formula Cheatsheet</strong>
+                            <small>Math & Science equation sheet</small>
+                        </div>
+                    </button>
+                    <button onclick="window.runAiTask('action_items')" class="ai-chip-card spring-btn">
+                        <span class="ai-chip-icon blue"><span id="ai-chip-icon-action"></span></span>
+                        <div class="ai-chip-text">
+                            <strong>Action Tasks</strong>
+                            <small>Homework & assignment tasks</small>
+                        </div>
+                    </button>
+                    <button onclick="window.runAiTask('critique')" class="ai-chip-card spring-btn">
+                        <span class="ai-chip-icon pink"><span id="ai-chip-icon-critique"></span></span>
+                        <div class="ai-chip-text">
+                            <strong>Proof & Error Check</strong>
+                            <small>Verify calculations & logic</small>
+                        </div>
+                    </button>
+                    <button onclick="window.runAiTask('simplify')" class="ai-chip-card spring-btn">
+                        <span class="ai-chip-icon cyan"><span id="ai-chip-icon-simplify"></span></span>
+                        <div class="ai-chip-text">
+                            <strong>Simplify (ELI5)</strong>
+                            <small>Intuitive plain-English analogies</small>
+                        </div>
+                    </button>
+                    <button onclick="window.runAiTask('math_ocr')" class="ai-chip-card spring-btn">
+                        <span class="ai-chip-icon green"><span id="ai-chip-icon-math"></span></span>
+                        <div class="ai-chip-text">
+                            <strong>Math & LaTeX OCR</strong>
+                            <small>Solve & format clean formulas</small>
+                        </div>
+                    </button>
+                    <button onclick="window.runAiTask('explain')" class="ai-chip-card spring-btn">
+                        <span class="ai-chip-icon purple"><span id="ai-chip-icon-explain"></span></span>
+                        <div class="ai-chip-text">
+                            <strong>Explain Diagram</strong>
+                            <small>Visual breakdown & concepts</small>
+                        </div>
+                    </button>
+                    <button onclick="window.runAiTask('quiz')" class="ai-chip-card spring-btn">
+                        <span class="ai-chip-icon amber"><span id="ai-chip-icon-quiz"></span></span>
+                        <div class="ai-chip-text">
+                            <strong>Flashcards & Quiz</strong>
+                            <small>Active recall 3D flip cards</small>
+                        </div>
+                    </button>
+                    <button onclick="window.runAiTask('tree')" class="ai-chip-card spring-btn">
+                        <span class="ai-chip-icon cyan"><span id="ai-chip-icon-tree"></span></span>
+                        <div class="ai-chip-text">
+                            <strong>Concept Tree</strong>
+                            <small>Visual knowledge roadmap</small>
+                        </div>
+                    </button>
+                    <button onclick="window.runAiTask('polish')" class="ai-chip-card spring-btn">
+                        <span class="ai-chip-icon pink"><span id="ai-chip-icon-polish"></span></span>
+                        <div class="ai-chip-text">
+                            <strong>Cornell Notes</strong>
+                            <small>Structured study notes</small>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4. Central Scrollable Content Area (SINGLE UNIFIED SCROLL CONTAINER) -->
+            <div id="ai-content-scroll-area" class="ai-content-scroll-area">
+                <!-- 3D Interactive Flip Flashcard Deck (Shows during Quiz mode) -->
+                <div id="ai-flashcard-deck" style="display: none; background: rgba(var(--accent-blue-rgb), 0.06); border: 1px solid rgba(var(--accent-blue-rgb), 0.22); border-radius: 20px; padding: 16px; margin-bottom: 6px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                        <span style="font-size: 13px; font-weight: 800; color: var(--accent-blue); display: flex; align-items: center; gap: 6px;">
+                            <span>🃏</span> Active Recall Flashcards
+                        </span>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span id="ai-fc-counter" style="font-size: 12px; font-weight: 700; color: var(--text-secondary);">Card 1 / 4</span>
+                            <button onclick="window.shuffleFlashcards()" class="spring-btn" style="padding: 3px 8px; border-radius: 8px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 11px; font-weight: 700; cursor: pointer;" title="Shuffle cards">🔀</button>
+                        </div>
+                    </div>
+                    <div class="ai-fc-stage">
+                        <div id="ai-fc-inner" class="ai-fc-inner" onclick="window.flipCurrentFlashcard()">
+                            <div class="ai-fc-face ai-fc-front">
+                                <span class="ai-fc-tag">QUESTION / PROMPT (Tap to flip)</span>
+                                <div id="ai-fc-front-text" style="font-size: 15px; font-weight: 700; color: var(--text-primary); text-align: center; line-height: 1.5;"></div>
+                            </div>
+                            <div class="ai-fc-face ai-fc-back">
+                                <span class="ai-fc-tag" style="background: rgba(48, 209, 88, 0.15); color: #30D158;">ANSWER & EXPLANATION</span>
+                                <div id="ai-fc-back-text" style="font-size: 14.5px; font-weight: 600; color: var(--text-primary); text-align: center; line-height: 1.55;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
+                        <button id="ai-fc-prev-btn" onclick="window.prevFlashcard()" class="spring-btn" style="padding: 7px 16px; border-radius: 12px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary); font-size: 12px; font-weight: 700; cursor: pointer;">← Previous</button>
+                        <span style="font-size: 11px; color: var(--text-secondary);">Tap card to flip front/back</span>
+                        <button id="ai-fc-next-btn" onclick="window.nextFlashcard()" class="spring-btn" style="padding: 7px 16px; border-radius: 12px; background: var(--accent-blue); color: #FFFFFF; font-size: 12px; font-weight: 700; border: none; cursor: pointer;">Next Card →</button>
+                    </div>
+                </div>
+
+                <!-- Animated Skeleton Loading State -->
+                <div id="ai-skeleton-loader" style="display: none; padding: 18px 20px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); border-radius: 20px;">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
                         <span class="ai-status-dot pulsing"></span>
-                        <span id="ai-skeleton-label" style="font-size: 13px; font-weight: 700; color: #BF5AF2;">Gemini Multimodal Neural Reasoning...</span>
+                        <span id="ai-skeleton-label" style="font-size: 13px; font-weight: 700; color: var(--text-primary);">Gemini AI is analyzing page...</span>
                     </div>
+                    <div class="ai-shimmer-line" style="width: 90%;"></div>
+                    <div class="ai-shimmer-line" style="width: 75%;"></div>
                     <div class="ai-shimmer-line" style="width: 82%;"></div>
-                    <div class="ai-shimmer-line" style="width: 94%;"></div>
                     <div class="ai-shimmer-line" style="width: 68%;"></div>
                     <div class="ai-shimmer-line" style="width: 88%;"></div>
                 </div>
@@ -3039,25 +3041,31 @@
                             <span id="ai-status-indicator" class="ai-status-dot"></span>
                             <span id="ai-response-status-label" style="font-size: 13px; font-weight: 700; color: var(--text-primary);">Gemini Response</span>
                         </div>
-                        <div id="ai-response-actions" style="display: flex; align-items: center; gap: 6px;">
+                        <div id="ai-response-actions" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                             <button onclick="window.toggleAudioStudyTutor()" id="ai-audio-tutor-btn" class="spring-btn ai-action-pill-btn" title="Read summary aloud in high-definition voice">
                                 <span>🎧</span> Read Aloud
                             </button>
-                            <button onclick="window.copyAiResponseText()" class="spring-btn ai-action-pill-btn" title="Copy text to clipboard">
+                            <button onclick="window.copyAiResponseText()" id="ai-copy-btn" class="spring-btn ai-action-pill-btn" title="Copy text to clipboard">
                                 <span>📋</span> Copy
                             </button>
-                            <button onclick="window.insertAiResponseAsPage()" class="spring-btn ai-action-pill-btn accent" title="Insert response directly into notebook as a new Cornell study page">
-                                <span>📄</span> Insert as Page
+                            <button onclick="window.exportAiSummarizedPdf()" id="ai-export-pdf-btn" class="spring-btn ai-action-pill-btn" style="background: linear-gradient(135deg, rgba(191,90,242,0.18), rgba(10,132,255,0.18)); border: 1.5px solid rgba(191,90,242,0.4); color: var(--text-primary); font-weight: 700;" title="Create and download an Executive Summarized PDF">
+                                <span>📄</span> Summarized PDF
                             </button>
-                            <button onclick="window.clearAiSessionHistory()" class="spring-btn ai-action-pill-btn" title="Reset chat thread">
+                            <button onclick="window.insertAiResponseAsPage()" id="ai-insert-page-btn" class="spring-btn ai-action-pill-btn accent" title="Insert response directly into notebook as a new study page">
+                                <span>📑</span> Add as Page
+                            </button>
+                            <button onclick="window.stampAiNotesOnActivePage()" id="ai-stamp-page-btn" class="spring-btn ai-action-pill-btn" style="border: 1.5px solid rgba(48,209,88,0.35); background: rgba(48,209,88,0.12); color: #30D158; font-weight: 700;" title="Stamp summary card directly onto current active page">
+                                <span>📌</span> Stamp on Page
+                            </button>
+                            <button onclick="window.clearAiSessionHistory()" id="ai-reset-btn" class="spring-btn ai-action-pill-btn" title="Reset chat thread">
                                 <span>🔄</span> Reset
                             </button>
                         </div>
                     </div>
                     <!-- Conversational Multi-turn Chat Thread -->
                     <div id="ai-chat-thread" class="ai-chat-thread" style="display: none;"></div>
-                    <!-- Primary Markdown Content Box -->
-                    <div id="ai-response-markdown" class="ai-markdown-box no-scrollbar"></div>
+                    <!-- Primary Markdown Content Box (Single scroll flows in parent) -->
+                    <div id="ai-response-markdown" class="ai-markdown-box"></div>
                 </div>
 
                 <!-- API Key Missing Prompt Banner -->
@@ -3078,6 +3086,16 @@
                             Get Free Key from Google AI Studio ↗
                         </a>
                     </div>
+                </div>
+            </div>
+
+            <!-- 5. Fixed Bottom Prompt Input Dock (ALWAYS ACCESSIBLE, NEVER SCROLLS AWAY) -->
+            <div class="ai-bottom-dock">
+                <div class="ai-prompt-input-wrapper">
+                    <input type="text" id="ai-custom-prompt-input" placeholder="Ask follow-up or any question about this page..." spellcheck="false" autocomplete="off" onkeydown="if(event.key==='Enter') window.runAiTask('custom')">
+                    <button onclick="window.runAiTask('custom')" id="ai-submit-prompt-btn" class="spring-btn" title="Send question to Gemini AI">
+                        <span id="ai-submit-sparkle-icon">✨</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -3265,6 +3283,9 @@
                     <button onclick="window.requestAddPageSheet()" class="spring-btn" style="padding: 8px 10px; border-radius: 20px; background: transparent; color: inherit;" title="Add Study Page">
                         <span id="top-add-page-icon"></span>
                     </button>
+                    <button onclick="window.requestInsertPdfToActiveNotebook()" class="spring-btn" style="padding: 8px 10px; border-radius: 20px; background: transparent; color: inherit; display: flex; align-items: center; gap: 4px;" title="Add PDF to Page (Insert PDF Slides & Documents)">
+                        <span id="top-insert-pdf-icon"></span>
+                    </button>
                     <button onclick="window.openExportSheet()" class="spring-btn" style="padding: 8px 10px; border-radius: 20px; background: transparent; color: inherit;" title="Export & Share">
                         <span id="top-share-icon"></span>
                     </button>
@@ -3397,6 +3418,7 @@
     <script>
         // High-Precision Apple SF Symbols Vector Library
         const SF_ICONS = {
+            'file-plus': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>',
             'book-open': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
             'library': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 2v20"/><path d="M9 7h8"/><path d="M9 11h8"/></svg>',
             'star': '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.8 6.1 6.7.8-5 4.6 1.3 6.6-5.8-3.3-5.8 3.3 1.3-6.6-5-4.6 6.7-.8L12 2.5z"/></svg>',
@@ -3486,7 +3508,14 @@
                 'icon-tool-ai': 'sparkles',
                 'ai-modal-header-sparkle': 'sparkles',
                 'ai-close-icon': 'close',
+                'top-insert-pdf-icon': 'file-plus',
                 'ai-chip-icon-summary': 'ruled',
+                'ai-chip-icon-pdf': 'file-pdf',
+                'ai-chip-icon-guide': 'book-open',
+                'ai-chip-icon-formula': 'math',
+                'ai-chip-icon-action': 'check',
+                'ai-chip-icon-critique': 'search',
+                'ai-chip-icon-simplify': 'sparkles',
                 'ai-chip-icon-math': 'math',
                 'ai-chip-icon-explain': 'sparkles',
                 'ai-chip-icon-quiz': 'cards',
@@ -4861,7 +4890,7 @@
 
             nb.pages.forEach((page, idx) => {
                 const wrapper = document.createElement('div');
-                const isPdf = Boolean(page.pdfPageIndex && nb.pdfBlobId);
+                const isPdf = Boolean(page.pdfPageIndex && (page.pdfBlobId || nb.pdfBlobId));
                 wrapper.className = `page-wrapper ${page.paperColor === 'cream' ? 'paper-cream' : (page.paperColor === 'dark' ? 'paper-dark' : '')} ${isPdf ? 'pdf-page' : ''}`;
                 wrapper.id = `page-wrapper-${idx}`;
                 wrapper.setAttribute('data-page-index', idx);
@@ -4912,8 +4941,12 @@
 
             // Render PDF page or Background Template
             const bgCtx = bgCanvas.getContext('2d');
-            if (page.pdfPageIndex && nb.pdfBlobId) {
-                renderPdfPageToCanvas(nb.pdfBlobId, page.pdfPageIndex, bgCanvas, page.width, page.height);
+            const activeBlobId = page.pdfBlobId || nb.pdfBlobId;
+            if (page.pdfPageIndex && activeBlobId) {
+                renderPdfPageToCanvas(activeBlobId, page.pdfPageIndex, bgCanvas, page.width, page.height);
+                if (page.aiNotes) {
+                    drawAiNotesOnCanvas(bgCtx, page.aiNotes, page.width, page.height, isDarkMode);
+                }
             } else {
                 drawPageBackgroundTemplate(bgCtx, page.width, page.height, page.paperType, page.paperColor || 'white', page);
             }
@@ -5693,14 +5726,18 @@
 
             const tCtx = thumbCanvas.getContext('2d');
 
-            if (p.pdfPageIndex && nb.pdfBlobId) {
-                renderPdfPageToCanvas(nb.pdfBlobId, p.pdfPageIndex, thumbCanvas, thumbW, thumbH).then(() => {
+            const activeBlobId = p.pdfBlobId || nb.pdfBlobId;
+            if (p.pdfPageIndex && activeBlobId) {
+                renderPdfPageToCanvas(activeBlobId, p.pdfPageIndex, thumbCanvas, thumbW, thumbH).then(() => {
                     tCtx.save();
                     tCtx.scale((thumbW * dpr) / p.width, (thumbH * dpr) / p.height);
                     const highlighters = (p.paths || []).filter(item => item.tool === 'highlighter');
                     const penStrokes = (p.paths || []).filter(item => item.tool !== 'highlighter');
                     highlighters.forEach(path => renderSinglePath(tCtx, path, p.paperColor));
                     penStrokes.forEach(path => renderSinglePath(tCtx, path, p.paperColor));
+                    if (p.aiNotes) {
+                        drawAiNotesOnCanvas(tCtx, p.aiNotes, p.width, p.height, isDarkMode);
+                    }
                     tCtx.restore();
                 });
             } else {
@@ -6403,14 +6440,22 @@
                     const ctx = tempCanvas.getContext('2d');
 
                     // Step 1: Render original PDF page or template
-                    if (p.pdfPageIndex && pdfDoc) {
-                        const pdfPage = await pdfDoc.getPage(p.pdfPageIndex);
+                    const pageBlobId = p.pdfBlobId || nb.pdfBlobId;
+                    const pagePdfDoc = pageBlobId ? await getCachedOrStoredPdfDoc(pageBlobId) : null;
+                    if (p.pdfPageIndex && pagePdfDoc) {
+                        const pdfPage = await pagePdfDoc.getPage(p.pdfPageIndex);
                         const rawViewport = pdfPage.getViewport({ scale: 1.0 });
                         const renderViewport = pdfPage.getViewport({ scale: (p.width * exportScale) / rawViewport.width });
                         ctx.save();
                         ctx.setTransform(1, 0, 0, 1, 0, 0);
                         await pdfPage.render({ canvasContext: ctx, viewport: renderViewport }).promise;
                         ctx.restore();
+                        if (p.aiNotes) {
+                            ctx.save();
+                            ctx.scale(exportScale, exportScale);
+                            drawAiNotesOnCanvas(ctx, p.aiNotes, p.width, p.height, false);
+                            ctx.restore();
+                        }
                     } else {
                         ctx.save();
                         ctx.scale(exportScale, exportScale);
@@ -6985,10 +7030,9 @@
 
         // Cascade of models for automatic failover when a model experiences 503 (High Demand) or 429
         const GEMINI_MODELS_CASCADE = [
-            'gemini-3.5-flash-lite',
-            'gemini-2.5-flash',
             'gemini-3.8-flash',
-            'gemini-2.0-flash'
+            'gemini-3.6-flash',
+            'gemini-3.5-flash-lite'
         ];
 
         function cleanApiKeyString(raw) {
@@ -7124,51 +7168,56 @@
         }
 
         function formatModelDisplayName(model) {
-            if (model === 'gemini-3.5-flash-lite') return 'Gemini 3.5 Lite ⚡';
-            if (model === 'gemini-2.5-flash') return 'Gemini 2.5 Flash 🛡️';
             if (model === 'gemini-3.8-flash') return 'Gemini 3.8 Flash 🧠';
-            if (model === 'gemini-2.0-flash') return 'Gemini 2.0 Flash';
+            if (model === 'gemini-3.6-flash') return 'Gemini 3.6 Flash ⚡';
+            if (model === 'gemini-3.5-flash-lite') return 'Gemini 3.5 Lite 🚀';
             return model;
         }
 
         function getGeminiModel() {
-            // Default to ultra-fast, high-capacity Gemini 3.5 Flash-Lite
+            // One-time automatic upgrade to Gemini 3.8 Flash flagship (ensures users recovering from prior 503 fallback bug run latest model)
+            if (!localStorage.getItem('gn_gemini_model_v38_migrated')) {
+                localStorage.setItem('gn_gemini_model', 'gemini-3.8-flash');
+                localStorage.setItem('gn_gemini_model_v38_migrated', 'true');
+                return 'gemini-3.8-flash';
+            }
             const saved = localStorage.getItem('gn_gemini_model');
-            return saved || 'gemini-3.5-flash-lite';
+            // Auto-migrate away from deprecated or restricted models
+            if (!saved || saved === 'gemini-2.0-flash' || saved === 'gemini-2.5-flash') {
+                localStorage.setItem('gn_gemini_model', 'gemini-3.8-flash');
+                return 'gemini-3.8-flash';
+            }
+            return saved;
         }
 
         function setGeminiModel(model, silent = false) {
+            if (model === 'gemini-2.0-flash' || model === 'gemini-2.5-flash') {
+                model = 'gemini-3.8-flash';
+            }
             localStorage.setItem('gn_gemini_model', model);
-            const m35 = document.getElementById('ai-model-35-lite');
-            const m25 = document.getElementById('ai-model-25-flash');
             const m38 = document.getElementById('ai-model-38-flash');
-            if (m35) {
-                if (model === 'gemini-3.5-flash-lite') m35.classList.add('active');
-                else m35.classList.remove('active');
-            }
-            if (m25) {
-                if (model === 'gemini-2.5-flash') m25.classList.add('active');
-                else m25.classList.remove('active');
-            }
-            if (m38) {
-                if (model === 'gemini-3.8-flash') m38.classList.add('active');
-                else m38.classList.remove('active');
-            }
+            const m36 = document.getElementById('ai-model-36-flash');
+            const m35 = document.getElementById('ai-model-35-lite');
+
+            if (m38) m38.classList.toggle('active', model === 'gemini-3.8-flash');
+            if (m36) m36.classList.toggle('active', model === 'gemini-3.6-flash');
+            if (m35) m35.classList.toggle('active', model === 'gemini-3.5-flash-lite');
+
             const modelBadge = document.getElementById('ai-sheet-model-badge');
             if (modelBadge) {
                 modelBadge.innerText = formatModelDisplayName(model);
-                if (model === 'gemini-3.5-flash-lite') {
-                    modelBadge.style.background = 'rgba(48, 209, 88, 0.16)';
-                    modelBadge.style.color = '#30D158';
-                    modelBadge.style.borderColor = 'rgba(48, 209, 88, 0.35)';
-                } else if (model === 'gemini-2.5-flash') {
+                if (model === 'gemini-3.8-flash') {
+                    modelBadge.style.background = 'rgba(191, 90, 242, 0.16)';
+                    modelBadge.style.color = '#BF5AF2';
+                    modelBadge.style.borderColor = 'rgba(191, 90, 242, 0.35)';
+                } else if (model === 'gemini-3.6-flash') {
                     modelBadge.style.background = 'rgba(10, 132, 255, 0.16)';
                     modelBadge.style.color = '#0A84FF';
                     modelBadge.style.borderColor = 'rgba(10, 132, 255, 0.35)';
                 } else {
-                    modelBadge.style.background = 'rgba(191, 90, 242, 0.16)';
-                    modelBadge.style.color = '#BF5AF2';
-                    modelBadge.style.borderColor = 'rgba(191, 90, 242, 0.35)';
+                    modelBadge.style.background = 'rgba(48, 209, 88, 0.16)';
+                    modelBadge.style.color = '#30D158';
+                    modelBadge.style.borderColor = 'rgba(48, 209, 88, 0.35)';
                 }
             }
             if (!silent) {
@@ -7178,10 +7227,10 @@
 
         function cycleGeminiModel() {
             const current = getGeminiModel();
-            let next = 'gemini-3.5-flash-lite';
-            if (current === 'gemini-3.5-flash-lite') next = 'gemini-2.5-flash';
-            else if (current === 'gemini-2.5-flash') next = 'gemini-3.8-flash';
-            else next = 'gemini-3.5-flash-lite';
+            let next = 'gemini-3.8-flash';
+            if (current === 'gemini-3.8-flash') next = 'gemini-3.6-flash';
+            else if (current === 'gemini-3.6-flash') next = 'gemini-3.5-flash-lite';
+            else next = 'gemini-3.8-flash';
             setGeminiModel(next);
         }
 
@@ -7202,18 +7251,20 @@
             showToastNotification(`Multimodal Vision ${isAiMultimodal ? 'Enabled' : 'Disabled'}`, "sparkles");
         }
 
-        /* High-Throughput Streaming Dispatcher with Auto-Failover & Low-Latency Thinking */
-        async function executeGeminiStreamCall(apiKey, preferredModel, contentsPayload, onChunk) {
+        /* High-Throughput Robust Gemini Engine with Auto-Failover & 503 Spike Defense */
+        async function executeGeminiCall(apiKey, preferredModel, contentsPayload) {
             const candidateModels = [
                 preferredModel,
-                'gemini-3.5-flash-lite',
-                'gemini-2.5-flash',
-                'gemini-2.0-flash'
+                'gemini-3.8-flash',
+                'gemini-3.6-flash',
+                'gemini-3.5-flash-lite'
             ];
-            // Filter unique models while preserving priority order
+            // Filter unique models while strictly excluding decommissioned/restricted models
             const modelQueue = [];
             candidateModels.forEach(m => {
-                if (m && !modelQueue.includes(m)) modelQueue.push(m);
+                if (m && !modelQueue.includes(m) && m !== 'gemini-2.0-flash' && m !== 'gemini-2.5-flash') {
+                    modelQueue.push(m);
+                }
             });
 
             let lastError = null;
@@ -7221,135 +7272,114 @@
 
             for (let i = 0; i < modelQueue.length; i++) {
                 const currentModel = modelQueue[i];
-                let fullAccumulatedText = '';
 
-                try {
-                    // Use Server-Sent Events (SSE) streaming for sub-second first-token latency
-                    const url = `https://generativelanguage.googleapis.com/v1beta/models/${currentModel}:streamGenerateContent?alt=sse&key=${encodeURIComponent(apiKey)}`;
+                // If this is an auto-fallback attempt, update UI indicators
+                if (i > 0) {
+                    const statusLabel = document.getElementById('ai-response-status-label');
+                    const skeletonLabel = document.getElementById('ai-skeleton-label');
+                    const fallbackMsg = `Switching to ${formatModelDisplayName(currentModel)}...`;
+                    if (statusLabel) statusLabel.innerText = fallbackMsg;
+                    if (skeletonLabel) skeletonLabel.innerText = fallbackMsg;
+                    await new Promise(r => setTimeout(r, 200));
+                }
 
-                    // If this is a fallback attempt, update UI
-                    if (i > 0) {
-                        const statusLabel = document.getElementById('ai-response-status-label');
-                        const skeletonLabel = document.getElementById('ai-skeleton-label');
-                        const fallbackMsg = `Auto-switching to ${formatModelDisplayName(currentModel)}...`;
-                        if (statusLabel) statusLabel.innerText = fallbackMsg;
-                        if (skeletonLabel) skeletonLabel.innerText = fallbackMsg;
-                        await new Promise(r => setTimeout(r, 200));
-                    }
+                // Up to 2 attempts per model (for 503 high demand transient spikes)
+                for (let attempt = 0; attempt < 2; attempt++) {
+                    try {
+                        const url = `https://generativelanguage.googleapis.com/v1beta/models/${currentModel}:generateContent?key=${encodeURIComponent(apiKey)}`;
 
-                    const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 20000);
+                        const controller = new AbortController();
+                        const timeoutId = setTimeout(() => controller.abort(), 20000);
 
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        signal: controller.signal,
-                        body: JSON.stringify({
-                            contents: contentsPayload,
-                            generationConfig: {
-                                maxOutputTokens: 2500,
-                                thinkingConfig: {
-                                    thinkingLevel: "low"
-                                }
-                            }
-                        })
-                    });
-
-                    clearTimeout(timeoutId);
-
-                    if (!response.ok) {
-                        lastStatus = response.status;
-                        let errText = '';
-                        try {
-                            const errJson = await response.json();
-                            errText = errJson.error?.message || `HTTP ${response.status}`;
-                        } catch (e) {
-                            errText = `HTTP ${response.status} Error`;
-                        }
-                        lastError = errText;
-
-                        // If 400 or 403, key is invalid -> stop retrying other models
-                        if (response.status === 400 || response.status === 403) {
-                            return {
-                                ok: false,
-                                status: response.status,
-                                error: lastError,
-                                modelUsed: currentModel
+                        // Low-latency thinking level for Gemini 3.8 and Gemini 3.6 Flash models:
+                        // By setting thinkingLevel to 'low', Gemini 3.8 Flash minimizes reasoning latency
+                        // and yields fast, sub-second responses for notes analysis, summaries, and flashcards.
+                        const genConfig = {
+                            maxOutputTokens: 2500
+                        };
+                        if (currentModel === 'gemini-3.8-flash' || currentModel === 'gemini-3.6-flash') {
+                            genConfig.thinkingConfig = {
+                                thinkingLevel: 'low'
                             };
                         }
 
-                        // 503 (High Demand) or 429: log and immediately try next model in cascade
-                        console.warn(`Model ${currentModel} returned ${response.status} (${lastError}). Failing over...`);
-                        continue;
-                    }
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            signal: controller.signal,
+                            body: JSON.stringify({
+                                contents: contentsPayload,
+                                generationConfig: genConfig
+                            })
+                        });
 
-                    // Read SSE stream chunks in real-time
-                    if (response.body && response.body.getReader) {
-                        const reader = response.body.getReader();
-                        const decoder = new TextDecoder('utf-8');
-                        let buffer = '';
+                        clearTimeout(timeoutId);
 
-                        while (true) {
-                            const { done, value } = await reader.read();
-                            if (done) break;
-
-                            buffer += decoder.decode(value, { stream: true });
-                            const lines = buffer.split('\n');
-                            buffer = lines.pop(); // keep last incomplete line
-
-                            for (const line of lines) {
-                                const trimmed = line.trim();
-                                if (!trimmed || !trimmed.startsWith('data: ')) continue;
-                                const jsonStr = trimmed.slice(6).trim();
-                                if (jsonStr === '[DONE]') continue;
-
-                                try {
-                                    const parsed = JSON.parse(jsonStr);
-                                    const parts = parsed.candidates?.[0]?.content?.parts || [];
-                                    let delta = '';
-                                    for (const p of parts) {
-                                        if (p.text) delta += p.text;
-                                    }
-
-                                    if (delta) {
-                                        fullAccumulatedText += delta;
-                                        if (onChunk) onChunk(fullAccumulatedText, delta, currentModel);
-                                    }
-                                } catch (jsonErr) {
-                                    // ignore partial or unparseable SSE line
-                                }
+                        if (!response.ok) {
+                            lastStatus = response.status;
+                            let errText = '';
+                            try {
+                                const errJson = await response.json();
+                                errText = errJson.error?.message || `HTTP ${response.status}`;
+                            } catch (e) {
+                                errText = `HTTP ${response.status} Error`;
                             }
+                            lastError = errText;
+
+                            // 400 or 403 indicates invalid key or unauthorized project -> stop cycling uselessly
+                            if (response.status === 400 || response.status === 403) {
+                                return {
+                                    ok: false,
+                                    status: response.status,
+                                    error: lastError,
+                                    modelUsed: currentModel
+                                };
+                            }
+
+                            // If 503 (High Demand) or 429 (Rate Limit) on first attempt, brief backoff and retry same model
+                            if ((response.status === 503 || response.status === 429) && attempt === 0) {
+                                console.warn(`Model ${currentModel} returned 503/429. Retrying after backoff...`);
+                                await new Promise(r => setTimeout(r, 800));
+                                continue;
+                            }
+
+                            // Otherwise, move to next model in cascade
+                            console.warn(`Model ${currentModel} returned ${response.status} (${lastError}). Failing over...`);
+                            break;
                         }
-                    } else {
-                        // Fallback for environments where ReadableStream is unavailable
+
                         const data = await response.json();
+                        let resultText = '';
                         if (data.candidates && data.candidates[0]?.content?.parts) {
-                            fullAccumulatedText = data.candidates[0].content.parts.map(p => p.text || '').join('');
-                            if (onChunk) onChunk(fullAccumulatedText, fullAccumulatedText, currentModel);
+                            resultText = data.candidates[0].content.parts.map(p => p.text || '').join('');
                         }
-                    }
 
-                    if (fullAccumulatedText.trim().length > 0) {
-                        return {
-                            ok: true,
-                            text: fullAccumulatedText,
-                            modelUsed: currentModel,
-                            wasFallback: i > 0
-                        };
-                    }
+                        if (resultText && resultText.trim().length > 0) {
+                            return {
+                                ok: true,
+                                text: resultText,
+                                modelUsed: currentModel,
+                                wasFallback: i > 0
+                            };
+                        }
 
-                    console.warn(`Model ${currentModel} returned empty stream. Trying fallback...`);
+                        console.warn(`Model ${currentModel} returned empty candidates. Trying fallback...`);
+                        break;
 
-                } catch (netErr) {
-                    lastError = netErr.message;
-                    console.warn(`Network/stream error with model ${currentModel}:`, netErr);
-                    if (!navigator.onLine) {
-                        return {
-                            ok: false,
-                            status: 0,
-                            error: "Network connection lost. Please connect to internet.",
-                            modelUsed: currentModel
-                        };
+                    } catch (netErr) {
+                        lastError = netErr.message;
+                        console.warn(`Network error with model ${currentModel} (attempt ${attempt + 1}):`, netErr);
+                        if (!navigator.onLine) {
+                            return {
+                                ok: false,
+                                status: 0,
+                                error: "Network connection lost. Please connect to the internet.",
+                                modelUsed: currentModel
+                            };
+                        }
+                        if (attempt === 0) {
+                            await new Promise(r => setTimeout(r, 600));
+                        }
                     }
                 }
             }
@@ -7357,7 +7387,7 @@
             return {
                 ok: false,
                 status: lastStatus,
-                error: lastError || "All Gemini models are temporarily at capacity. Please try again shortly.",
+                error: lastError || "Google Gemini is temporarily busy across all models. Please tap Retry in a moment.",
                 modelUsed: modelQueue[0]
             };
         }
@@ -7421,12 +7451,9 @@
             }];
 
             try {
-                const result = await executeGeminiStreamCall(key, getGeminiModel(), testPayload, null);
+                const result = await executeGeminiCall(key, getGeminiModel(), testPayload);
                 if (result.ok) {
                     syncAndSaveApiKey(key);
-                    if (result.wasFallback) {
-                        setGeminiModel(result.modelUsed, true);
-                    }
                     if (settingsPill) {
                         settingsPill.style.background = 'rgba(48, 209, 88, 0.16)';
                         settingsPill.style.color = '#30D158';
@@ -7742,14 +7769,20 @@
             if (!md) return '';
 
             // Clean flashcard tags for main markdown view (handled by flashcard deck)
+            let hasCards = false;
             let text = md.replace(/\[CARD\][\s\S]*?\[\/CARD\]/gi, () => {
-                return '<div style="padding: 6px 12px; margin: 4px 0; border-radius: 8px; background: rgba(10, 132, 255, 0.08); border-left: 3px solid var(--accent-blue); font-size: 12px; font-weight: 600; color: var(--accent-blue);">🃏 Flashcard generated in 3D deck above</div>';
+                hasCards = true;
+                return '';
             });
 
             let html = text
                 .replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;');
+
+            if (hasCards) {
+                html = '<div style="padding: 8px 14px; margin-bottom: 12px; border-radius: 12px; background: rgba(10, 132, 255, 0.10); border: 1px solid rgba(10, 132, 255, 0.25); font-size: 12.5px; font-weight: 700; color: var(--accent-blue); display: flex; align-items: center; gap: 8px;"><span>🃏</span> Flashcards generated in interactive 3D deck above</div>' + html;
+            }
 
             // Display math $$ ... $$
             html = html.replace(/\$\$([\s\S]*?)\$\$/g, (match, formula) => {
@@ -7884,8 +7917,20 @@
             };
         }
 
+        let lastAiTaskType = 'summarize';
+        let lastAiCustomPrompt = '';
+
+        function retryLastAiTask() {
+            if (lastAiTaskType === 'custom' && lastAiCustomPrompt) {
+                const input = document.getElementById('ai-custom-prompt-input');
+                if (input) input.value = lastAiCustomPrompt;
+            }
+            runAiTask(lastAiTaskType);
+        }
+
         async function runAiTask(taskType) {
             if (isAiBusy) return;
+            lastAiTaskType = taskType;
 
             // Offline check
             if (!navigator.onLine) {
@@ -7938,6 +7983,100 @@ A concise synopsis of the main core concept on this page.
 ### 💡 High-Yield Takeaways
 - Practical memory tips, exam-relevant highlights, or mnemonics.
 Use clear, beautiful Markdown with bold terms and bullet lists.`;
+            } else if (taskType === 'summary_pdf') {
+                taskTitle = 'Creating Publication-Grade Summarized PDF';
+                userPromptText = `You are an elite academic editor and executive research analyst creating an official Summarized PDF report.
+Analyze all handwritten notes, formulas, visual diagrams, and context on this study page.
+Produce a comprehensive, publication-grade executive summary report formatted for immediate PDF export:
+
+# 📄 Executive Study Report & Summary
+## 🎯 Core Thesis & Executive Synopsis
+Provide a clear, high-level summary of the entire subject matter covered on this page.
+
+## 🔬 In-Depth Key Findings & Breakdown
+- Comprehensive bullet points analyzing each concept, step, theorem, or mechanism.
+- Emphasize critical relationships, nuances, and real-world importance.
+
+## 📐 Formulas, Mathematical Laws & Constants
+- List every formula in clean LaTeX notation ($$ ... $$ or $ ... $) with all variables explicitly defined.
+
+## ⚠️ Common Misconceptions & Exam Pitfalls
+- Highlight frequent errors students make on this topic and how to avoid them.
+
+## 📋 Actionable Study Checklist
+- [ ] High-priority concept to memorize
+- [ ] Formula or calculation to practice
+- [ ] Synthesis review task
+
+## 🃏 Spaced Repetition Review Cards
+[CARD]
+Front: Key concept or definition question
+Back: Concise answer and explanation
+[/CARD]
+
+Format with pristine Markdown and clear headings.`;
+            } else if (taskType === 'study_guide') {
+                taskTitle = 'Generating Comprehensive Exam Study Guide';
+                userPromptText = `You are an expert professor creating an intensive, high-yield Exam Study Guide from this page.
+Structure the study guide:
+## 📚 High-Yield Exam Study Guide
+### 🌟 Big Picture Concept
+Why this topic matters and how it fits into the broader curriculum.
+### 🧠 Deep Dive Explanations & Theory
+Step-by-step breakdown of each principle with intuitive explanations.
+### 🔑 Memorization Mnemonics & Mental Hooks
+Clever acronyms, analogies, or visualization tricks to remember these facts easily.
+### ❓ Self-Testing Review Questions
+3 challenge questions to test mastery.
+Format cleanly with Markdown.`;
+            } else if (taskType === 'formula_sheet') {
+                taskTitle = 'Extracting Formula & Equation Cheatsheet';
+                userPromptText = `You are a STEM formula and equation extraction specialist.
+Carefully inspect all handwriting, math notations, symbols, and graphs on this page:
+## ⚡ Master Formula & Equation Cheatsheet
+### 📐 Core Equations & Laws
+- Present every formula in clear LaTeX display format ($$ ... $$ or $ ... $).
+- Define every variable, constant, and standard SI unit.
+### 🔄 Variations & Algebraic Rearrangements
+- Show common derived forms useful for problem-solving.
+### 💡 Practical Application Example
+- One quick example demonstrating how to plug in values.
+Format with clean Markdown and LaTeX.`;
+            } else if (taskType === 'action_items') {
+                taskTitle = 'Extracting Action Tasks & Homework';
+                userPromptText = `You are an executive student task assistant.
+Review the handwritten notes and page context to extract all actionable study tasks:
+## ✅ Action Tasks & Study Deliverables
+### 📝 Homework & Problem Sets
+- Specific exercises, problems, or reading assigned or implied.
+### 📅 Deadlines & Milestones
+- Any upcoming due dates, exam dates, or project milestones.
+### 🎯 Immediate Next Study Steps
+- Recommended 20-minute follow-up actions to consolidate this page's material.
+Format with clean Markdown checkboxes.`;
+            } else if (taskType === 'critique') {
+                taskTitle = 'Proof & Error Check Evaluation';
+                userPromptText = `You are a rigorous academic tutor conducting a constructive critique and proof verification of this page:
+## 🔍 Notes & Calculation Quality Audit
+### ✓ Strengths & Correct Work
+- What parts of the handwriting, calculations, or notes are accurate and well-done.
+### ⚠️ Detected Errors or Inconsistencies
+- Any algebraic errors, sign mistakes, missing units, ambiguous notations, or logical leaps.
+### 💡 Recommended Corrections & Improvements
+- Exact corrections and tips to make these notes more readable and exam-proof.
+Format with clean Markdown.`;
+            } else if (taskType === 'simplify') {
+                taskTitle = 'Simplifying Concepts (ELI5)';
+                userPromptText = `You are a master communicator skilled in the Feynman Technique (Explain Like I'm 5).
+Examine the notes and diagrams on this page:
+## 💡 Plain-English Concept Simplification
+### 🎈 The 30-Second Elevator Pitch
+Explain what this page is talking about using simple words that anyone can understand.
+### 🧩 Everyday Real-World Analogy
+Use a vivid analogy (cooking, sports, traffic, smartphones, nature) to explain the mechanism.
+### 🪜 Step-by-Step Without Jargon
+Walk through the process step-by-step, replacing technical jargon with clear plain language.
+Format with clean Markdown.`;
             } else if (taskType === 'math_ocr') {
                 taskTitle = 'Transcribing Math & LaTeX OCR';
                 userPromptText = `You are an expert mathematical and scientific OCR assistant.
@@ -8010,6 +8149,7 @@ Format with clean Markdown.`;
                     promptInput?.focus();
                     return;
                 }
+                lastAiCustomPrompt = query;
                 taskTitle = `Answering: "${query.slice(0, 24)}..."`;
                 userPromptText = query;
                 if (promptInput) promptInput.value = '';
@@ -8059,8 +8199,8 @@ Format with clean Markdown.`;
                     if (snapshot) {
                         if (snapshot.base64Data) {
                             currentParts.push({
-                                inline_data: {
-                                    mime_type: snapshot.mimeType,
+                                inlineData: {
+                                    mimeType: snapshot.mimeType || 'image/jpeg',
                                     data: snapshot.base64Data
                                 }
                             });
@@ -8096,23 +8236,22 @@ Format with clean Markdown.`;
                 };
 
                 const preferredModel = getGeminiModel();
-                const result = await executeGeminiStreamCall(apiKey, preferredModel, contentsPayload, onChunkReceived);
+                const result = await executeGeminiCall(apiKey, preferredModel, contentsPayload);
 
                 if (result.ok && result.text) {
                     const text = result.text;
                     currentAiResponseText = text;
 
-                    // If auto-failover occurred because of high demand on 3.8, save and display the active model
+                    // If auto-failover occurred, notify user without overwriting their saved model preference
                     if (result.wasFallback) {
-                        setGeminiModel(result.modelUsed, true);
-                        showToastNotification(`✨ Auto-switched to ${formatModelDisplayName(result.modelUsed)} (High Speed)`, "sparkles");
+                        showToastNotification(`⚡ Delivered via ${formatModelDisplayName(result.modelUsed)} (High-Speed Fallback)`, "sparkles");
                     }
 
                     // Update session history
                     aiChatHistory.push({ role: 'user', text: userPromptText });
                     aiChatHistory.push({ role: 'model', text: text });
 
-                    // Final clean render without streaming cursor
+                    // Final clean render
                     if (mdBox) {
                         mdBox.innerHTML = renderMarkdownToHtml(text);
                     }
@@ -8130,26 +8269,33 @@ Format with clean Markdown.`;
 
                     if (statusLabel) statusLabel.innerText = `${formatModelDisplayName(result.modelUsed)} • Complete`;
                     showToastNotification("✨ AI Analysis Generated", "sparkles");
+
+                    // Smooth auto-scroll central content container
+                    const scrollArea = document.getElementById('ai-content-scroll-area');
+                    if (scrollArea) {
+                        scrollArea.scrollTo({ top: scrollArea.scrollHeight, behavior: 'smooth' });
+                    }
                 } else {
                     const statusCode = result.status;
                     let err = result.error || "Failed to generate AI response";
                     if (statusCode === 400) {
-                        err = "Invalid API request or key format. Please check your key in Settings.";
+                        err = "Invalid API request format or key. Please check your Gemini API key in Settings.";
                     } else if (statusCode === 403) {
                         err = "API Key authentication failed (403). Ensure Gemini API is enabled in your Google AI Studio project.";
                     } else if (statusCode === 503) {
-                        err = "Google Gemini is currently experiencing extreme global traffic. Please switch to Gemini 3.5 Lite or try again in 1 minute.";
+                        err = "Google Gemini is currently experiencing high demand. Please try again or switch model.";
                     }
                     if (mdBox) {
-                        mdBox.innerHTML = `<div style="color: var(--accent-red); font-weight: 600; padding: 14px; background: rgba(255, 69, 58, 0.1); border-radius: 12px; border: 1px solid rgba(255, 69, 58, 0.25); line-height: 1.5;">
+                        mdBox.innerHTML = `<div style="color: var(--accent-red); font-weight: 600; padding: 14px; background: rgba(255, 69, 58, 0.1); border-radius: 14px; border: 1px solid rgba(255, 69, 58, 0.25); line-height: 1.5;">
                             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
                                 <span>⚠️</span>
                                 <span style="font-size: 14px; font-weight: 700;">Generation Request Issue (${statusCode || 'Error'})</span>
                             </div>
-                            <div style="font-size: 12.5px; opacity: 0.95;">${escapeHtml(err)}</div>
-                            <div style="margin-top: 10px; display: flex; gap: 8px;">
-                                <button onclick="window.cycleGeminiModel()" class="spring-btn" style="padding: 6px 12px; border-radius: 10px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary); font-size: 11px; font-weight: 700; cursor: pointer;">Switch Model</button>
-                                <button onclick="window.toggleInlineKeyDrawer()" class="spring-btn" style="padding: 6px 12px; border-radius: 10px; background: var(--accent-blue); border: none; color: #fff; font-size: 11px; font-weight: 700; cursor: pointer;">Check API Key</button>
+                            <div style="font-size: 12.5px; opacity: 0.95; margin-bottom: 10px;">${escapeHtml(err)}</div>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <button onclick="window.retryLastAiTask()" class="spring-btn" style="padding: 7px 14px; border-radius: 10px; background: var(--accent-blue); border: none; color: #fff; font-size: 11.5px; font-weight: 700; cursor: pointer;">Retry Now</button>
+                                <button onclick="window.cycleGeminiModel()" class="spring-btn" style="padding: 7px 12px; border-radius: 10px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary); font-size: 11.5px; font-weight: 700; cursor: pointer;">Switch Model</button>
+                                <button onclick="window.toggleInlineKeyDrawer()" class="spring-btn" style="padding: 7px 12px; border-radius: 10px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary); font-size: 11.5px; font-weight: 700; cursor: pointer;">Check API Key</button>
                             </div>
                         </div>`;
                     }
@@ -8171,9 +8317,28 @@ Format with clean Markdown.`;
             }
         }
 
+        function toggleAcceleratorsView() {
+            const grid = document.getElementById('ai-chips-grid-wrapper');
+            const btn = document.getElementById('ai-toggle-accelerators-btn');
+            if (!grid) return;
+            const isHidden = grid.style.display === 'none';
+            grid.style.display = isHidden ? 'grid' : 'none';
+            if (btn) btn.innerText = isHidden ? 'Hide' : 'Show';
+        }
+
         function copyAiResponseText() {
             if (!currentAiResponseText) return;
             navigator.clipboard.writeText(currentAiResponseText).then(() => {
+                const btn = document.getElementById('ai-copy-btn');
+                if (btn) {
+                    const originalHtml = btn.innerHTML;
+                    btn.innerHTML = '<span>✓</span> Copied!';
+                    btn.style.color = '#30D158';
+                    setTimeout(() => {
+                        btn.innerHTML = originalHtml;
+                        btn.style.color = '';
+                    }, 1500);
+                }
                 showToastNotification("AI Notes Copied to Clipboard", "check");
             }).catch(() => {
                 showToastNotification("Failed to copy", "info");
@@ -8214,6 +8379,345 @@ Format with clean Markdown.`;
             }, 80);
 
             showToastNotification("AI Study Page Added to Notebook", "sparkles");
+        }
+
+        /* Stamp AI Summary Notes Directly onto the Current Active Page */
+        function stampAiNotesOnActivePage() {
+            if (!currentAiResponseText) {
+                showToastNotification("Generate an AI summary first to stamp", "info");
+                return;
+            }
+            const nb = getActiveNotebook();
+            if (!nb || !nb.pages[activePageIndex]) return;
+
+            const page = nb.pages[activePageIndex];
+            page.aiNotes = currentAiResponseText;
+            saveNotebookDirect(nb);
+
+            // Re-render active canvas background layer
+            const bgCanvas = document.getElementById(`bg-canvas-${activePageIndex}`);
+            if (bgCanvas) {
+                const bgCtx = bgCanvas.getContext('2d');
+                bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+                const activeBlobId = page.pdfBlobId || nb.pdfBlobId;
+                if (page.pdfPageIndex && activeBlobId) {
+                    renderPdfPageToCanvas(activeBlobId, page.pdfPageIndex, bgCanvas, page.width, page.height);
+                    drawAiNotesOnCanvas(bgCtx, page.aiNotes, page.width, page.height, isDarkMode);
+                } else {
+                    drawPageBackgroundTemplate(bgCtx, page.width, page.height, page.paperType, page.paperColor || 'white', page);
+                }
+            }
+
+            renderDrawerThumbnails();
+            showToastNotification("📌 AI Summary Stamped on Active Page", "check");
+        }
+
+        /* Publication-Grade High-Yield Summarized PDF Generator */
+        async function exportAiSummarizedPdf(textOverride = null, customTitle = null) {
+            const nb = getActiveNotebook();
+            const text = textOverride || currentAiResponseText;
+            if (!text || !text.trim()) {
+                showToastNotification("Please generate an AI summary first!", "info");
+                return;
+            }
+
+            const docTitle = customTitle || (nb ? `${nb.title} - AI Summary` : 'AI Study Synthesis');
+            const fileName = (docTitle.replace(/[^a-zA-Z0-9_-]/g, '_') || 'AI_Summary') + '.pdf';
+
+            showScreenLoader("Generating Summarized PDF", "Formatting typography & vector pages...");
+
+            try {
+                const jsPDFClass = (window.jspdf && window.jspdf.jsPDF) ? window.jspdf.jsPDF : (window.jsPDF || (typeof jspdf !== 'undefined' ? jspdf.jsPDF : null));
+                if (!jsPDFClass) throw new Error("jsPDF library not available");
+
+                // Standard A4 dimensions in points: 595.28 x 841.89
+                const doc = new jsPDFClass({
+                    unit: 'pt',
+                    format: 'a4',
+                    orientation: 'portrait'
+                });
+
+                const pageWidth = 595.28;
+                const pageHeight = 841.89;
+                const margin = 42;
+                const contentWidth = pageWidth - (margin * 2);
+                let currentY = margin;
+
+                function renderHeader(isFirstPage) {
+                    if (isFirstPage) {
+                        // Decorative Top Purple Gradient Bar
+                        doc.setFillColor(191, 90, 242);
+                        doc.rect(margin, currentY, contentWidth, 6, 'F');
+                        currentY += 18;
+
+                        // Logo / Brand
+                        doc.setFont("helvetica", "bold");
+                        doc.setFontSize(10);
+                        doc.setTextColor(191, 90, 242);
+                        doc.text("GREATNOTES PRO • APPLE INTELLIGENCE & GEMINI 3.8 FLASH", margin, currentY);
+                        currentY += 20;
+
+                        // Title
+                        doc.setFont("helvetica", "bold");
+                        doc.setFontSize(20);
+                        doc.setTextColor(30, 41, 59);
+                        const cleanDocTitle = doc.splitTextToSize(docTitle, contentWidth);
+                        doc.text(cleanDocTitle, margin, currentY);
+                        currentY += (cleanDocTitle.length * 20);
+
+                        // Metadata Strip
+                        doc.setFont("helvetica", "normal");
+                        doc.setFontSize(9.5);
+                        doc.setTextColor(100, 116, 139);
+                        const dateStr = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+                        const metaStr = `Notebook: ${nb ? nb.title : 'Study Document'}  |  Page ${activePageIndex + 1}  |  Generated: ${dateStr}  |  Model: Gemini 3.8 Flash 🧠`;
+                        doc.text(metaStr, margin, currentY);
+                        currentY += 14;
+
+                        // Divider Line
+                        doc.setDrawColor(226, 232, 240);
+                        doc.setLineWidth(1);
+                        doc.line(margin, currentY, margin + contentWidth, currentY);
+                        currentY += 22;
+                    } else {
+                        // Continuation Header
+                        doc.setFont("helvetica", "bold");
+                        doc.setFontSize(8.5);
+                        doc.setTextColor(148, 163, 184);
+                        doc.text(`GreatNotes Pro AI Studio • ${docTitle.slice(0, 50)}`, margin, margin);
+                        doc.setDrawColor(241, 245, 249);
+                        doc.line(margin, margin + 4, margin + contentWidth, margin + 4);
+                        currentY = margin + 24;
+                    }
+                }
+
+                function checkPageBreak(neededHeight) {
+                    if (currentY + neededHeight > pageHeight - margin - 25) {
+                        doc.addPage();
+                        renderHeader(false);
+                        return true;
+                    }
+                    return false;
+                }
+
+                renderHeader(true);
+
+                // Parse markdown lines
+                const lines = text.split('\n');
+                let inFlashcard = false;
+                let fcFront = '';
+                let fcBack = '';
+
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i].trim();
+
+                    if (line === '[CARD]') {
+                        inFlashcard = true;
+                        fcFront = '';
+                        fcBack = '';
+                        continue;
+                    }
+                    if (line === '[/CARD]') {
+                        inFlashcard = false;
+                        checkPageBreak(74);
+                        // Render Flashcard visual box
+                        doc.setFillColor(248, 250, 252);
+                        doc.setDrawColor(203, 213, 225);
+                        doc.roundedRect(margin, currentY, contentWidth, 58, 8, 8, 'FD');
+                        
+                        doc.setFont("helvetica", "bold");
+                        doc.setFontSize(9);
+                        doc.setTextColor(10, 132, 255);
+                        doc.text("SPACED REPETITION FLASHCARD", margin + 12, currentY + 16);
+
+                        doc.setFont("helvetica", "bold");
+                        doc.setFontSize(9.5);
+                        doc.setTextColor(30, 41, 59);
+                        const qLines = doc.splitTextToSize(`Q: ${fcFront}`, contentWidth - 24);
+                        doc.text(qLines[0] || 'Q: Review Question', margin + 12, currentY + 30);
+
+                        doc.setFont("helvetica", "normal");
+                        doc.setFontSize(9);
+                        doc.setTextColor(71, 85, 105);
+                        const aLines = doc.splitTextToSize(`A: ${fcBack}`, contentWidth - 24);
+                        doc.text(aLines[0] || 'A: Review Answer', margin + 12, currentY + 45);
+
+                        currentY += 68;
+                        continue;
+                    }
+
+                    if (inFlashcard) {
+                        if (line.startsWith('Front:')) fcFront = line.replace('Front:', '').trim();
+                        if (line.startsWith('Back:')) fcBack = line.replace('Back:', '').trim();
+                        continue;
+                    }
+
+                    if (!line) {
+                        currentY += 8;
+                        continue;
+                    }
+
+                    if (line.startsWith('# ')) {
+                        checkPageBreak(36);
+                        doc.setFont("helvetica", "bold");
+                        doc.setFontSize(16);
+                        doc.setTextColor(147, 51, 234);
+                        const headingText = line.replace(/^#\s*/, '');
+                        doc.text(headingText, margin, currentY);
+                        currentY += 22;
+                    } else if (line.startsWith('## ')) {
+                        checkPageBreak(32);
+                        doc.setFont("helvetica", "bold");
+                        doc.setFontSize(13);
+                        doc.setTextColor(37, 99, 235);
+                        const headingText = line.replace(/^##\s*/, '');
+                        doc.text(headingText, margin, currentY);
+                        currentY += 18;
+                    } else if (line.startsWith('### ')) {
+                        checkPageBreak(28);
+                        doc.setFont("helvetica", "bold");
+                        doc.setFontSize(11);
+                        doc.setTextColor(51, 65, 85);
+                        const headingText = line.replace(/^###\s*/, '');
+                        doc.text(headingText, margin, currentY);
+                        currentY += 16;
+                    } else {
+                        // Regular text or bullet point
+                        const isBullet = line.startsWith('- ') || line.startsWith('* ') || line.startsWith('• ');
+                        let cleanText = line.replace(/^[-*•]\s*/, '').replace(/\*\*(.*?)\*\*/g, '$1');
+                        
+                        doc.setFont("helvetica", "normal");
+                        doc.setFontSize(10);
+                        doc.setTextColor(51, 65, 85);
+
+                        const indent = isBullet ? 16 : 0;
+                        const splitLines = doc.splitTextToSize(cleanText, contentWidth - indent);
+
+                        checkPageBreak(splitLines.length * 14 + 6);
+
+                        if (isBullet) {
+                            doc.setFillColor(37, 99, 235);
+                            doc.circle(margin + 6, currentY + 4, 2, 'F');
+                        }
+
+                        doc.text(splitLines, margin + indent, currentY + 8);
+                        currentY += (splitLines.length * 14) + 4;
+                    }
+                }
+
+                // Add footer on every page
+                const totalPages = doc.internal.getNumberOfPages();
+                for (let p = 1; p <= totalPages; p++) {
+                    doc.setPage(p);
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(8.5);
+                    doc.setTextColor(148, 163, 184);
+                    doc.text(`Page ${p} of ${totalPages}  •  GreatNotes Pro AI Studio with Gemini 3.8 Flash`, margin, pageHeight - 24);
+                }
+
+                doc.save(fileName);
+                showToastNotification("✓ Summarized PDF Downloaded", "check");
+            } catch (err) {
+                console.error("PDF Export Error:", err);
+                showToastNotification("Failed to generate PDF: " + err.message, "info");
+            } finally {
+                hideScreenLoader();
+            }
+        }
+
+        /* Insert External PDF Pages Directly into the Active Notebook */
+        function requestInsertPdfToActiveNotebook() {
+            const nb = getActiveNotebook();
+            if (!nb) {
+                showToastNotification("Open a document to insert PDF pages", "info");
+                return;
+            }
+            closeAppleDialog();
+            closeExportSheet();
+            closePageMatrixSheet();
+
+            // Create temporary file input specifically for PDF
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'application/pdf';
+            input.style.display = 'none';
+
+            input.onchange = async (e) => {
+                const file = e.target.files ? e.target.files[0] : null;
+                if (!file) return;
+
+                showScreenLoader("Inserting PDF Pages", "Mapping vector pages & rendering...");
+
+                try {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                    const totalPages = pdfDoc.numPages;
+                    const blobId = 'pdf_' + Date.now();
+
+                    // Store binary data in IndexedDB
+                    cachedPdfDocuments.set(blobId, pdfDoc);
+                    if (idb) {
+                        const tx = idb.transaction(STORE_PDF_BLOBS, 'readwrite');
+                        tx.objectStore(STORE_PDF_BLOBS).put({ id: blobId, data: arrayBuffer });
+                    }
+
+                    const insertIdx = activePageIndex + 1;
+                    const newPages = [];
+                    for (let i = 1; i <= totalPages; i++) {
+                        const p = await pdfDoc.getPage(i);
+                        const v = p.getViewport({ scale: 1.0 });
+                        const aspectRatio = v.height / v.width;
+                        const targetWidth = PAGE_WIDTH_BASE;
+                        const targetHeight = Math.round(targetWidth * aspectRatio);
+
+                        newPages.push({
+                            id: `p_${Date.now()}_${i}`,
+                            paperType: 'pdf',
+                            pdfBlobId: blobId,
+                            pdfPageIndex: i,
+                            width: targetWidth,
+                            height: targetHeight,
+                            paths: [],
+                            redoPaths: []
+                        });
+                    }
+
+                    // Insert right after current active page
+                    nb.pages.splice(insertIdx, 0, ...newPages);
+                    saveNotebookDirect(nb);
+
+                    buildWorkspacePages();
+                    renderDrawerThumbnails();
+                    activePageIndex = insertIdx;
+
+                    setTimeout(() => {
+                        const el = document.getElementById(`page-wrapper-${insertIdx}`);
+                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 120);
+
+                    showToastNotification(`✓ Inserted ${totalPages} PDF Page${totalPages > 1 ? 's' : ''} to Notebook`, "check");
+                } catch (err) {
+                    console.error("Insert PDF Error:", err);
+                    showToastNotification("Failed to insert PDF: " + err.message, "info");
+                } finally {
+                    hideScreenLoader();
+                    if (input.parentNode) input.parentNode.removeChild(input);
+                }
+            };
+
+            document.body.appendChild(input);
+            input.click();
+        }
+
+        /* One-Tap Summarize Notebook & Generate PDF from Export Sheet */
+        async function generateNotebookAiSummaryPdf() {
+            closeExportSheet();
+            openAiStudioSheet();
+            showToastNotification("Synthesizing Executive Summarized PDF...", "sparkles");
+            await runAiTask('summary_pdf');
+            if (currentAiResponseText) {
+                exportAiSummarizedPdf();
+            }
         }
 
         /* ==========================================================================
@@ -8404,15 +8908,11 @@ Format with clean Markdown.`;
             }
             const currentModel = getGeminiModel();
             const m38 = document.getElementById('ai-model-38-flash');
+            const m36 = document.getElementById('ai-model-36-flash');
             const m35 = document.getElementById('ai-model-35-lite');
-            if (m38) {
-                if (currentModel === 'gemini-3.8-flash') m38.classList.add('active');
-                else m38.classList.remove('active');
-            }
-            if (m35) {
-                if (currentModel === 'gemini-3.5-flash-lite') m35.classList.add('active');
-                else m35.classList.remove('active');
-            }
+            if (m38) m38.classList.toggle('active', currentModel === 'gemini-3.8-flash');
+            if (m36) m36.classList.toggle('active', currentModel === 'gemini-3.6-flash');
+            if (m35) m35.classList.toggle('active', currentModel === 'gemini-3.5-flash-lite');
             const aiVisionBtn = document.getElementById('ai-vision-toggle-btn');
             if (aiVisionBtn) {
                 const isVision = isAiMultimodalEnabled();
@@ -8840,7 +9340,9 @@ Format with clean Markdown.`;
             optimizeStorageCache, toggleDockCollapse, toggleSmartDarkPdf,
             openShortcutsHud, closeShortcutsHud, toggleShortcutsHud, navigateToPage,
             openAiStudioSheet, closeAiStudioSheet, toggleAiStudioSheet, runAiTask,
-            copyAiResponseText, insertAiResponseAsPage, testGeminiApiKey, saveGeminiApiKey,
+            toggleAcceleratorsView, retryLastAiTask, executeGeminiCall,
+            copyAiResponseText, insertAiResponseAsPage, exportAiSummarizedPdf, stampAiNotesOnActivePage,
+            requestInsertPdfToActiveNotebook, generateNotebookAiSummaryPdf, testGeminiApiKey, saveGeminiApiKey,
             syncAndSaveApiKey, updateApiKeyStatusUI, toggleInlineKeyDrawer, toggleModalApiKeyVisibility,
             flipCurrentFlashcard, nextFlashcard, prevFlashcard, shuffleFlashcards,
             toggleAudioStudyTutor, clearAiSessionHistory,
