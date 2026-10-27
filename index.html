@@ -561,15 +561,17 @@
             animation: waterDropJiggle 0.44s cubic-bezier(0.25, 1, 0.5, 1) both;
         }
 
-        /* LIQUID GLASS WATER-DROP DOCK TOOL BUTTONS & IPAD A16 COMPONENT LOCK */
+        /* ==========================================================================
+           CALM APPLE NOTES FLOATING DOCK & ANCHORED TOOLCASE SYSTEM
+           ========================================================================== */
         .dock-tool-btn {
-            width: 42px !important;
-            height: 42px !important;
-            min-width: 42px !important;
-            min-height: 42px !important;
-            max-width: 42px !important;
-            max-height: 42px !important;
-            border-radius: 21px !important;
+            width: 44px !important;
+            height: 44px !important;
+            min-width: 44px !important;
+            min-height: 44px !important;
+            max-width: 44px !important;
+            max-height: 44px !important;
+            border-radius: 22px !important;
             aspect-ratio: 1 / 1 !important;
             flex-shrink: 0 !important;
             box-sizing: border-box !important;
@@ -580,92 +582,178 @@
             color: var(--text-secondary);
             background: transparent;
             position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            transition: transform 0.30s cubic-bezier(0.25, 1, 0.5, 1),
-                        background-color 0.22s ease,
-                        color 0.22s ease,
-                        box-shadow 0.28s ease;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            transition: transform 0.16s cubic-bezier(0.25, 1, 0.5, 1),
+                        background-color 0.16s ease,
+                        color 0.16s ease,
+                        box-shadow 0.16s ease;
         }
         .dock-tool-btn span {
             display: flex;
             align-items: center;
             justify-content: center;
             pointer-events: none;
-            transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.16s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .dock-tool-btn:hover {
             color: var(--text-primary);
             background: rgba(0, 0, 0, 0.05);
-            transform: translateY(-1.5px) scale(1.02);
-        }
-        .dock-tool-btn:hover span {
             transform: scale(1.04);
-        }
-        html.dark .dock-tool-btn {
-            color: rgba(226, 232, 240, 0.72);
         }
         html.dark .dock-tool-btn:hover {
             color: #FFFFFF;
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.10);
         }
         .dock-tool-btn:active {
-            transform: scale(0.96, 0.97) translateY(0.5px) !important;
-            transition: transform 0.10s ease;
+            transform: scale(0.94) !important;
+            transition: transform 0.08s ease;
         }
         .dock-tool-btn.active {
             background-color: var(--accent-blue) !important;
             color: #FFFFFF !important;
-            animation: waterDropletLevitate 5.5s infinite ease-in-out;
-            box-shadow: 0 8px 22px rgba(var(--accent-blue-rgb), 0.45),
-                        inset 0 1.5px 1px rgba(255, 255, 255, 0.55),
-                        inset 0 -1.5px 2px rgba(0, 0, 0, 0.25) !important;
+            box-shadow: 0 4px 14px rgba(var(--accent-blue-rgb), 0.38),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
         }
         html.dark .dock-tool-btn.active {
-            box-shadow: 0 8px 24px rgba(var(--accent-blue-rgb), 0.55),
-                        inset 0 1.5px 1px rgba(255, 255, 255, 0.45),
-                        inset 0 -1.5px 2px rgba(0, 0, 0, 0.4),
-                        0 0 14px rgba(var(--accent-blue-rgb), 0.30) !important;
+            box-shadow: 0 4px 16px rgba(var(--accent-blue-rgb), 0.45),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.30) !important;
         }
         .dock-tool-btn.active::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 3px;
             left: 50%;
             transform: translateX(-50%);
-            width: 4px;
-            height: 4px;
+            width: 3px;
+            height: 3px;
             border-radius: 50%;
-            background: var(--accent-blue);
-            box-shadow: 0 0 6px var(--accent-blue);
+            background: #FFFFFF;
+            opacity: 0.85;
         }
         .dock-tool-btn.active svg {
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.30));
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
         }
 
-        /* WATER DROP CAUSTIC RIPPLE EFFECT (WHISPER-SUBTLE SPEC) */
-        .water-drop-ripple {
+        /* ANCHORED TOOL SETTINGS POPOVER (APPLE NOTES / PENCIL SYSTEM) */
+        .dock-tool-popover {
             position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, rgba(var(--accent-blue-rgb), 0.15) 50%, transparent 70%);
-            transform: scale(0);
-            animation: waterRippleExpand 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            z-index: 10;
+            bottom: calc(100% + 14px);
+            border-radius: 20px;
+            padding: 14px 16px;
+            min-width: 270px;
+            max-width: 360px;
+            background: var(--bg-glass-pill);
+            backdrop-filter: blur(48px) saturate(210%);
+            -webkit-backdrop-filter: blur(48px) saturate(210%);
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 16px 44px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.08);
+            z-index: 1100;
+            pointer-events: auto;
+            opacity: 0;
+            transform: translateY(8px) scale(0.97);
+            transition: opacity 0.18s cubic-bezier(0.25, 1, 0.5, 1), transform 0.18s cubic-bezier(0.25, 1, 0.5, 1);
+            display: none;
+            box-sizing: border-box;
         }
-        html.dark .water-drop-ripple {
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(var(--accent-blue-rgb), 0.20) 50%, transparent 70%);
+        .dock-tool-popover.active {
+            display: block !important;
+            opacity: 1;
+            transform: translateY(0) scale(1.0);
         }
-        @keyframes waterRippleExpand {
-            0% {
-                opacity: 0.38;
-                transform: scale(0.3);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(1.6);
+        .dock-popover-arrow {
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: inherit;
+            border-right: 1px solid var(--border-glass);
+            border-bottom: 1px solid var(--border-glass);
+        }
+        .popover-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .popover-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.2px;
+        }
+        .popover-section-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--text-tertiary);
+            margin-bottom: 6px;
+        }
+        .popover-chips-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .popover-size-chip {
+            flex: 1;
+            min-width: 50px;
+            padding: 6px 4px;
+            border-radius: 12px;
+            background: var(--bg-interactive);
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+        .popover-size-chip.selected {
+            background: var(--accent-blue);
+            color: #FFFFFF;
+            border-color: var(--accent-blue);
+        }
+        .popover-preview-box {
+            width: 100%;
+            height: 32px;
+            border-radius: 10px;
+            background: var(--bg-interactive);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        /* INLINE DOCUMENT TITLE EDITING STYLES */
+        #doc-title-inline-input {
+            background: transparent;
+            border: 1px solid var(--accent-blue) !important;
+            border-radius: 8px;
+            padding: 2px 6px;
+            font-weight: 800;
+            font-size: 15px;
+            color: var(--text-primary);
+            outline: none;
+            font-family: inherit;
+            box-shadow: 0 0 0 3px rgba(var(--accent-blue-rgb), 0.2);
+        }
+
+        /* RESPECT PREFERS-REDUCED-MOTION */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
         }
 
@@ -3475,10 +3563,11 @@
                     </button>
                 </div>
 
-                <!-- Center Pill: Title & Live Cloud-Safe Status -->
-                <div onclick="window.requestRenameDoc()" class="apple-glass spring-btn" style="border-radius: 30px; padding: 8px 20px; display: flex; align-items: center; gap: 10px; pointer-events: auto; max-width: 380px;">
+                <!-- Center Pill: Title & Live Cloud-Safe Status with Inline Editing -->
+                <div id="doc-title-pill" onclick="window.handleTitlePillClick(event)" class="apple-glass spring-btn" style="border-radius: 30px; padding: 6px 18px; display: flex; align-items: center; gap: 8px; pointer-events: auto; max-width: 380px; position: relative;" title="Click to rename document">
                     <span id="doc-active-name" style="font-weight: 800; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Document</span>
-                    <span id="doc-edit-icon" style="color: var(--text-tertiary); display:flex;"></span>
+                    <input id="doc-title-inline-input" type="text" style="display: none; width: 140px;" onkeydown="window.handleTitleInputKeydown(event)" onblur="window.commitInlineDocRename()" />
+                    <span id="doc-edit-icon" style="color: var(--text-tertiary); display: flex;"></span>
                     <div style="width: 1px; height: 16px; background: var(--border-subtle);"></div>
                     <div id="save-status-badge" style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--accent-green); white-space: nowrap;">
                         <span class="sync-dot" style="background-color: var(--accent-green);"></span> Saved
@@ -3527,6 +3616,12 @@
 
             <!-- FLOATING DOCK: THE APPLE PENCIL PRECISION TOOLCASE -->
             <div id="apple-pencil-dock" style="position: absolute; bottom: calc(var(--safe-bottom) + 16px); left: 0; right: 0; z-index: 1000; display: flex; justify-content: center; pointer-events: none;">
+                <!-- Anchored Tool Settings Popover -->
+                <div id="dock-tool-popover" class="dock-tool-popover" style="display: none;">
+                    <div id="dock-popover-content"></div>
+                    <div class="dock-popover-arrow" id="dock-popover-arrow"></div>
+                </div>
+
                 <div class="apple-dock-glass" style="border-radius: 40px; padding: 6px 14px; display: flex; align-items: center; gap: 8px; pointer-events: auto; max-width: 96vw; overflow-x: auto;">
                     
                     <!-- Stylus Mode (Apple Pencil Exclusive / Palm Rejection) -->
@@ -4099,6 +4194,9 @@
         }
 
         let currentSmoothedPressure = null;
+        let inkingRafId = null;
+        let activePointsQueue = [];
+        let smoothedVelocity = 0;
 
         function extractPointerCoordinates(e, canvas) {
             const rect = canvas.getBoundingClientRect();
@@ -4107,24 +4205,41 @@
             const scaleX = (canvas.width / dpr) / (rect.width || 1);
             const scaleY = (canvas.height / dpr) / (rect.height || 1);
             
-            // iPad Apple Pencil Pressure: 0.0 to 1.0 (fallback: 0.5 for non-pressure pencils like USB-C)
+            // iPad Apple Pencil Pressure: 0.0 to 1.0 (fallback: 0.5 for non-pressure pencils like USB-C or touch)
             let rawPressure = e.pressure;
-            if (rawPressure === 0 || rawPressure === undefined) rawPressure = 0.5;
+            if (rawPressure === undefined || rawPressure === 0) {
+                rawPressure = 0.5;
+            }
 
-            // Low-pass filter pressure to eliminate beading on Apple Pencil
+            // Low-pass filter pressure to eliminate micro-beading on Apple Pencil while preserving fast transitions
             if (currentSmoothedPressure === null) {
                 currentSmoothedPressure = rawPressure;
             } else {
-                currentSmoothedPressure = currentSmoothedPressure * 0.65 + rawPressure * 0.35;
+                currentSmoothedPressure = currentSmoothedPressure * 0.70 + rawPressure * 0.30;
             }
-            const pressure = Math.max(0.25, Math.min(1.0, currentSmoothedPressure));
+            const pressure = Math.max(0.18, Math.min(1.0, currentSmoothedPressure));
             
             return {
                 x: (e.clientX - rect.left) * scaleX,
                 y: (e.clientY - rect.top) * scaleY,
                 pressure: pressure,
-                time: e.timeStamp
+                rawPressure: rawPressure,
+                tiltX: e.tiltX || 0,
+                tiltY: e.tiltY || 0,
+                pointerType: e.pointerType || 'pen',
+                time: e.timeStamp || performance.now()
             };
+        }
+
+        function computeDynamicStrokeWidth(pt, baseSize) {
+            const p = (pt && pt.pressure !== undefined) ? pt.pressure : 0.5;
+            const pressureFactor = 0.36 + 0.84 * p;
+            
+            // Velocity factor: fast strokes taper naturally like a fountain pen
+            const vel = (pt && pt.velocity !== undefined) ? pt.velocity : 0;
+            const velFactor = Math.max(0.72, Math.min(1.20, 1.06 - vel * 0.10));
+            
+            return Math.max(1.0, baseSize * pressureFactor * velFactor);
         }
 
         function bindCanvasInking(activeCanvas, pageIndex) {
@@ -4147,6 +4262,9 @@
             // HARDWARE PALM REJECTION: If in Pencil Mode, reject finger touches for Apple Pencil fidelity
             if (stylusOnlyMode && e.pointerType !== 'pen') return;
 
+            // Dismiss any open dock tool popover when starting a stroke
+            if (typeof closeToolPopover === 'function') closeToolPopover();
+
             // Hardware Pointer Capture: locks stroke stream to canvas for unbroken inking
             try {
                 if (canvas.setPointerCapture) canvas.setPointerCapture(e.pointerId);
@@ -4157,6 +4275,8 @@
             hasSnappedShape = false;
             clearTimeout(shapeSnapTimer);
             currentSmoothedPressure = null;
+            activePointsQueue = [];
+            smoothedVelocity = 0;
 
             const pt = extractPointerCoordinates(e, canvas);
             shapeOrigin = pt;
@@ -4172,22 +4292,19 @@
                 return;
             }
 
-            if (currentTool !== 'laser') {
-                actCtx.clearRect(0, 0, canvas.width, canvas.height);
-            }
-
             if (currentTool === 'eraser') {
                 performEraserStrike(pt, pageIndex);
-            } else if (currentTool === 'highlighter') {
-                const nb = getActiveNotebook();
-                const isDark = (nb && nb.pages[pageIndex] && nb.pages[pageIndex].paperColor === 'dark');
-                canvas.style.mixBlendMode = isDark ? 'screen' : 'multiply';
+                return;
+            }
+
+            actCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Immediate tap dot feedback
+            if (currentTool === 'highlighter') {
                 renderLiveHighlighterStroke(canvas, activeStrokePoints, activeColor, activeSize, pageIndex);
-            } else if (currentTool === 'shape' && currentShapeMode !== 'auto') {
-                // Interactive geometric shape preview will start on pointer move
-            } else {
-                // Immediate crisp tap point
-                drawImmediateTapDot(actCtx, pt, activeColor, activeSize, currentTool);
+            } else if (currentTool === 'pen') {
+                const dWidth = computeDynamicStrokeWidth(pt, activeSize);
+                drawImmediateTapDot(actCtx, pt, activeColor, dWidth, currentTool);
             }
         }
 
@@ -4196,7 +4313,7 @@
             if (stylusOnlyMode && e.pointerType !== 'pen') return;
 
             if (currentTool === 'laser') {
-                const events = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+                const events = (e.getCoalescedEvents && typeof e.getCoalescedEvents === 'function') ? e.getCoalescedEvents() : [e];
                 const now = performance.now();
                 for (let ev of events) {
                     const lpt = extractPointerCoordinates(ev, canvas);
@@ -4209,39 +4326,32 @@
                 return;
             }
 
-            if (currentTool === 'highlighter') {
-                const events = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
-                let hasNewPoints = false;
+            if (currentTool === 'eraser') {
+                const events = (e.getCoalescedEvents && typeof e.getCoalescedEvents === 'function') ? e.getCoalescedEvents() : [e];
                 for (let ev of events) {
-                    const hpt = extractPointerCoordinates(ev, canvas);
-                    const prev = activeStrokePoints[activeStrokePoints.length - 1];
-                    if (!prev || Math.hypot(hpt.x - prev.x, hpt.y - prev.y) >= 1.2) {
-                        activeStrokePoints.push(hpt);
-                        hasNewPoints = true;
-                    }
-                }
-                if (hasNewPoints) {
-                    renderLiveHighlighterStroke(canvas, activeStrokePoints, activeColor, activeSize, pageIndex);
+                    const pt = extractPointerCoordinates(ev, canvas);
+                    performEraserStrike(pt, pageIndex);
                 }
                 return;
             }
 
-            const pt = extractPointerCoordinates(e, canvas);
-
             if (currentTool === 'shape' && currentShapeMode !== 'auto') {
-                // Live interactive geometric shape rubber-banding
+                const pt = extractPointerCoordinates(e, canvas);
                 renderLiveShapePreview(canvas, shapeOrigin, pt, currentShapeMode, activeColor, activeSize);
                 return;
             }
 
-            // High-Precision iPad A16 Touch & Apple Pencil Pipeline (120Hz/240Hz, Zero Ghost Dots)
+            // High-Precision Pointer Pipeline with Coalesced Events & RAF Scheduling
             const rawEvents = (e.getCoalescedEvents && typeof e.getCoalescedEvents === 'function') ? e.getCoalescedEvents() : null;
             const events = (rawEvents && rawEvents.length > 0) ? rawEvents : [e];
             for (let ev of events) {
-                renderIncrementalSplinePoint(ev, canvas, pageIndex);
+                const pt = extractPointerCoordinates(ev, canvas);
+                activePointsQueue.push(pt);
             }
 
-            // Geometric Shape Recognition: Only active when user intentionally selects the Shape tool
+            scheduleInkingFrame(canvas, pageIndex);
+
+            // Geometric Shape Recognition: Only active when user intentionally selects the Shape tool in auto mode
             if (currentTool === 'shape' && currentShapeMode === 'auto' && !hasSnappedShape) {
                 clearTimeout(shapeSnapTimer);
                 shapeSnapTimer = setTimeout(() => {
@@ -4252,7 +4362,42 @@
             }
         }
 
-        /* LIVE HIGH-PRECISION HIGHLIGHTER RENDERING (ZERO BEAD ARTIFACTS) */
+        function scheduleInkingFrame(canvas, pageIndex) {
+            if (inkingRafId) return;
+            inkingRafId = requestAnimationFrame(() => processInkingFrame(canvas, pageIndex));
+        }
+
+        function processInkingFrame(canvas, pageIndex) {
+            inkingRafId = null;
+            if (!isDrawingNow || currentDrawingPageIdx !== pageIndex) return;
+            if (activePointsQueue.length === 0) return;
+
+            let prevPt = activeStrokePoints[activeStrokePoints.length - 1];
+            for (let i = 0; i < activePointsQueue.length; i++) {
+                const pt = activePointsQueue[i];
+                const dist = prevPt ? Math.hypot(pt.x - prevPt.x, pt.y - prevPt.y) : 10;
+                if (dist < 0.6) continue; // Filter subpixel micro-jitter
+
+                const dt = Math.max(1, (pt.time || performance.now()) - (prevPt ? (prevPt.time || pt.time) : pt.time));
+                const rawVel = dist / dt;
+                smoothedVelocity = smoothedVelocity * 0.70 + rawVel * 0.30;
+                pt.velocity = smoothedVelocity;
+
+                activeStrokePoints.push(pt);
+                prevPt = pt;
+            }
+            activePointsQueue = [];
+
+            if (hasSnappedShape) return;
+
+            if (currentTool === 'highlighter') {
+                renderLiveHighlighterStroke(canvas, activeStrokePoints, activeColor, activeSize, pageIndex);
+            } else {
+                renderLivePenStroke(canvas, activeStrokePoints, activeColor, activeSize, pageIndex);
+            }
+        }
+
+        /* LIVE HIGH-PRECISION HIGHLIGHTER RENDERING (UNIFORM TRANSLUCENT COMPOUND PATH) */
         function renderLiveHighlighterStroke(canvas, points, color, size, pageIndex) {
             if (!points || points.length === 0) return;
             const ctx = canvas.getContext('2d');
@@ -4296,58 +4441,87 @@
             ctx.restore();
         }
 
-        function renderIncrementalSplinePoint(e, canvas, pageIndex) {
-            const pt = extractPointerCoordinates(e, canvas);
-            const prev = activeStrokePoints[activeStrokePoints.length - 1];
+        /* LIVE CONTINUOUS PEN STROKE RENDERING (ZERO BEAD ARTIFACTS, SMOOTH BÉZIER) */
+        function renderLivePenStroke(canvas, points, color, size, pageIndex) {
+            if (!points || points.length === 0) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Filter out sub-pixel jitter
-            if (prev && Math.hypot(pt.x - prev.x, pt.y - prev.y) < 0.6) return;
+            const nb = getActiveNotebook();
+            const isDark = (nb && nb.pages[pageIndex] && nb.pages[pageIndex].paperColor === 'dark') || (isDarkMode && smartDarkPdfMode);
+            let drawColor = color;
+            if (isDark && (color === '#1C1C1E' || color === '#000000')) {
+                drawColor = '#FFFFFF';
+            }
 
-            activeStrokePoints.push(pt);
+            ctx.save();
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.strokeStyle = drawColor;
+            ctx.fillStyle = drawColor;
 
-            if (currentTool === 'eraser') {
-                performEraserStrike(pt, pageIndex);
+            if (points.length === 1) {
+                const w = computeDynamicStrokeWidth(points[0], size);
+                ctx.beginPath();
+                ctx.arc(points[0].x, points[0].y, w / 2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
                 return;
             }
 
-            if (hasSnappedShape) return;
-
-            const actCtx = canvas.getContext('2d');
-
-            // O(1) INCREMENTAL BEZIER SEGMENT: Draws ONLY the new curve segment
-            const mid = { x: (lastCtrlPoint.x + pt.x) / 2, y: (lastCtrlPoint.y + pt.y) / 2 };
-
-            actCtx.save();
-            actCtx.lineCap = 'round';
-            actCtx.lineJoin = 'round';
-
-            if (currentTool === 'highlighter') {
-                actCtx.globalAlpha = 0.38;
-                actCtx.strokeStyle = activeColor;
-                actCtx.lineWidth = activeSize;
-            } else {
-                // Calligraphic pressure dynamics
-                const dynWidth = activeSize * (0.35 + 0.9 * pt.pressure);
-                actCtx.strokeStyle = activeColor;
-                actCtx.lineWidth = dynWidth;
+            if (points.length === 2) {
+                const w = computeDynamicStrokeWidth(points[1], size);
+                ctx.lineWidth = w;
+                ctx.beginPath();
+                ctx.moveTo(points[0].x, points[0].y);
+                ctx.lineTo(points[1].x, points[1].y);
+                ctx.stroke();
+                ctx.restore();
+                return;
             }
 
-            actCtx.beginPath();
-            actCtx.moveTo(lastMidpoint.x, lastMidpoint.y);
-            actCtx.quadraticCurveTo(lastCtrlPoint.x, lastCtrlPoint.y, mid.x, mid.y);
-            actCtx.stroke();
-            actCtx.restore();
+            // Continuous Calligraphic Smooth Midpoint Curve
+            let prevMid = { x: (points[0].x + points[1].x) / 2, y: (points[0].y + points[1].y) / 2 };
 
-            lastMidpoint = mid;
-            lastCtrlPoint = pt;
+            // Draw start segment to first midpoint
+            ctx.lineWidth = computeDynamicStrokeWidth(points[0], size);
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+            ctx.lineTo(prevMid.x, prevMid.y);
+            ctx.stroke();
+
+            for (let i = 1; i < points.length - 1; i++) {
+                const p1 = points[i];
+                const p2 = points[i + 1];
+                const currMid = { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 };
+                const segWidth = computeDynamicStrokeWidth(p1, size);
+
+                ctx.lineWidth = segWidth;
+                ctx.beginPath();
+                ctx.moveTo(prevMid.x, prevMid.y);
+                ctx.quadraticCurveTo(p1.x, p1.y, currMid.x, currMid.y);
+                ctx.stroke();
+
+                prevMid = currMid;
+            }
+
+            // Draw final segment from last midpoint to end
+            const lastPt = points[points.length - 1];
+            ctx.lineWidth = computeDynamicStrokeWidth(lastPt, size);
+            ctx.beginPath();
+            ctx.moveTo(prevMid.x, prevMid.y);
+            ctx.lineTo(lastPt.x, lastPt.y);
+            ctx.stroke();
+
+            ctx.restore();
         }
 
         function drawImmediateTapDot(ctx, pt, color, size, tool) {
             ctx.save();
             ctx.fillStyle = color;
-            ctx.globalAlpha = (tool === 'highlighter') ? 0.38 : 1.0;
+            ctx.globalAlpha = (tool === 'highlighter') ? 0.40 : 1.0;
             ctx.beginPath();
-            ctx.arc(pt.x, pt.y, size / 2, 0, Math.PI * 2);
+            ctx.arc(pt.x, pt.y, Math.max(1, size / 2), 0, Math.PI * 2);
             ctx.fill();
             ctx.restore();
         }
@@ -4371,11 +4545,7 @@
             } else if (mode === 'arrow') {
                 drawVectorArrow(actCtx, p1.x, p1.y, p2.x, p2.y, size);
             } else if (mode === 'rect') {
-                const rx = Math.min(p1.x, p2.x);
-                const ry = Math.min(p1.y, p2.y);
-                const rw = Math.abs(p2.x - p1.x);
-                const rh = Math.abs(p2.y - p1.y);
-                actCtx.strokeRect(rx, ry, rw, rh);
+                actCtx.strokeRect(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y), Math.abs(p2.x - p1.x), Math.abs(p2.y - p1.y));
             } else if (mode === 'circle') {
                 const cx = (p1.x + p2.x) / 2;
                 const cy = (p1.y + p2.y) / 2;
@@ -4463,6 +4633,23 @@
             if (!isDrawingNow || currentDrawingPageIdx !== pageIndex) return;
             isDrawingNow = false;
             clearTimeout(shapeSnapTimer);
+            if (inkingRafId) {
+                cancelAnimationFrame(inkingRafId);
+                inkingRafId = null;
+            }
+
+            // Flush any remaining coalesced points
+            if (activePointsQueue.length > 0) {
+                let prevPt = activeStrokePoints[activeStrokePoints.length - 1];
+                for (let pt of activePointsQueue) {
+                    const dist = prevPt ? Math.hypot(pt.x - prevPt.x, pt.y - prevPt.y) : 10;
+                    if (dist >= 0.6) {
+                        activeStrokePoints.push(pt);
+                        prevPt = pt;
+                    }
+                }
+                activePointsQueue = [];
+            }
 
             try {
                 if (canvas.releasePointerCapture && e.pointerId) canvas.releasePointerCapture(e.pointerId);
@@ -4472,12 +4659,11 @@
             if (!nb || !nb.pages[pageIndex]) return;
             const page = nb.pages[pageIndex];
 
-            if (currentTool === 'laser') {
-                // Laser fades out smoothly via requestAnimationFrame, not committed to page
-                return;
-            }
-
-            if (currentTool === 'eraser') {
+            if (currentTool === 'laser' || currentTool === 'eraser') {
+                const actCtx = canvas.getContext('2d');
+                actCtx.clearRect(0, 0, canvas.width, canvas.height);
+                activeStrokePoints = [];
+                currentDrawingPageIdx = null;
                 return;
             }
 
@@ -4556,19 +4742,55 @@
         /* ==========================================================================
            3. DUAL ERASER ENGINE (STROKE ERASER & PIXEL PRECISION ERASER)
            ========================================================================== */
+        function distToSegmentSquared(p, v, w) {
+            const l2 = (v.x - w.x) * (v.x - w.x) + (v.y - w.y) * (v.y - w.y);
+            if (l2 === 0) return (p.x - v.x) * (p.x - v.x) + (p.y - v.y) * (p.y - v.y);
+            let t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
+            t = Math.max(0, Math.min(1, t));
+            const projX = v.x + t * (w.x - v.x);
+            const projY = v.y + t * (w.y - v.y);
+            return (p.x - projX) * (p.x - projX) + (p.y - projY) * (p.y - projY);
+        }
+
         function performEraserStrike(pt, pageIndex) {
             const nb = getActiveNotebook();
             if (!nb || !nb.pages[pageIndex]) return;
             const page = nb.pages[pageIndex];
 
             if (eraserMode === 'stroke') {
-                // Whole-Object Stroke Eraser: Erases full stroke on contact
-                const hitRadius = activeSize;
+                // High-Precision Whole-Object Stroke Eraser: Segment Distance + Bounding Box Pre-Check
+                const hitRadius = Math.max(16, activeSize);
+                const hitRadiusSq = hitRadius * hitRadius;
                 const prevCount = page.paths.length;
+
                 page.paths = page.paths.filter(path => {
                     if (!path.points || path.points.length === 0) return false;
-                    for (let p of path.points) {
-                        if (Math.hypot(p.x - pt.x, p.y - pt.y) < hitRadius) {
+
+                    // 1. Fast Bounding Box Pre-Check
+                    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+                    for (let i = 0; i < path.points.length; i++) {
+                        const p = path.points[i];
+                        if (p.x < minX) minX = p.x;
+                        if (p.x > maxX) maxX = p.x;
+                        if (p.y < minY) minY = p.y;
+                        if (p.y > maxY) maxY = p.y;
+                    }
+
+                    if (pt.x < minX - hitRadius || pt.x > maxX + hitRadius ||
+                        pt.y < minY - hitRadius || pt.y > maxY + hitRadius) {
+                        return true; // Not within bounding box, keep path
+                    }
+
+                    // 2. High-Precision Segment Distance Check
+                    if (path.points.length === 1) {
+                        const d2 = (path.points[0].x - pt.x) ** 2 + (path.points[0].y - pt.y) ** 2;
+                        return d2 > hitRadiusSq;
+                    }
+
+                    for (let i = 0; i < path.points.length - 1; i++) {
+                        const p0 = path.points[i];
+                        const p1 = path.points[i + 1];
+                        if (distToSegmentSquared(pt, p0, p1) <= hitRadiusSq) {
                             return false; // Erase stroke!
                         }
                     }
@@ -4576,7 +4798,7 @@
                 });
 
                 if (page.paths.length !== prevCount) {
-                    if (navigator.vibrate) navigator.vibrate(12);
+                    if (navigator.vibrate) navigator.vibrate(10);
                     renderPageInkCommitted(pageIndex);
                     queueDebouncedSave(nb);
                     updateThumbnailPreview(pageIndex);
@@ -4606,7 +4828,6 @@
                 }
             }
         }
-
         /* ==========================================================================
            4. SMART SHAPE RECOGNITION (HOLD-TO-SNAP & AUTO-RECOGNIZE)
            ========================================================================== */
@@ -6172,26 +6393,408 @@
         }
 
         /* ==========================================================================
-           10. TOOLING & PALETTE CONTROLS
+           10. TOOLING, PALETTE CONTROLS & ANCHORED APPLE POPOVERS
            ========================================================================== */
-        function selectDockTool(tool) {
-            currentTool = tool;
-            if (['pen', 'shape'].includes(tool)) {
-                if (!COLOR_SWATCHES.pen.includes(activeColor)) activeColor = COLOR_SWATCHES.pen[0];
-                if (!STROKE_SIZES.pen.includes(activeSize)) activeSize = STROKE_SIZES.pen[1];
-            } else if (tool === 'highlighter') {
-                if (!COLOR_SWATCHES.highlighter.includes(activeColor)) activeColor = COLOR_SWATCHES.highlighter[0];
-                if (!STROKE_SIZES.highlighter.includes(activeSize)) activeSize = STROKE_SIZES.highlighter[1];
-            } else if (tool === 'eraser') {
-                activeSize = STROKE_SIZES.eraser[1];
-            } else if (tool === 'laser') {
-                if (!STROKE_SIZES.laser.includes(laserSize)) laserSize = STROKE_SIZES.laser[1];
+        const DEFAULT_TOOL_SETTINGS = {
+            pen: { color: '#1C1C1E', size: 3 },
+            highlighter: { color: '#FFE600', size: 24, opacity: 0.52 },
+            eraser: { mode: 'stroke', size: 20 },
+            shape: { mode: 'auto', color: '#007AFF', size: 3 },
+            laser: { color: '#FF3B30', size: 8 }
+        };
+
+        function loadToolSettings() {
+            try {
+                const saved = localStorage.getItem('greatnotes_tool_settings');
+                if (saved) return { ...DEFAULT_TOOL_SETTINGS, ...JSON.parse(saved) };
+            } catch (e) {}
+            return { ...DEFAULT_TOOL_SETTINGS };
+        }
+
+        let toolSettings = loadToolSettings();
+
+        function saveToolSettings() {
+            try {
+                localStorage.setItem('greatnotes_tool_settings', JSON.stringify(toolSettings));
+            } catch (e) {}
+        }
+
+        let activePopoverTool = null;
+
+        function closeToolPopover() {
+            const popover = document.getElementById('dock-tool-popover');
+            if (!popover) return false;
+            const wasOpen = popover.classList.contains('active');
+            popover.classList.remove('active');
+            setTimeout(() => {
+                if (!popover.classList.contains('active')) {
+                    popover.style.display = 'none';
+                }
+            }, 180);
+            activePopoverTool = null;
+            return wasOpen;
+        }
+
+        function toggleToolPopover(tool) {
+            const popover = document.getElementById('dock-tool-popover');
+            if (!popover) return;
+
+            if (activePopoverTool === tool && popover.classList.contains('active')) {
+                closeToolPopover();
+                return;
             }
+
+            renderToolPopover(tool);
+            activePopoverTool = tool;
+
+            popover.style.display = 'block';
+            void popover.offsetWidth; // Force reflow
+            popover.classList.add('active');
+
+            // Position anchored popover above the active tool button
+            const btn = document.getElementById(`tool-${tool}`);
+            const arrow = document.getElementById('dock-popover-arrow');
+            if (btn) {
+                const btnRect = btn.getBoundingClientRect();
+                const popWidth = Math.min(340, Math.max(280, popover.offsetWidth || 300));
+                popover.style.width = `${popWidth}px`;
+
+                let leftPos = btnRect.left + (btnRect.width / 2) - (popWidth / 2);
+                leftPos = Math.max(14, Math.min(window.innerWidth - popWidth - 14, leftPos));
+                popover.style.left = `${leftPos}px`;
+                popover.style.right = 'auto';
+
+                if (arrow) {
+                    const arrowLeft = (btnRect.left + btnRect.width / 2) - leftPos;
+                    arrow.style.left = `${Math.max(18, Math.min(popWidth - 18, arrowLeft))}px`;
+                }
+            }
+        }
+
+        function renderToolPopover(tool) {
+            const container = document.getElementById('dock-popover-content');
+            if (!container) return;
+
+            const isDark = isDarkMode || (getActiveNotebook() && getActiveNotebook().pages[activePageIndex] && getActiveNotebook().pages[activePageIndex].paperColor === 'dark');
+
+            if (tool === 'pen') {
+                const penColors = [
+                    { hex: '#1C1C1E', name: 'Charcoal' },
+                    { hex: '#007AFF', name: 'Apple Blue' },
+                    { hex: '#34C759', name: 'Emerald' },
+                    { hex: '#FF9500', name: 'Amber' },
+                    { hex: '#FF3B30', name: 'Crimson' },
+                    { hex: '#AF52DE', name: 'Purple' },
+                    { hex: '#5856D6', name: 'Indigo' },
+                    { hex: '#8E8E93', name: 'Slate' }
+                ];
+
+                const penSizes = [
+                    { sz: 1.5, label: 'Fine' },
+                    { sz: 3, label: 'Medium' },
+                    { sz: 6, label: 'Bold' },
+                    { sz: 12, label: 'Marker' }
+                ];
+
+                let colorsHtml = penColors.map(c => {
+                    let displayColor = (isDark && (c.hex === '#1C1C1E' || c.hex === '#000000')) ? '#FFFFFF' : c.hex;
+                    let isSelected = (activeColor === c.hex || (isDark && activeColor === '#FFFFFF' && c.hex === '#1C1C1E'));
+                    return `<button type="button" class="spring-btn" style="width: 28px; height: 28px; border-radius: 50%; background: ${displayColor}; border: ${isSelected ? '2.5px solid var(--accent-blue)' : '1px solid var(--border-glass)'}; box-shadow: ${isSelected ? '0 0 0 2px var(--bg-card)' : 'none'}; cursor: pointer; flex-shrink: 0;" onclick="window.selectPopoverPenColor('${c.hex}')" title="${c.name}"></button>`;
+                }).join('');
+
+                let sizesHtml = penSizes.map(s => {
+                    let isSelected = (activeSize === s.sz);
+                    return `
+                        <button type="button" class="popover-size-chip ${isSelected ? 'selected' : ''} spring-btn" onclick="window.selectPopoverPenSize(${s.sz})">
+                            <span style="font-size: 11px; font-weight: 700;">${s.label}</span>
+                            <div style="width: ${Math.max(3, s.sz * 1.5)}px; height: ${Math.max(3, s.sz * 1.5)}px; border-radius: 50%; background: ${isSelected ? '#FFFFFF' : activeColor};"></div>
+                        </button>
+                    `;
+                }).join('');
+
+                container.innerHTML = `
+                    <div class="popover-header">
+                        <span class="popover-title">Fountain Pen</span>
+                        <span style="font-size: 12px; font-weight: 700; color: var(--accent-blue);">${activeSize}px</span>
+                    </div>
+                    <div class="popover-section-label">Colors</div>
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+                        ${colorsHtml}
+                        <label style="position: relative; width: 28px; height: 28px; border-radius: 50%; background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red); cursor: pointer; flex-shrink: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.2);">
+                            <input type="color" onchange="window.selectPopoverPenColor(this.value)" style="position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer;">
+                        </label>
+                    </div>
+                    <div class="popover-section-label">Stroke Width</div>
+                    <div class="popover-chips-row">${sizesHtml}</div>
+                `;
+            } else if (tool === 'highlighter') {
+                const hlColors = [
+                    { hex: '#FFE600', name: 'Lemon Yellow' },
+                    { hex: '#34D399', name: 'Mint Green' },
+                    { hex: '#38BDF8', name: 'Sky Blue' },
+                    { hex: '#FB7185', name: 'Pastel Pink' },
+                    { hex: '#FB923C', name: 'Warm Orange' },
+                    { hex: '#C084FC', name: 'Lavender' }
+                ];
+
+                const hlSizes = [
+                    { sz: 16, label: 'Fine' },
+                    { sz: 24, label: 'Standard' },
+                    { sz: 36, label: 'Broad' }
+                ];
+
+                let colorsHtml = hlColors.map(c => {
+                    let isSelected = (activeColor === c.hex);
+                    return `<button type="button" class="spring-btn" style="width: 32px; height: 32px; border-radius: 50%; background: ${c.hex}; opacity: 0.85; border: ${isSelected ? '2.5px solid var(--accent-blue)' : '1px solid var(--border-glass)'}; box-shadow: ${isSelected ? '0 0 0 2px var(--bg-card)' : 'none'}; cursor: pointer; flex-shrink: 0;" onclick="window.selectPopoverHlColor('${c.hex}')" title="${c.name}"></button>`;
+                }).join('');
+
+                let sizesHtml = hlSizes.map(s => {
+                    let isSelected = (activeSize === s.sz);
+                    return `
+                        <button type="button" class="popover-size-chip ${isSelected ? 'selected' : ''} spring-btn" onclick="window.selectPopoverHlSize(${s.sz})">
+                            <span style="font-size: 11px; font-weight: 700;">${s.label}</span>
+                            <div style="width: 24px; height: ${Math.max(4, s.sz * 0.4)}px; border-radius: 3px; background: ${isSelected ? '#FFFFFF' : activeColor}; opacity: 0.7;"></div>
+                        </button>
+                    `;
+                }).join('');
+
+                container.innerHTML = `
+                    <div class="popover-header">
+                        <span class="popover-title">Translucent Highlighter</span>
+                        <span style="font-size: 12px; font-weight: 700; color: var(--accent-blue);">${activeSize}px</span>
+                    </div>
+                    <div class="popover-section-label">Palette</div>
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+                        ${colorsHtml}
+                        <label style="position: relative; width: 32px; height: 32px; border-radius: 50%; background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red); cursor: pointer; flex-shrink: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.2);">
+                            <input type="color" onchange="window.selectPopoverHlColor(this.value)" style="position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer;">
+                        </label>
+                    </div>
+                    <div class="popover-section-label">Highlighter Width</div>
+                    <div class="popover-chips-row">${sizesHtml}</div>
+                `;
+            } else if (tool === 'eraser') {
+                const eraserSizes = [
+                    { sz: 12, label: 'Small' },
+                    { sz: 20, label: 'Medium' },
+                    { sz: 36, label: 'Large' }
+                ];
+
+                let sizesHtml = eraserSizes.map(s => {
+                    let isSelected = (activeSize === s.sz);
+                    return `
+                        <button type="button" class="popover-size-chip ${isSelected ? 'selected' : ''} spring-btn" onclick="window.selectPopoverEraserSize(${s.sz})">
+                            <span style="font-size: 11px; font-weight: 700;">${s.label}</span>
+                            <div style="width: ${Math.max(4, s.sz * 0.5)}px; height: ${Math.max(4, s.sz * 0.5)}px; border-radius: 50%; background: ${isSelected ? '#FFFFFF' : '#8E8E93'};"></div>
+                        </button>
+                    `;
+                }).join('');
+
+                container.innerHTML = `
+                    <div class="popover-header">
+                        <span class="popover-title">Eraser Mode</span>
+                    </div>
+                    <div style="display: flex; background: var(--bg-interactive); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 3px; gap: 3px; margin-bottom: 12px;">
+                        <button type="button" class="spring-btn" style="flex: 1; padding: 6px; border-radius: 11px; font-size: 12px; font-weight: 700; background: ${eraserMode === 'stroke' ? 'var(--accent-blue)' : 'transparent'}; color: ${eraserMode === 'stroke' ? '#FFFFFF' : 'var(--text-secondary)'};" onclick="window.setEraserModePopover('stroke')">Object</button>
+                        <button type="button" class="spring-btn" style="flex: 1; padding: 6px; border-radius: 11px; font-size: 12px; font-weight: 700; background: ${eraserMode === 'pixel' ? 'var(--accent-blue)' : 'transparent'}; color: ${eraserMode === 'pixel' ? '#FFFFFF' : 'var(--text-secondary)'};" onclick="window.setEraserModePopover('pixel')">Precision</button>
+                    </div>
+                    <div class="popover-section-label">Eraser Radius</div>
+                    <div class="popover-chips-row">${sizesHtml}</div>
+                `;
+            } else if (tool === 'shape') {
+                const shapeModes = [
+                    { key: 'auto', label: 'Auto Snap', icon: SF_ICONS['shape-auto'] },
+                    { key: 'line', label: 'Line', icon: SF_ICONS['shape-line'] },
+                    { key: 'arrow', label: 'Arrow', icon: SF_ICONS['shape-arrow'] },
+                    { key: 'rect', label: 'Box', icon: SF_ICONS['shape-rect'] },
+                    { key: 'circle', label: 'Circle', icon: SF_ICONS['shape-circle'] },
+                    { key: 'triangle', label: 'Triangle', icon: SF_ICONS['shape-triangle'] }
+                ];
+
+                let modesHtml = shapeModes.map(sm => {
+                    let isSelected = (currentShapeMode === sm.key);
+                    return `
+                        <button type="button" class="spring-btn" style="flex: 1; min-width: 44px; padding: 8px 4px; border-radius: 12px; background: ${isSelected ? 'var(--accent-blue)' : 'var(--bg-interactive)'}; color: ${isSelected ? '#FFFFFF' : 'var(--text-secondary)'}; border: 1px solid var(--border-subtle); display: flex; flex-direction: column; align-items: center; gap: 4px;" onclick="window.selectShapeModePopover('${sm.key}')" title="${sm.label}">
+                            <span>${sm.icon}</span>
+                            <span style="font-size: 10px; font-weight: 700;">${sm.label}</span>
+                        </button>
+                    `;
+                }).join('');
+
+                container.innerHTML = `
+                    <div class="popover-header">
+                        <span class="popover-title">Smart Shapes</span>
+                        <span style="font-size: 12px; font-weight: 700; color: var(--accent-blue);">${activeSize}px</span>
+                    </div>
+                    <div class="popover-section-label">Geometry Type</div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 12px;">
+                        ${modesHtml}
+                    </div>
+                `;
+            } else if (tool === 'laser') {
+                const laserColors = [
+                    { hex: '#FF3B30', name: 'Crimson' },
+                    { hex: '#30D158', name: 'Emerald' },
+                    { hex: '#00C7BE', name: 'Cyan' },
+                    { hex: '#FF9500', name: 'Amber' },
+                    { hex: '#AF52DE', name: 'Purple' }
+                ];
+
+                let colorsHtml = laserColors.map(c => {
+                    let isSelected = (laserColor === c.hex);
+                    return `<button type="button" class="spring-btn" style="width: 32px; height: 32px; border-radius: 50%; background: ${c.hex}; border: ${isSelected ? '2.5px solid white' : '1px solid var(--border-glass)'}; box-shadow: ${isSelected ? `0 0 12px ${c.hex}` : 'none'}; cursor: pointer; flex-shrink: 0;" onclick="window.selectLaserColorPopover('${c.hex}')" title="${c.name}"></button>`;
+                }).join('');
+
+                container.innerHTML = `
+                    <div class="popover-header">
+                        <span class="popover-title">Presentation Laser</span>
+                        <span style="font-size: 12px; font-weight: 700; color: ${laserColor};">${laserSize}px</span>
+                    </div>
+                    <div class="popover-section-label">Beam Neon Aura</div>
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+                        ${colorsHtml}
+                    </div>
+                `;
+            }
+        }
+
+        function selectPopoverPenColor(hex) {
+            activeColor = hex;
+            toolSettings.pen.color = hex;
+            saveToolSettings();
+            renderToolPopover('pen');
+            refreshDockUI();
+            if (navigator.vibrate) navigator.vibrate(8);
+        }
+
+        function selectPopoverPenSize(sz) {
+            activeSize = sz;
+            toolSettings.pen.size = sz;
+            saveToolSettings();
+            renderToolPopover('pen');
+            refreshDockUI();
+            if (navigator.vibrate) navigator.vibrate(8);
+        }
+
+        function selectPopoverHlColor(hex) {
+            activeColor = hex;
+            toolSettings.highlighter.color = hex;
+            saveToolSettings();
+            renderToolPopover('highlighter');
+            refreshDockUI();
+            if (navigator.vibrate) navigator.vibrate(8);
+        }
+
+        function selectPopoverHlSize(sz) {
+            activeSize = sz;
+            toolSettings.highlighter.size = sz;
+            saveToolSettings();
+            renderToolPopover('highlighter');
+            refreshDockUI();
+            if (navigator.vibrate) navigator.vibrate(8);
+        }
+
+        function setEraserModePopover(mode) {
+            eraserMode = mode;
+            toolSettings.eraser.mode = mode;
+            saveToolSettings();
+            renderToolPopover('eraser');
+            refreshDockUI();
+            if (navigator.vibrate) navigator.vibrate(8);
+        }
+
+        function selectPopoverEraserSize(sz) {
+            activeSize = sz;
+            toolSettings.eraser.size = sz;
+            saveToolSettings();
+            renderToolPopover('eraser');
+            refreshDockUI();
+            if (navigator.vibrate) navigator.vibrate(8);
+        }
+
+        function selectShapeModePopover(mode) {
+            currentShapeMode = mode;
+            toolSettings.shape.mode = mode;
+            saveToolSettings();
+            renderToolPopover('shape');
+            refreshDockUI();
+            if (navigator.vibrate) navigator.vibrate(8);
+        }
+
+        function selectLaserColorPopover(hex) {
+            laserColor = hex;
+            toolSettings.laser.color = hex;
+            saveToolSettings();
+            renderToolPopover('laser');
+            refreshDockUI();
+            if (navigator.vibrate) navigator.vibrate(8);
+        }
+
+        // Global click-outside listener to dismiss tool popover
+        document.addEventListener('pointerdown', (e) => {
+            const popover = document.getElementById('dock-tool-popover');
+            if (!popover || !popover.classList.contains('active')) return;
+            if (popover.contains(e.target)) return;
+            if (e.target.closest && (e.target.closest('.dock-tool-btn') || e.target.closest('.dock-color-swatch') || e.target.closest('.dock-size-well'))) return;
+            closeToolPopover();
+        }, { passive: true });
+
+        function selectDockTool(tool, allowPopoverToggle = true) {
+            if (tool === currentTool && allowPopoverToggle && ['pen', 'highlighter', 'eraser', 'shape', 'laser'].includes(tool)) {
+                toggleToolPopover(tool);
+                return;
+            }
+
+            closeToolPopover();
+
+            // 1. Save outgoing tool settings
+            if (currentTool === 'pen') {
+                toolSettings.pen.color = activeColor;
+                toolSettings.pen.size = activeSize;
+            } else if (currentTool === 'highlighter') {
+                toolSettings.highlighter.color = activeColor;
+                toolSettings.highlighter.size = activeSize;
+            } else if (currentTool === 'eraser') {
+                toolSettings.eraser.mode = eraserMode;
+                toolSettings.eraser.size = activeSize;
+            } else if (currentTool === 'shape') {
+                toolSettings.shape.mode = currentShapeMode;
+                toolSettings.shape.color = activeColor;
+                toolSettings.shape.size = activeSize;
+            } else if (currentTool === 'laser') {
+                toolSettings.laser.color = laserColor;
+                toolSettings.laser.size = laserSize;
+            }
+
+            currentTool = tool;
+
+            // 2. Restore incoming tool settings
+            if (tool === 'pen') {
+                activeColor = toolSettings.pen.color || '#1C1C1E';
+                activeSize = toolSettings.pen.size || 3;
+            } else if (tool === 'highlighter') {
+                activeColor = toolSettings.highlighter.color || '#FFE600';
+                activeSize = toolSettings.highlighter.size || 24;
+            } else if (tool === 'eraser') {
+                eraserMode = toolSettings.eraser.mode || 'stroke';
+                activeSize = toolSettings.eraser.size || 20;
+            } else if (tool === 'shape') {
+                currentShapeMode = toolSettings.shape.mode || 'auto';
+                activeColor = toolSettings.shape.color || '#007AFF';
+                activeSize = toolSettings.shape.size || 3;
+            } else if (tool === 'laser') {
+                laserColor = toolSettings.laser.color || '#FF3B30';
+                laserSize = toolSettings.laser.size || 8;
+            }
+
+            saveToolSettings();
             refreshDockUI();
         }
 
         function selectShapeMode(mode) {
             currentShapeMode = mode;
+            toolSettings.shape.mode = mode;
+            saveToolSettings();
             refreshDockUI();
             const names = {
                 auto: 'Auto Recognize',
@@ -6207,6 +6810,7 @@
         let isDockCollapsed = false;
 
         function toggleDockCollapse() {
+            closeToolPopover();
             isDockCollapsed = !isDockCollapsed;
             const dock = document.getElementById('apple-pencil-dock');
             const pill = document.getElementById('dock-restore-pill');
@@ -6225,33 +6829,18 @@
                 if (btn) {
                     if (t === currentTool) {
                         btn.classList.add('active');
-                        btn.classList.remove('water-drop-jiggle');
-                        void btn.offsetWidth;
-                        btn.classList.add('water-drop-jiggle');
                     } else {
                         btn.classList.remove('active');
                     }
                 }
             });
 
-            const dockGlass = document.querySelector('#apple-pencil-dock .apple-dock-glass');
-            if (dockGlass) {
-                dockGlass.classList.remove('dock-morphing');
-                void dockGlass.offsetWidth;
-                dockGlass.classList.add('dock-morphing');
-                setTimeout(() => dockGlass.classList.remove('dock-morphing'), 460);
-            }
-
             const tray = document.getElementById('dock-customization-tray');
-            if (tray) {
-                tray.classList.remove('tray-animated');
-                void tray.offsetWidth; // Trigger reflow for smooth animation
-                tray.classList.add('tray-animated');
-            }
-
             const swatchContainer = document.getElementById('dock-color-swatches');
             const rgbBox = document.getElementById('dock-rgb-picker-box');
             const sizeContainer = document.getElementById('dock-size-wells');
+            if (!swatchContainer || !sizeContainer) return;
+
             swatchContainer.innerHTML = '';
             sizeContainer.innerHTML = '';
 
@@ -6279,10 +6868,9 @@
                     { col: '#FF9500', name: 'Amber' },
                     { col: '#AF52DE', name: 'Purple' }
                 ];
-                laserColors.forEach((lc, idx) => {
+                laserColors.forEach((lc) => {
                     const btn = document.createElement('button');
                     btn.className = 'dock-color-swatch spring-btn dock-item-enter';
-                    btn.style.animationDelay = `${idx * 22}ms`;
                     btn.title = lc.name + ' Laser';
                     btn.style.width = '26px';
                     btn.style.height = '26px';
@@ -6290,15 +6878,13 @@
                     btn.style.backgroundColor = lc.col;
                     btn.style.border = (laserColor === lc.col) ? '2.5px solid white' : '1.5px solid rgba(255,255,255,0.4)';
                     btn.style.boxShadow = (laserColor === lc.col) ? `0 0 12px ${lc.col}, 0 0 0 2px var(--accent-blue)` : 'none';
-                    btn.onclick = () => { laserColor = lc.col; refreshDockUI(); };
+                    btn.onclick = () => { laserColor = lc.col; toolSettings.laser.color = lc.col; saveToolSettings(); refreshDockUI(); };
                     swatchContainer.appendChild(btn);
                 });
 
-                // Laser Beam Thickness Wells in dock
-                STROKE_SIZES.laser.forEach((sz, sIdx) => {
+                STROKE_SIZES.laser.forEach((sz) => {
                     const btn = document.createElement('button');
                     btn.className = 'dock-size-well spring-btn dock-item-enter';
-                    btn.style.animationDelay = `${(laserColors.length + sIdx) * 22}ms`;
                     btn.title = `Laser Beam ${sz}px`;
                     btn.style.width = '30px';
                     btn.style.height = '30px';
@@ -6313,7 +6899,7 @@
 
                     const dotSize = Math.max(4, Math.min(16, sz * 0.9));
                     btn.innerHTML = `<div style="width: ${dotSize}px; height: ${dotSize}px; border-radius: 50%; background: ${laserColor}; box-shadow: 0 0 8px ${laserColor};"></div>`;
-                    btn.onclick = () => { setLaserSize(sz); };
+                    btn.onclick = () => { setLaserSize(sz); toolSettings.laser.size = sz; saveToolSettings(); };
                     sizeContainer.appendChild(btn);
                 });
                 return;
@@ -6342,7 +6928,7 @@
                 strokeBtn.style.background = (eraserMode === 'stroke') ? 'var(--accent-blue)' : 'transparent';
                 strokeBtn.style.color = (eraserMode === 'stroke') ? '#FFFFFF' : 'var(--text-secondary)';
                 strokeBtn.innerText = 'Object';
-                strokeBtn.onclick = () => { eraserMode = 'stroke'; refreshDockUI(); };
+                strokeBtn.onclick = () => { eraserMode = 'stroke'; toolSettings.eraser.mode = 'stroke'; saveToolSettings(); refreshDockUI(); };
 
                 const pixelBtn = document.createElement('button');
                 pixelBtn.className = 'spring-btn';
@@ -6353,16 +6939,15 @@
                 pixelBtn.style.background = (eraserMode === 'pixel') ? 'var(--accent-blue)' : 'transparent';
                 pixelBtn.style.color = (eraserMode === 'pixel') ? '#FFFFFF' : 'var(--text-secondary)';
                 pixelBtn.innerText = 'Precision';
-                pixelBtn.onclick = () => { eraserMode = 'pixel'; refreshDockUI(); };
+                pixelBtn.onclick = () => { eraserMode = 'pixel'; toolSettings.eraser.mode = 'pixel'; saveToolSettings(); refreshDockUI(); };
 
                 modeToggle.appendChild(strokeBtn);
                 modeToggle.appendChild(pixelBtn);
                 swatchContainer.appendChild(modeToggle);
 
-                STROKE_SIZES.eraser.forEach((sz, sIdx) => {
+                STROKE_SIZES.eraser.forEach((sz) => {
                     const btn = document.createElement('button');
                     btn.className = 'dock-size-well spring-btn dock-item-enter';
-                    btn.style.animationDelay = `${(sIdx + 1) * 22}ms`;
                     btn.style.width = '30px';
                     btn.style.height = '30px';
                     btn.style.borderRadius = '50%';
@@ -6374,7 +6959,7 @@
                     btn.style.border = isSelected ? '1px solid var(--border-glass)' : '1px solid transparent';
                     btn.style.boxShadow = isSelected ? '0 2px 8px rgba(0,0,0,0.15)' : 'none';
                     btn.innerHTML = `<div style="width: ${Math.min(16, sz * 0.35)}px; height: ${Math.min(16, sz * 0.35)}px; border-radius: 50%; background: #8E8E93;"></div>`;
-                    btn.onclick = () => { activeSize = sz; refreshDockUI(); };
+                    btn.onclick = () => { activeSize = sz; toolSettings.eraser.size = sz; saveToolSettings(); refreshDockUI(); };
                     sizeContainer.appendChild(btn);
                 });
                 return;
@@ -6422,28 +7007,24 @@
                 });
                 swatchContainer.appendChild(shapeBar);
 
-                // Quick Color Swatches for Shape
                 const isDarkPaperActive = isDarkMode || (getActiveNotebook() && getActiveNotebook().pages[activePageIndex] && getActiveNotebook().pages[activePageIndex].paperColor === 'dark');
                 const shapeColorList = COLOR_SWATCHES.pen.slice(0, 4).map((c, i) => (i === 0 && isDarkPaperActive) ? '#FFFFFF' : c);
-                shapeColorList.forEach((col, cIdx) => {
+                shapeColorList.forEach((col) => {
                     const btn = document.createElement('button');
                     btn.className = 'dock-color-swatch spring-btn dock-item-enter';
-                    btn.style.animationDelay = `${(cIdx + 1) * 20}ms`;
                     btn.style.width = '26px';
                     btn.style.height = '26px';
                     btn.style.borderRadius = '50%';
                     btn.style.backgroundColor = col;
                     btn.style.border = (col === activeColor) ? '2.5px solid white' : '1px solid rgba(255,255,255,0.4)';
                     btn.style.boxShadow = (col === activeColor) ? '0 0 0 2px var(--accent-blue)' : 'none';
-                    btn.onclick = () => { activeColor = col; refreshDockUI(); };
+                    btn.onclick = () => { activeColor = col; toolSettings.shape.color = col; saveToolSettings(); refreshDockUI(); };
                     swatchContainer.appendChild(btn);
                 });
 
-                // Thickness wells
-                STROKE_SIZES.pen.forEach((sz, sIdx) => {
+                STROKE_SIZES.pen.forEach((sz) => {
                     const btn = document.createElement('button');
                     btn.className = 'dock-size-well spring-btn dock-item-enter';
-                    btn.style.animationDelay = `${(shapeColorList.length + sIdx + 1) * 20}ms`;
                     btn.style.width = '30px';
                     btn.style.height = '30px';
                     btn.style.borderRadius = '50%';
@@ -6455,7 +7036,7 @@
                     btn.style.border = isSelected ? '1px solid var(--border-glass)' : '1px solid transparent';
                     btn.style.boxShadow = isSelected ? '0 2px 8px rgba(0,0,0,0.15)' : 'none';
                     btn.innerHTML = `<div style="width: ${Math.min(14, sz * 0.7)}px; height: ${Math.min(14, sz * 0.7)}px; border-radius: 50%; background: ${activeColor};"></div>`;
-                    btn.onclick = () => { activeSize = sz; refreshDockUI(); };
+                    btn.onclick = () => { activeSize = sz; toolSettings.shape.size = sz; saveToolSettings(); refreshDockUI(); };
                     sizeContainer.appendChild(btn);
                 });
                 return;
@@ -6467,25 +7048,29 @@
 
             const isDarkPaperActive = isDarkMode || (getActiveNotebook() && getActiveNotebook().pages[activePageIndex] && getActiveNotebook().pages[activePageIndex].paperColor === 'dark');
             const colors = (currentTool === 'highlighter') ? COLOR_SWATCHES.highlighter : COLOR_SWATCHES.pen.map((c, i) => (i === 0 && isDarkPaperActive) ? '#FFFFFF' : c);
-            colors.forEach((col, cIdx) => {
+            colors.forEach((col) => {
                 const btn = document.createElement('button');
                 btn.className = 'dock-color-swatch spring-btn dock-item-enter';
-                btn.style.animationDelay = `${cIdx * 18}ms`;
                 btn.style.width = '26px';
                 btn.style.height = '26px';
                 btn.style.borderRadius = '50%';
                 btn.style.backgroundColor = col;
-                btn.style.border = (col === activeColor) ? '2.5px solid white' : '1.5px solid rgba(255,255,255,0.4)';
+                btn.style.border = (col === activeColor) ? '2.5px solid white' : '1px solid rgba(255,255,255,0.4)';
                 btn.style.boxShadow = (col === activeColor) ? '0 0 0 2px var(--accent-blue)' : 'none';
-                btn.onclick = () => { activeColor = col; refreshDockUI(); };
+                btn.onclick = () => {
+                    activeColor = col;
+                    if (currentTool === 'pen') toolSettings.pen.color = col;
+                    if (currentTool === 'highlighter') toolSettings.highlighter.color = col;
+                    saveToolSettings();
+                    refreshDockUI();
+                };
                 swatchContainer.appendChild(btn);
             });
 
             const sizes = (currentTool === 'highlighter') ? STROKE_SIZES.highlighter : STROKE_SIZES.pen;
-            sizes.forEach((sz, sIdx) => {
+            sizes.forEach((sz) => {
                 const btn = document.createElement('button');
                 btn.className = 'dock-size-well spring-btn dock-item-enter';
-                btn.style.animationDelay = `${(colors.length + sIdx) * 18}ms`;
                 btn.style.width = '30px';
                 btn.style.height = '30px';
                 btn.style.borderRadius = '50%';
@@ -6496,14 +7081,26 @@
                 btn.style.background = isSelected ? (isDarkMode ? 'rgba(255,255,255,0.22)' : 'rgba(0,0,0,0.12)') : 'transparent';
                 btn.style.border = isSelected ? '1px solid var(--border-glass)' : '1px solid transparent';
                 btn.style.boxShadow = isSelected ? '0 2px 8px rgba(0,0,0,0.15)' : 'none';
-                btn.innerHTML = `<div style="width: ${Math.min(16, sz * (currentTool === 'highlighter' ? 0.35 : 0.7))}px; height: ${Math.min(16, sz * (currentTool === 'highlighter' ? 0.35 : 0.7))}px; border-radius: 50%; background: ${activeColor};"></div>`;
-                btn.onclick = () => { activeSize = sz; refreshDockUI(); };
+
+                const dotSize = (currentTool === 'highlighter') ? Math.min(18, sz * 0.45) : Math.min(14, sz * 0.7);
+                btn.innerHTML = `<div style="width: ${dotSize}px; height: ${dotSize}px; border-radius: 50%; background: ${activeColor};"></div>`;
+                btn.onclick = () => {
+                    activeSize = sz;
+                    if (currentTool === 'pen') toolSettings.pen.size = sz;
+                    if (currentTool === 'highlighter') toolSettings.highlighter.size = sz;
+                    saveToolSettings();
+                    refreshDockUI();
+                };
                 sizeContainer.appendChild(btn);
             });
         }
 
-        function selectCustomColor(col) {
-            activeColor = col;
+        function selectCustomColor(color) {
+            activeColor = color;
+            if (currentTool === 'pen') toolSettings.pen.color = color;
+            if (currentTool === 'highlighter') toolSettings.highlighter.color = color;
+            if (currentTool === 'shape') toolSettings.shape.color = color;
+            saveToolSettings();
             refreshDockUI();
         }
 
@@ -6538,6 +7135,72 @@
             }
         }
 
+        // Inline Document Title Editing Handlers
+        function handleTitlePillClick(e) {
+            if (e.target && e.target.id === 'doc-title-inline-input') return;
+            startInlineDocRename();
+        }
+
+        function startInlineDocRename() {
+            const nb = getActiveNotebook();
+            if (!nb) return;
+            const nameEl = document.getElementById('doc-active-name');
+            const inputEl = document.getElementById('doc-title-inline-input');
+            const editIcon = document.getElementById('doc-edit-icon');
+            if (!nameEl || !inputEl) return;
+
+            nameEl.style.display = 'none';
+            if (editIcon) editIcon.style.display = 'none';
+            inputEl.style.display = 'inline-block';
+            inputEl.value = nb.title || 'Document';
+            inputEl.focus();
+            inputEl.select();
+        }
+
+        function commitInlineDocRename() {
+            const inputEl = document.getElementById('doc-title-inline-input');
+            const nameEl = document.getElementById('doc-active-name');
+            const editIcon = document.getElementById('doc-edit-icon');
+            if (!inputEl || inputEl.style.display === 'none') return;
+
+            const nb = getActiveNotebook();
+            const newTitle = inputEl.value.trim();
+            if (nb && newTitle && newTitle !== nb.title) {
+                nb.title = newTitle;
+                if (nameEl) nameEl.innerText = nb.title;
+                saveNotebookDirect(nb);
+                showToastNotification("Renamed Document", "check");
+            }
+
+            inputEl.style.display = 'none';
+            if (nameEl) nameEl.style.display = 'inline-block';
+            if (editIcon) editIcon.style.display = 'flex';
+        }
+
+        function cancelInlineDocRename() {
+            const inputEl = document.getElementById('doc-title-inline-input');
+            const nameEl = document.getElementById('doc-active-name');
+            const editIcon = document.getElementById('doc-edit-icon');
+            if (!inputEl) return;
+
+            inputEl.style.display = 'none';
+            if (nameEl) nameEl.style.display = 'inline-block';
+            if (editIcon) editIcon.style.display = 'flex';
+        }
+
+        function handleTitleInputKeydown(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                commitInlineDocRename();
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                cancelInlineDocRename();
+            }
+        }
+
+        function requestRenameDoc() {
+            startInlineDocRename();
+        }
         function adjustViewportZoom(delta) {
             zoomScale = Math.max(0.5, Math.min(3.0, zoomScale + delta));
             document.getElementById('zoom-label').innerText = `${Math.round(zoomScale * 100)}%`;
@@ -9623,7 +10286,11 @@ Format with clean Markdown.`;
             toggleSidebar, handleShelfSearch, clearShelfSearch, setShelfSort,
             toggleShelfViewMode, openNotebookContextMenu, closeNotebookContextMenu,
             toggleFavoriteNotebook, renameNotebookDirect, cycleGeminiModel, formatModelDisplayName, cycleNotebookCoverTheme,
-            duplicateNotebookDirect, trashOrDeleteNotebook, restoreNotebookDirect
+            duplicateNotebookDirect, trashOrDeleteNotebook, restoreNotebookDirect,
+            handleTitlePillClick, startInlineDocRename, commitInlineDocRename, cancelInlineDocRename,
+            handleTitleInputKeydown, toggleToolPopover, closeToolPopover, selectPopoverPenColor,
+            selectPopoverPenSize, selectPopoverHlColor, selectPopoverHlSize, setEraserModePopover,
+            selectPopoverEraserSize, selectShapeModePopover, selectLaserColorPopover
         });
 
         document.addEventListener('DOMContentLoaded', bootGreatNotesPro);

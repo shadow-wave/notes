@@ -1,5 +1,5 @@
 // GreatNotes Service Worker - iPadOS 27.0.1 Offline PWA Engine with Sub-Second AI Studio (v16)
-const CACHE_NAME = 'greatnotes-offline-v18';
+const CACHE_NAME = 'greatnotes-offline-v19';
 const APP_SHELL = [
   './',
   './index.html',
