@@ -294,9 +294,25 @@
             -webkit-touch-callout: none;
         }
 
-        html, body {
+        html {
             width: 100%;
             height: 100%;
+            height: 100dvh;
+            background-color: var(--bg-base);
+        }
+        html.dark {
+            background-color: #080A11 !important;
+        }
+        html.pure-black {
+            background-color: #000000 !important;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            height: 100dvh;
+            position: fixed;
+            inset: 0;
             overflow: hidden;
             font-family: var(--font-family);
             background-color: var(--bg-base);
@@ -308,7 +324,10 @@
             transition: background-color 0.35s ease, color 0.35s ease;
         }
         html.dark body {
-            background-color: #080A11;
+            background-color: #080A11 !important;
+        }
+        html.pure-black body {
+            background-color: #000000 !important;
         }
 
         /* HARDWARE ACCELERATED GPU CONTAINER */
@@ -750,20 +769,32 @@
             transition: width 0.04s linear, height 0.04s linear;
         }
 
-        /* NATIVE APPLE SPRING MODALS & GLASS OVERLAYS */
+        /* NATIVE APPLE SPRING MODALS & GLASS OVERLAYS (OPTIMIZED FOR IPAD A16 SAFE AREAS) */
         .apple-overlay {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100dvh;
             display: flex;
             visibility: hidden;
             pointer-events: none;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.42);
+            padding-top: max(env(safe-area-inset-top, 24px), 24px);
+            padding-bottom: max(env(safe-area-inset-bottom, 24px), 24px);
+            padding-left: max(env(safe-area-inset-left, 16px), 16px);
+            padding-right: max(env(safe-area-inset-right, 16px), 16px);
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.55);
             backdrop-filter: blur(0px);
             -webkit-backdrop-filter: blur(0px);
             z-index: 20000;
             opacity: 0;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
                         backdrop-filter 0.32s ease,
                         -webkit-backdrop-filter 0.32s ease,
@@ -778,26 +809,29 @@
         }
         .apple-modal-box {
             border-radius: 28px;
-            width: 90%;
-            max-width: 440px;
-            overflow: hidden;
-            transform: scale(0.90) translateY(24px);
+            width: min(92vw, 460px);
+            max-height: calc(100dvh - env(safe-area-inset-top, 24px) - env(safe-area-inset-bottom, 24px) - 32px);
+            overflow-y: auto;
+            transform: scale(0.92) translateY(16px);
             opacity: 0;
-            transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
-                        opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+                        opacity 0.28s ease;
+            box-sizing: border-box;
+            margin: auto;
         }
         .apple-overlay.active .apple-modal-box {
             animation: waterBubblePopIn 0.44s cubic-bezier(0.34, 1.56, 0.64, 1) both;
         }
 
-        /* PAGE MATRIX FULL VIEW TRANSITION */
+        /* PAGE MATRIX FULL VIEW TRANSITION (IPAD A16 RETINA SAFE) */
         #page-matrix-sheet {
             z-index: 15000;
         }
         .matrix-modal-content {
-            width: 95vw;
-            height: 92vh;
-            border-radius: 32px;
+            width: min(94vw, 1100px);
+            height: calc(100dvh - env(safe-area-inset-top, 24px) - env(safe-area-inset-bottom, 24px) - 32px);
+            max-height: 840px;
+            border-radius: 30px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -805,6 +839,8 @@
             box-shadow: var(--shadow-dock);
             opacity: 0;
             transition: opacity 0.32s ease;
+            box-sizing: border-box;
+            margin: auto;
         }
         html.dark .matrix-modal-content {
             background: rgba(12, 16, 28, 0.92);
@@ -914,15 +950,19 @@
             transform: scale(1.1);
         }
 
-        /* SETTINGS SHEET STYLES */
+        /* SETTINGS SHEET STYLES (IPAD A16 COMPACT VIEWPORT) */
         .settings-sheet-box {
-            width: 92%;
-            max-width: 520px;
-            max-height: 86vh;
+            width: min(92vw, 540px);
+            max-width: 540px;
+            height: auto;
+            max-height: calc(100dvh - env(safe-area-inset-top, 24px) - env(safe-area-inset-bottom, 24px) - 32px);
             display: flex;
             flex-direction: column;
             padding: 0;
-            border-radius: 32px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-sizing: border-box;
+            margin: auto;
         }
         html.dark .settings-sheet-box {
             background: rgba(14, 18, 30, 0.92);
@@ -1111,10 +1151,10 @@
            APPLE INTELLIGENCE & GEMINI AI STUDIO STYLES
            ========================================================================== */
         .ai-studio-modal-box {
-            width: 95%;
+            width: min(94vw, 760px);
             max-width: 760px;
-            height: 88vh;
-            max-height: 880px;
+            height: calc(100dvh - env(safe-area-inset-top, 24px) - env(safe-area-inset-bottom, 24px) - 24px);
+            max-height: 820px;
             display: flex;
             flex-direction: column;
             padding: 0;
@@ -1123,6 +1163,8 @@
             box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(191, 90, 242, 0.25);
             background: rgba(18, 22, 36, 0.96);
             backdrop-filter: blur(40px) saturate(190%);
+            box-sizing: border-box;
+            margin: auto;
         }
         html.dark .ai-studio-modal-box {
             background: rgba(14, 18, 30, 0.96);
@@ -1258,27 +1300,33 @@
             }
         }
         .ai-chip-card {
-            padding: 12px 14px;
-            border-radius: 18px;
+            padding: 10px 12px;
+            border-radius: 16px;
             background: var(--bg-interactive);
             border: 1px solid var(--border-subtle);
             color: var(--text-primary);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 9px;
             cursor: pointer;
             text-align: left;
             transition: all 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
         }
         html.dark .ai-chip-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.10);
+            background: rgba(255, 255, 255, 0.10) !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
         }
         .ai-chip-card:hover {
             transform: translateY(-2px);
             background: var(--bg-interactive-hover);
             border-color: rgba(191, 90, 242, 0.5);
             box-shadow: 0 6px 18px rgba(191, 90, 242, 0.22);
+        }
+        html.dark .ai-chip-text strong {
+            color: #FFFFFF !important;
+        }
+        html.dark .ai-chip-text small {
+            color: rgba(255, 255, 255, 0.78) !important;
         }
         .ai-chip-icon {
             width: 32px;
@@ -2655,11 +2703,11 @@
                     </div>
                     <div class="settings-item">
                         <div>
-                            <div class="settings-label-title">Apple Pencil Hover Ring</div>
-                            <div class="settings-label-sub">Visual cursor under iPad stylus tip</div>
+                            <div class="settings-label-title">Apple Pencil Hover Ring (M2/M4 Pro & Air Only)</div>
+                            <div class="settings-label-sub">iPad A16 (Pencil 1st Gen & USB-C) uses direct-touch precision inking. Disabled for maximum iPad A16 battery & speed.</div>
                         </div>
                         <button id="hover-toggle-btn" onclick="window.toggleHoverIndicator()" class="settings-seg-btn" style="padding: 6px 14px; border-radius: 14px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary);">
-                            Enabled
+                            Disabled
                         </button>
                     </div>
                     <div class="settings-item">
@@ -3107,7 +3155,7 @@
     </div>
 
     <!-- MAIN APP CANVAS & SPATIAL TRANSITIONS -->
-    <div id="app-viewport" style="position: relative; width: 100vw; height: 100vh; overflow: hidden;">
+    <div id="app-viewport" style="position: absolute; inset: 0; width: 100%; height: 100%; height: 100dvh; overflow: hidden;">
         
         <!-- ======================================================================
              VIEW 1: NOTEBOOK LIBRARY & DOCUMENT SHELF
@@ -3847,10 +3895,12 @@
 
         function extractPointerCoordinates(e, canvas) {
             const rect = canvas.getBoundingClientRect();
-            const scaleX = PAGE_WIDTH_BASE / rect.width;
-            const scaleY = (canvas.height / Math.min(window.devicePixelRatio || 2, 2.5)) / rect.height;
+            const dpr = Math.min(window.devicePixelRatio || 2, 2.5);
+            // Symmetrical, zoom-aware coordinate mapping under the pencil tip
+            const scaleX = (canvas.width / dpr) / (rect.width || 1);
+            const scaleY = (canvas.height / dpr) / (rect.height || 1);
             
-            // iPad Apple Pencil Pressure: 0.0 to 1.0 (fallback: 0.5)
+            // iPad Apple Pencil Pressure: 0.0 to 1.0 (fallback: 0.5 for non-pressure pencils like USB-C)
             let pressure = e.pressure;
             if (pressure === 0 || pressure === undefined) pressure = 0.5;
             
@@ -3867,39 +3917,25 @@
             activeCanvas.addEventListener('pointermove', (e) => onInkingPointerMove(e, activeCanvas, pageIndex));
             activeCanvas.addEventListener('pointerup', (e) => onInkingPointerUp(e, activeCanvas, pageIndex));
             activeCanvas.addEventListener('pointercancel', (e) => onInkingPointerUp(e, activeCanvas, pageIndex));
-            activeCanvas.addEventListener('pointerleave', (e) => onInkingPointerUp(e, activeCanvas, pageIndex));
 
-            // Prevent browser scroll when drawing with Apple Pencil
+            // Prevent browser scroll and gestures when drawing with Apple Pencil or selected tool
             activeCanvas.addEventListener('touchstart', (e) => {
-                if (currentTool !== 'pan' && e.cancelable && e.touches.length === 1 && !stylusOnlyMode) {
+                if (currentTool !== 'pan' && e.cancelable) {
                     e.preventDefault();
                 }
             }, { passive: false });
         }
 
-        let lastPenTapTime = 0;
-        let lastPenTapPos = { x: 0, y: 0 };
-
         function onInkingPointerDown(e, canvas, pageIndex) {
             if (currentTool === 'pan') return;
 
-            // HARDWARE PALM REJECTION: If in Pencil Mode, reject single finger touches
+            // HARDWARE PALM REJECTION: If in Pencil Mode, reject finger touches for Apple Pencil fidelity
             if (stylusOnlyMode && e.pointerType !== 'pen') return;
 
-            // Apple Pencil Gesture: Rapid double-tap toggle between Pen <-> Eraser
-            if (e.pointerType === 'pen') {
-                const now = performance.now();
-                const dist = Math.hypot(e.clientX - lastPenTapPos.x, e.clientY - lastPenTapPos.y);
-                if (now - lastPenTapTime < 280 && dist < 12) {
-                    const nextTool = (currentTool === 'eraser') ? 'pen' : 'eraser';
-                    selectDockTool(nextTool);
-                    showToastNotification(nextTool === 'eraser' ? 'Eraser' : 'Fountain Pen', nextTool === 'eraser' ? 'eraser' : 'pen-tool');
-                    lastPenTapTime = 0;
-                    return;
-                }
-                lastPenTapTime = now;
-                lastPenTapPos = { x: e.clientX, y: e.clientY };
-            }
+            // Hardware Pointer Capture: locks stroke stream to canvas for unbroken inking
+            try {
+                if (canvas.setPointerCapture) canvas.setPointerCapture(e.pointerId);
+            } catch (err) {}
 
             isDrawingNow = true;
             currentDrawingPageIdx = pageIndex;
@@ -4012,14 +4048,14 @@
                 }
             }
 
-            // Apple Hold-to-Snap Shape Timer (400ms dwell detection for Pen or Auto-Shape)
-            if ((currentTool === 'pen' || (currentTool === 'shape' && currentShapeMode === 'auto')) && !hasSnappedShape) {
+            // Geometric Shape Recognition: Only active when user intentionally selects the Shape tool
+            if (currentTool === 'shape' && currentShapeMode === 'auto' && !hasSnappedShape) {
                 clearTimeout(shapeSnapTimer);
                 shapeSnapTimer = setTimeout(() => {
                     if (isDrawingNow && activeStrokePoints.length > 8) {
                         snapActiveStrokeToGeometry(canvas, pageIndex);
                     }
-                }, 400);
+                }, 450);
             }
         }
 
@@ -4234,6 +4270,10 @@
             if (!isDrawingNow || currentDrawingPageIdx !== pageIndex) return;
             isDrawingNow = false;
             clearTimeout(shapeSnapTimer);
+
+            try {
+                if (canvas.releasePointerCapture && e.pointerId) canvas.releasePointerCapture(e.pointerId);
+            } catch (err) {}
 
             const nb = getActiveNotebook();
             if (!nb || !nb.pages[pageIndex]) return;
@@ -6596,8 +6636,10 @@
            ========================================================================== */
         function setupStylusHoverTracking() {
             const hoverRing = document.getElementById('pencil-hover-ring');
+            if (!hoverRing) return;
             window.addEventListener('pointermove', (e) => {
-                if (isHoverEnabled && e.pointerType === 'pen' && activeView === 'document' && currentTool !== 'pan') {
+                // Only show hover ring if explicitly enabled and when not actively drawing
+                if (isHoverEnabled && e.pointerType === 'pen' && e.buttons === 0 && !isDrawingNow && activeView === 'document' && currentTool !== 'pan') {
                     const toolSize = (currentTool === 'laser') ? laserSize : activeSize;
                     const toolColor = (currentTool === 'laser') ? laserColor : (currentTool === 'eraser' ? '#8E8E93' : activeColor);
                     const radius = Math.max(6, toolSize * zoomScale);
@@ -6611,8 +6653,8 @@
                 } else {
                     hoverRing.style.display = 'none';
                 }
-            });
-            window.addEventListener('pointerleave', () => { hoverRing.style.display = 'none'; });
+            }, { passive: true });
+            window.addEventListener('pointerleave', () => { hoverRing.style.display = 'none'; }, { passive: true });
         }
 
         let toolBeforeSpace = null;
@@ -8734,7 +8776,7 @@ Format with clean Markdown.`;
 
         let currentAccentHex = '#0A84FF';
         let currentLaserLifetime = 850;
-        let isHoverEnabled = true;
+        let isHoverEnabled = false; // Disabled by default on iPad A16 (Pencil 1st Gen & USB-C)
         let defaultPageTemplate = 'ruled';
 
         function openSettingsSheet() {
@@ -9291,7 +9333,12 @@ Format with clean Markdown.`;
 
             // 3. Restore Other Settings
             const savedHover = localStorage.getItem('gn_hover_enabled');
-            if (savedHover !== null) isHoverEnabled = (savedHover === 'true');
+            // Default to false for iPad A16 unless user explicitly enabled it
+            if (savedHover !== null) {
+                isHoverEnabled = (savedHover === 'true');
+            } else {
+                isHoverEnabled = false;
+            }
             const savedLaser = localStorage.getItem('gn_laser_lifetime');
             if (savedLaser) currentLaserLifetime = parseInt(savedLaser, 10);
             const savedLaserSize = localStorage.getItem('gn_laser_size');
