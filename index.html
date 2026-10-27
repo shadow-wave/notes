@@ -294,6 +294,12 @@
             -webkit-touch-callout: none;
         }
 
+        /* NATIVE IPADOS APPEARANCE & RADIUS NORMALIZATION */
+        button, input, select, textarea {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
         html {
             width: 100%;
             height: 100%;
@@ -359,6 +365,18 @@
             backdrop-filter: blur(48px) saturate(240%);
             -webkit-backdrop-filter: blur(48px) saturate(240%);
             border: 1px solid var(--border-glass);
+            height: 54px !important;
+            min-height: 54px !important;
+            max-height: 54px !important;
+            border-radius: 27px !important;
+            padding: 0 12px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            box-sizing: border-box !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12),
                         0 6px 18px rgba(0, 0, 0, 0.06),
                         inset 0 1.5px 1px rgba(255, 255, 255, 0.75),
@@ -368,6 +386,112 @@
                         transform 0.44s cubic-bezier(0.175, 0.885, 0.32, 1.275),
                         box-shadow 0.35s ease,
                         background 0.35s ease;
+        }
+
+        /* SAFARI & 4:3 IPAD HIGH-PRECISION INKING ENGINE */
+        #canvas-viewport {
+            -webkit-overflow-scrolling: touch !important;
+            overscroll-behavior-y: none !important;
+            touch-action: pan-y !important;
+        }
+        .page-wrapper {
+            contain: layout paint;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        canvas {
+            image-rendering: -webkit-optimize-contrast !important;
+        }
+
+        /* DOCK COLOR SWATCHES: LOCKED 1:1 CIRCULAR GEOMETRY ON IPAD */
+        .dock-color-swatch {
+            width: 26px !important;
+            height: 26px !important;
+            min-width: 26px !important;
+            min-height: 26px !important;
+            max-width: 26px !important;
+            max-height: 26px !important;
+            border-radius: 50% !important;
+            aspect-ratio: 1 / 1 !important;
+            flex-shrink: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            box-sizing: border-box !important;
+            position: relative !important;
+            cursor: pointer !important;
+            outline: none !important;
+            border: none;
+            display: inline-block !important;
+            vertical-align: middle !important;
+            transition: transform 0.22s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.22s ease !important;
+        }
+        .dock-color-swatch::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+        }
+        .dock-color-swatch:hover {
+            transform: scale(1.15) !important;
+        }
+        .dock-color-swatch:active {
+            transform: scale(0.92) !important;
+        }
+
+        /* DOCK STROKE SIZE WELLS: LOCKED 1:1 CIRCULAR GEOMETRY ON IPAD */
+        .dock-size-well {
+            width: 30px !important;
+            height: 30px !important;
+            min-width: 30px !important;
+            min-height: 30px !important;
+            max-width: 30px !important;
+            max-height: 30px !important;
+            border-radius: 50% !important;
+            aspect-ratio: 1 / 1 !important;
+            flex-shrink: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            box-sizing: border-box !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            position: relative !important;
+            cursor: pointer !important;
+            outline: none !important;
+            transition: transform 0.22s cubic-bezier(0.25, 1, 0.5, 1), background 0.2s ease !important;
+        }
+        .dock-size-well::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+        }
+        .dock-size-well:hover {
+            transform: scale(1.12) !important;
+        }
+        .dock-size-well:active {
+            transform: scale(0.92) !important;
+        }
+
+        /* DOCK ACTION BUTTONS: UNDO, REDO, CLEAR, MINIMIZE */
+        .dock-action-btn {
+            width: 36px !important;
+            height: 36px !important;
+            min-width: 36px !important;
+            min-height: 36px !important;
+            max-width: 36px !important;
+            max-height: 36px !important;
+            border-radius: 18px !important;
+            aspect-ratio: 1 / 1 !important;
+            flex-shrink: 0 !important;
+            padding: 0 !important;
+            box-sizing: border-box !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: transparent !important;
+            border: none !important;
+            cursor: pointer !important;
         }
         html.dark .apple-dock-glass {
             background: rgba(16, 22, 36, 0.85);
@@ -437,11 +561,22 @@
             animation: waterDropJiggle 0.44s cubic-bezier(0.25, 1, 0.5, 1) both;
         }
 
-        /* LIQUID GLASS WATER-DROP DOCK TOOL BUTTONS */
+        /* LIQUID GLASS WATER-DROP DOCK TOOL BUTTONS & IPAD A16 COMPONENT LOCK */
         .dock-tool-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 22px;
+            width: 42px !important;
+            height: 42px !important;
+            min-width: 42px !important;
+            min-height: 42px !important;
+            max-width: 42px !important;
+            max-height: 42px !important;
+            border-radius: 21px !important;
+            aspect-ratio: 1 / 1 !important;
+            flex-shrink: 0 !important;
+            box-sizing: border-box !important;
+            padding: 0 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
             color: var(--text-secondary);
             background: transparent;
             position: relative;
@@ -808,7 +943,8 @@
             -webkit-backdrop-filter: blur(28px) saturate(190%);
         }
         .apple-modal-box {
-            border-radius: 28px;
+            border-radius: 28px !important;
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
             width: min(92vw, 460px);
             max-height: calc(100dvh - env(safe-area-inset-top, 24px) - env(safe-area-inset-bottom, 24px) - 32px);
             overflow-y: auto;
@@ -950,19 +1086,58 @@
             transform: scale(1.1);
         }
 
-        /* SETTINGS SHEET STYLES (IPAD A16 COMPACT VIEWPORT) */
+        /* SETTINGS SHEET STYLES (IPAD A16 COMPACT VIEWPORT & ROUNDED CORNER MASK) */
         .settings-sheet-box {
-            width: min(92vw, 540px);
-            max-width: 540px;
-            height: auto;
-            max-height: calc(100dvh - env(safe-area-inset-top, 24px) - env(safe-area-inset-bottom, 24px) - 32px);
-            display: flex;
-            flex-direction: column;
-            padding: 0;
-            border-radius: 30px;
-            overflow: hidden;
-            box-sizing: border-box;
-            margin: auto;
+            width: min(92vw, 540px) !important;
+            max-width: 540px !important;
+            height: auto !important;
+            max-height: min(84dvh, 740px) !important;
+            border-radius: 28px !important;
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+            margin: auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.16) !important;
+        }
+
+        .settings-done-btn {
+            height: 32px !important;
+            min-height: 32px !important;
+            max-height: 32px !important;
+            padding: 0 18px !important;
+            border-radius: 16px !important;
+            background: var(--accent-blue) !important;
+            color: #FFFFFF !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            border: none !important;
+            cursor: pointer !important;
+            box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.35) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+            line-height: 1 !important;
+        }
+
+        .settings-action-pill {
+            height: 32px !important;
+            min-height: 32px !important;
+            max-height: 32px !important;
+            padding: 0 14px !important;
+            border-radius: 16px !important;
+            font-size: 12px !important;
+            font-weight: 700 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            -webkit-appearance: none !important;
+            appearance: none !important;
+            box-sizing: border-box !important;
+            flex-shrink: 0 !important;
         }
         html.dark .settings-sheet-box {
             background: rgba(14, 18, 30, 0.92);
@@ -971,9 +1146,10 @@
         .settings-group {
             background: var(--bg-interactive);
             border: 1px solid var(--border-subtle);
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 18px;
+            border-radius: 18px !important;
+            overflow: hidden !important;
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+            margin-bottom: 16px;
         }
         html.dark .settings-group {
             background: rgba(20, 26, 42, 0.65);
@@ -1006,27 +1182,37 @@
             margin-top: 2px;
         }
         .settings-seg-control {
-            display: flex;
-            padding: 3px;
+            display: inline-flex !important;
+            align-items: center !important;
+            padding: 3px !important;
             background: var(--bg-input);
             border: 1px solid var(--border-subtle);
-            border-radius: 16px;
+            border-radius: 14px !important;
             gap: 2px;
+            flex-shrink: 0 !important;
         }
         html.dark .settings-seg-control {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.10);
         }
         .settings-seg-btn {
-            padding: 6px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 700;
+            height: 28px !important;
+            min-height: 28px !important;
+            max-height: 28px !important;
+            padding: 0 12px !important;
+            border-radius: 11px !important;
+            font-size: 12px !important;
+            font-weight: 700 !important;
             background: transparent;
             color: var(--text-secondary);
             border: none;
             cursor: pointer;
             transition: all 0.18s ease;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            -webkit-appearance: none !important;
+            appearance: none !important;
         }
         html.dark .settings-seg-btn {
             color: rgba(226, 232, 240, 0.72);
@@ -2386,10 +2572,15 @@
             pointer-events: auto;
         }
 
-        /* 7. iPad A16 High-Precision Touch Ergonomics (Apple HIG 44pt targets) */
+        /* 7. iPad A16 High-Precision Touch Ergonomics (Preserves Native Geometric Roundness) */
         @media (pointer: coarse) {
-            .spring-btn, .dock-tool-btn, .shelf-control-btn {
-                min-height: 44px;
+            button, a, input, select {
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+            .shelf-control-btn {
+                min-height: 40px;
+                border-radius: 20px;
             }
         }
     </style>
@@ -2592,11 +2783,8 @@
                     </div>
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <button onclick="window.closeSettingsSheet()" class="spring-btn" style="padding: 7px 18px; border-radius: 20px; background: var(--accent-blue); color: #FFFFFF; font-size: 14px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.35);">
+                    <button onclick="window.closeSettingsSheet()" class="settings-done-btn spring-btn">
                         Done
-                    </button>
-                    <button onclick="window.closeSettingsSheet()" class="modal-corner-close spring-btn" title="Close Settings">
-                        <span id="settings-close-icon"></span>
                     </button>
                 </div>
             </div>
@@ -2622,7 +2810,7 @@
                             <div class="settings-label-title">Pure Obsidian True Black</div>
                             <div class="settings-label-sub">#000000 pitch-black OLED contrast with liquid glass specular rim reflections</div>
                         </div>
-                        <button id="pure-black-toggle-btn" onclick="window.togglePureBlackMode()" class="settings-seg-btn" style="padding: 6px 14px; border-radius: 14px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary); font-weight: 700;">
+                        <button id="pure-black-toggle-btn" onclick="window.togglePureBlackMode()" class="settings-action-pill spring-btn" style="background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary);">
                             Off
                         </button>
                     </div>
@@ -2659,7 +2847,7 @@
                                     <span id="api-key-eye-icon">👁️</span>
                                 </button>
                             </div>
-                            <button onclick="window.testGeminiApiKey()" id="settings-ai-test-btn" class="spring-btn" style="padding: 10px 16px; border-radius: 14px; background: var(--accent-blue); color: #FFFFFF; font-size: 12px; font-weight: 700; border: none; cursor: pointer; white-space: nowrap; box-shadow: 0 2px 8px rgba(var(--accent-blue-rgb), 0.35);">
+                            <button onclick="window.testGeminiApiKey()" id="settings-ai-test-btn" class="settings-action-pill spring-btn" style="background: var(--accent-blue); color: #FFFFFF; border: none; white-space: nowrap; box-shadow: 0 2px 8px rgba(var(--accent-blue-rgb), 0.35);">
                                 Test Key
                             </button>
                         </div>
@@ -2683,7 +2871,7 @@
                             <div class="settings-label-title">Multimodal Canvas Vision</div>
                             <div class="settings-label-sub">Inspect handwriting, sketches, math formulas and PDF figures</div>
                         </div>
-                        <button id="ai-vision-toggle-btn" onclick="window.toggleAiMultimodalVision()" class="settings-seg-btn active" style="padding: 6px 14px; border-radius: 14px; background: var(--accent-blue); color: white;">
+                        <button id="ai-vision-toggle-btn" onclick="window.toggleAiMultimodalVision()" class="settings-action-pill spring-btn active" style="background: var(--accent-blue); color: white;">
                             Enabled
                         </button>
                     </div>
@@ -2697,7 +2885,7 @@
                             <div class="settings-label-title">Palm Rejection</div>
                             <div class="settings-label-sub">Pencil only draws; fingers pan & zoom</div>
                         </div>
-                        <button id="palm-toggle-btn" onclick="window.togglePencilMode()" class="settings-seg-btn active" style="padding: 6px 14px; border-radius: 14px; background: var(--accent-blue); color: white;">
+                        <button id="palm-toggle-btn" onclick="window.togglePencilMode()" class="settings-action-pill spring-btn active" style="background: var(--accent-blue); color: white;">
                             Strict Stylus
                         </button>
                     </div>
@@ -2706,7 +2894,7 @@
                             <div class="settings-label-title">Apple Pencil Hover Ring (M2/M4 Pro & Air Only)</div>
                             <div class="settings-label-sub">iPad A16 (Pencil 1st Gen & USB-C) uses direct-touch precision inking. Disabled for maximum iPad A16 battery & speed.</div>
                         </div>
-                        <button id="hover-toggle-btn" onclick="window.toggleHoverIndicator()" class="settings-seg-btn" style="padding: 6px 14px; border-radius: 14px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary);">
+                        <button id="hover-toggle-btn" onclick="window.toggleHoverIndicator()" class="settings-action-pill spring-btn" style="background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary);">
                             Disabled
                         </button>
                     </div>
@@ -2760,7 +2948,7 @@
                             <div class="settings-label-title">IndexedDB Storage</div>
                             <div id="settings-storage-metric" class="settings-label-sub">Calculating documents...</div>
                         </div>
-                        <button onclick="window.optimizeStorageCache()" class="spring-btn" style="padding: 8px 14px; border-radius: 14px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--accent-blue); font-size: 12px; font-weight: 700;">
+                        <button onclick="window.optimizeStorageCache()" class="settings-action-pill spring-btn" style="background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--accent-blue);">
                             Optimize Storage
                         </button>
                     </div>
@@ -2769,7 +2957,7 @@
                             <div class="settings-label-title">Complete Archive Backup</div>
                             <div class="settings-label-sub">Export all notebooks & PDFs in .gn package</div>
                         </div>
-                        <button onclick="window.exportNativeGNBackup()" class="spring-btn" style="padding: 8px 14px; border-radius: 14px; background: rgba(48, 209, 88, 0.14); border: 1px solid rgba(48, 209, 88, 0.3); color: var(--accent-green); font-size: 12px; font-weight: 700;">
+                        <button onclick="window.exportNativeGNBackup()" class="settings-action-pill spring-btn" style="background: rgba(48, 209, 88, 0.14); border: 1px solid rgba(48, 209, 88, 0.3); color: var(--accent-green);">
                             Backup All
                         </button>
                     </div>
@@ -2783,7 +2971,7 @@
                             <div class="settings-label-title">iPad Keyboard Shortcuts</div>
                             <div class="settings-label-sub">Magic Keyboard commands & hotkeys (⌘/)</div>
                         </div>
-                        <button onclick="window.openShortcutsHud()" class="spring-btn" style="padding: 8px 14px; border-radius: 14px; background: rgba(var(--accent-blue-rgb), 0.14); border: 1px solid rgba(var(--accent-blue-rgb), 0.3); color: var(--accent-blue); font-size: 12px; font-weight: 700;">
+                        <button onclick="window.openShortcutsHud()" class="settings-action-pill spring-btn" style="background: rgba(var(--accent-blue-rgb), 0.14); border: 1px solid rgba(var(--accent-blue-rgb), 0.3); color: var(--accent-blue);">
                             View (⌘/)
                         </button>
                     </div>
@@ -2812,11 +3000,8 @@
                     </div>
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <button onclick="window.closeShortcutsHud()" class="spring-btn" style="padding: 7px 18px; border-radius: 20px; background: var(--accent-blue); color: #FFFFFF; font-size: 14px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.35);">
+                    <button onclick="window.closeShortcutsHud()" class="settings-done-btn spring-btn">
                         Done
-                    </button>
-                    <button onclick="window.closeShortcutsHud()" class="modal-corner-close spring-btn" title="Close">
-                        <span id="shortcuts-close-icon"></span>
                     </button>
                 </div>
             </div>
@@ -2905,11 +3090,8 @@
                     <button onclick="window.toggleInlineKeyDrawer()" class="spring-btn" style="padding: 7px 12px; border-radius: 16px; background: var(--bg-interactive); border: 1px solid var(--border-subtle); color: var(--text-primary); font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 4px;" title="Quick API Key Setup & Test">
                         <span>🔑</span> Key
                     </button>
-                    <button onclick="window.closeAiStudioSheet()" class="spring-btn" style="padding: 7px 18px; border-radius: 20px; background: var(--accent-blue); color: #FFFFFF; font-size: 14px; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.35);">
+                    <button onclick="window.closeAiStudioSheet()" class="settings-done-btn spring-btn">
                         Done
-                    </button>
-                    <button onclick="window.closeAiStudioSheet()" class="modal-corner-close spring-btn" title="Close AI Assistant">
-                        <span id="ai-close-icon"></span>
                     </button>
                 </div>
             </div>
@@ -3348,14 +3530,14 @@
                 <div class="apple-dock-glass" style="border-radius: 40px; padding: 6px 14px; display: flex; align-items: center; gap: 8px; pointer-events: auto; max-width: 96vw; overflow-x: auto;">
                     
                     <!-- Stylus Mode (Apple Pencil Exclusive / Palm Rejection) -->
-                    <button id="btn-pencil-mode" onclick="window.togglePencilMode()" class="spring-btn" style="padding: 8px 14px; border-radius: 24px; background: var(--accent-blue); color: white; display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 13px;" title="Hardware Palm Rejection Active">
+                    <button id="btn-pencil-mode" onclick="window.togglePencilMode()" class="spring-btn" style="padding: 0 14px; border-radius: 18px; background: var(--accent-blue); color: white; display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 13px; height: 36px; min-height: 36px; max-height: 36px; flex-shrink: 0;" title="Hardware Palm Rejection Active">
                         <span id="dock-stylus-icon" style="display: flex; align-items: center; justify-content: center;"></span> Pencil Only
                     </button>
 
                     <div style="width: 1px; height: 26px; background: var(--border-subtle);"></div>
 
                     <!-- Primary Tool Set: Pan, Fine Pen, Highlighter, Eraser, Shape, Laser -->
-                    <div style="display: flex; align-items: center; gap: 4px; background: var(--bg-interactive); padding: 4px; border-radius: 28px; border: 1px solid var(--border-subtle);">
+                    <div style="display: flex; align-items: center; gap: 4px; background: var(--bg-interactive); padding: 2px 4px; border-radius: 24px; border: 1px solid var(--border-subtle); flex-shrink: 0; height: 46px; box-sizing: border-box;">
                         <button onclick="window.selectDockTool('pan')" id="tool-pan" class="dock-tool-btn spring-btn" title="Pan / Viewport Move">
                             <span id="icon-tool-pan"></span>
                         </button>
@@ -3380,37 +3562,37 @@
                     </div>
 
                     <!-- Customization Controls: Colors, Custom RGB, Stroke Sizes -->
-                    <div id="dock-customization-tray" style="display: flex; align-items: center; gap: 8px;">
+                    <div id="dock-customization-tray" style="display: flex; align-items: center; gap: 8px; flex-shrink: 0; height: 44px;">
                         <div style="width: 1px; height: 26px; background: var(--border-subtle);"></div>
 
                         <!-- 5 Apple Quick Swatches -->
-                        <div id="dock-color-swatches" style="display: flex; align-items: center; gap: 6px;"></div>
+                        <div id="dock-color-swatches" style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;"></div>
 
                         <!-- Apple Rainbow Color Picker -->
-                        <div id="dock-rgb-picker-box" style="position: relative; width: 28px; height: 28px; border-radius: 50%; overflow: hidden; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.18);">
+                        <div id="dock-rgb-picker-box" style="position: relative; width: 26px; height: 26px; min-width: 26px; min-height: 26px; max-width: 26px; max-height: 26px; border-radius: 50%; overflow: hidden; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.18); flex-shrink: 0; aspect-ratio: 1 / 1;">
                             <input type="color" id="rgb-color-wheel" onchange="window.selectCustomColor(event.target.value)" style="position: absolute; inset: -10px; width: 200%; height: 200%; opacity: 0; cursor: pointer;">
                             <div style="width: 100%; height: 100%; background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red); border-radius: 50%;"></div>
                         </div>
 
                         <!-- 3 Optical Stroke Thickness Wells -->
-                        <div id="dock-size-wells" style="display: flex; align-items: center; gap: 6px; background: var(--bg-interactive); padding: 4px 8px; border-radius: 20px; border: 1px solid var(--border-subtle);"></div>
+                        <div id="dock-size-wells" style="display: flex; align-items: center; gap: 6px; background: var(--bg-interactive); padding: 0 6px; border-radius: 18px; border: 1px solid var(--border-subtle); height: 36px; min-height: 36px; max-height: 36px; flex-shrink: 0;"></div>
                     </div>
 
                     <div style="width: 1px; height: 26px; background: var(--border-subtle);"></div>
 
                     <!-- History (Undo, Redo, Clear) & Dock Collapse -->
-                    <div style="display: flex; align-items: center; gap: 2px;">
-                        <button id="dock-undo-btn" onclick="window.performUndoAction()" class="spring-btn" style="width: 36px; height: 36px; border-radius: 18px; background: transparent; color: inherit; opacity: 0.4; display: flex; align-items: center; justify-content: center;" title="Undo (or 2-finger tap)">
+                    <div style="display: flex; align-items: center; gap: 2px; flex-shrink: 0;">
+                        <button id="dock-undo-btn" onclick="window.performUndoAction()" class="dock-action-btn spring-btn" style="opacity: 0.4;" title="Undo (or 2-finger tap)">
                             <span id="icon-undo" style="display: flex; align-items: center; justify-content: center;"></span>
                         </button>
-                        <button id="dock-redo-btn" onclick="window.performRedoAction()" class="spring-btn" style="width: 36px; height: 36px; border-radius: 18px; background: transparent; color: inherit; opacity: 0.4; display: flex; align-items: center; justify-content: center;" title="Redo (or 3-finger tap)">
+                        <button id="dock-redo-btn" onclick="window.performRedoAction()" class="dock-action-btn spring-btn" style="opacity: 0.4;" title="Redo (or 3-finger tap)">
                             <span id="icon-redo" style="display: flex; align-items: center; justify-content: center;"></span>
                         </button>
-                        <button onclick="window.requestClearActivePage()" class="spring-btn" style="width: 36px; height: 36px; border-radius: 18px; background: transparent; color: var(--accent-red); display: flex; align-items: center; justify-content: center;" title="Clear Active Page">
+                        <button onclick="window.requestClearActivePage()" class="dock-action-btn spring-btn" style="color: var(--accent-red);" title="Clear Active Page">
                             <span id="icon-clear" style="display: flex; align-items: center; justify-content: center;"></span>
                         </button>
                         <div style="width: 1px; height: 20px; background: var(--border-subtle); margin: 0 4px;"></div>
-                        <button onclick="window.toggleDockCollapse()" class="spring-btn" style="width: 36px; height: 36px; border-radius: 18px; background: transparent; color: var(--text-secondary); display: flex; align-items: center; justify-content: center;" title="Minimize Toolbar for Full Canvas View">
+                        <button onclick="window.toggleDockCollapse()" class="dock-action-btn spring-btn" style="color: var(--text-secondary);" title="Minimize Toolbar for Full Canvas View">
                             <span id="dock-collapse-icon" style="display: flex; align-items: center; justify-content: center;"></span>
                         </button>
                     </div>
@@ -3846,26 +4028,49 @@
             });
         }
 
+        let isSaveBadgeDirty = false;
+        let thumbnailDebounceTimer = null;
+
+        function scheduleDebouncedThumbnail(pageIndex) {
+            clearTimeout(thumbnailDebounceTimer);
+            thumbnailDebounceTimer = setTimeout(() => {
+                updateThumbnailPreview(pageIndex);
+            }, 1200);
+        }
+
         function queueDebouncedSave(notebook) {
             notebook.updatedAt = Date.now();
-            updateSaveBadge(true);
+            if (!isSaveBadgeDirty) {
+                updateSaveBadge(true);
+                isSaveBadgeDirty = true;
+            }
             clearTimeout(autoSaveTimer);
             autoSaveTimer = setTimeout(() => {
                 saveNotebookDirect(notebook);
-            }, 500);
+            }, 1200);
         }
 
         function saveNotebookDirect(notebook) {
             notebook.updatedAt = Date.now();
             if (!idb) return;
-            const tx = idb.transaction(STORE_NOTEBOOKS, 'readwrite');
-            const store = tx.objectStore(STORE_NOTEBOOKS);
-            store.put(notebook);
-            tx.oncomplete = () => updateSaveBadge(false);
-            tx.onerror = () => {
-                console.error("Save error:", tx.error);
+            try {
+                const tx = idb.transaction(STORE_NOTEBOOKS, 'readwrite');
+                const store = tx.objectStore(STORE_NOTEBOOKS);
+                store.put(notebook);
+                tx.oncomplete = () => {
+                    isSaveBadgeDirty = false;
+                    updateSaveBadge(false);
+                };
+                tx.onerror = () => {
+                    console.error("Save error:", tx.error);
+                    isSaveBadgeDirty = false;
+                    updateSaveBadge(false);
+                };
+            } catch (err) {
+                console.error("Save transaction error:", err);
+                isSaveBadgeDirty = false;
                 updateSaveBadge(false);
-            };
+            }
         }
 
         function updateSaveBadge(isSaving) {
@@ -3893,6 +4098,8 @@
             return ctx;
         }
 
+        let currentSmoothedPressure = null;
+
         function extractPointerCoordinates(e, canvas) {
             const rect = canvas.getBoundingClientRect();
             const dpr = Math.min(window.devicePixelRatio || 2, 2.5);
@@ -3901,8 +4108,16 @@
             const scaleY = (canvas.height / dpr) / (rect.height || 1);
             
             // iPad Apple Pencil Pressure: 0.0 to 1.0 (fallback: 0.5 for non-pressure pencils like USB-C)
-            let pressure = e.pressure;
-            if (pressure === 0 || pressure === undefined) pressure = 0.5;
+            let rawPressure = e.pressure;
+            if (rawPressure === 0 || rawPressure === undefined) rawPressure = 0.5;
+
+            // Low-pass filter pressure to eliminate beading on Apple Pencil
+            if (currentSmoothedPressure === null) {
+                currentSmoothedPressure = rawPressure;
+            } else {
+                currentSmoothedPressure = currentSmoothedPressure * 0.65 + rawPressure * 0.35;
+            }
+            const pressure = Math.max(0.25, Math.min(1.0, currentSmoothedPressure));
             
             return {
                 x: (e.clientX - rect.left) * scaleX,
@@ -3941,6 +4156,7 @@
             currentDrawingPageIdx = pageIndex;
             hasSnappedShape = false;
             clearTimeout(shapeSnapTimer);
+            currentSmoothedPressure = null;
 
             const pt = extractPointerCoordinates(e, canvas);
             shapeOrigin = pt;
@@ -4018,34 +4234,11 @@
                 return;
             }
 
-            // Coalesced Touch Pipeline: Extracts high-frequency 120Hz/240Hz points from iPad digitizer
-            const events = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+            // High-Precision iPad A16 Touch & Apple Pencil Pipeline (120Hz/240Hz, Zero Ghost Dots)
+            const rawEvents = (e.getCoalescedEvents && typeof e.getCoalescedEvents === 'function') ? e.getCoalescedEvents() : null;
+            const events = (rawEvents && rawEvents.length > 0) ? rawEvents : [e];
             for (let ev of events) {
                 renderIncrementalSplinePoint(ev, canvas, pageIndex);
-            }
-
-            // Apple Neural Trajectory Predictor (A16 Bionic Ultra-Low Latency Inking)
-            if (e.getPredictedEvents && e.pointerType === 'pen' && currentTool === 'pen') {
-                const predicted = e.getPredictedEvents();
-                if (predicted && predicted.length > 0) {
-                    const actCtx = canvas.getContext('2d');
-                    actCtx.save();
-                    actCtx.lineCap = 'round';
-                    actCtx.lineJoin = 'round';
-                    actCtx.strokeStyle = activeColor;
-                    for (let pev of predicted) {
-                        const ppt = extractPointerCoordinates(pev, canvas);
-                        if (ppt && Math.hypot(ppt.x - lastMidpoint.x, ppt.y - lastMidpoint.y) < 35) {
-                            const dynWidth = activeSize * (0.35 + 0.9 * (ppt.pressure || 0.5));
-                            actCtx.lineWidth = dynWidth;
-                            actCtx.beginPath();
-                            actCtx.moveTo(lastMidpoint.x, lastMidpoint.y);
-                            actCtx.lineTo(ppt.x, ppt.y);
-                            actCtx.stroke();
-                        }
-                    }
-                    actCtx.restore();
-                }
             }
 
             // Geometric Shape Recognition: Only active when user intentionally selects the Shape tool
@@ -4332,9 +4525,24 @@
                 page.paths.push(finalPath);
                 page.redoPaths = [];
 
-                renderPageInkCommitted(pageIndex);
+                // O(1) Instant Direct Ink Commit: zero-lag, no full page canvas wipe
+                if (currentTool === 'highlighter') {
+                    const hlCanvas = document.getElementById(`hl-canvas-${pageIndex}`);
+                    if (hlCanvas) {
+                        const hlCtx = hlCanvas.getContext('2d');
+                        renderSinglePath(hlCtx, finalPath, page.paperColor);
+                    }
+                } else {
+                    const inkCanvas = document.getElementById(`ink-canvas-${pageIndex}`);
+                    if (inkCanvas) {
+                        const inkCtx = inkCanvas.getContext('2d');
+                        renderSinglePath(inkCtx, finalPath, page.paperColor);
+                    }
+                }
+
+                // Debounced background storage save & thumbnail (instant readiness for next stroke)
                 queueDebouncedSave(nb);
-                updateThumbnailPreview(pageIndex);
+                scheduleDebouncedThumbnail(pageIndex);
                 updateUndoRedoButtons();
             }
 
@@ -5559,11 +5767,25 @@
             renderShelfGrid();
         }
 
+        function getOptimalInitialZoom() {
+            const viewportWidth = window.innerWidth;
+            if (viewportWidth <= 1024) { // iPad screen in 4:3 portrait or split
+                const availWidth = viewportWidth - 32;
+                return Math.min(1.0, Math.max(0.65, Math.round((availWidth / PAGE_WIDTH_BASE) * 100) / 100));
+            }
+            return 1.0;
+        }
+
         function openNotebookView(id) {
             activeNotebookId = id;
             activePageIndex = 0;
             const nb = getActiveNotebook();
             if (!nb) return;
+
+            // Optimal initial 4:3 iPad screen fit (zero horizontal overflow)
+            zoomScale = getOptimalInitialZoom();
+            const zoomLbl = document.getElementById('zoom-label');
+            if (zoomLbl) zoomLbl.innerText = `${Math.round(zoomScale * 100)}%`;
 
             document.getElementById('doc-active-name').innerText = nb.title;
 
@@ -5592,6 +5814,10 @@
         }
 
         function returnToShelf() {
+            if (activeNotebookId) {
+                const nb = getActiveNotebook();
+                if (nb) saveNotebookDirect(nb);
+            }
             activeView = 'library';
             activeNotebookId = null;
 
@@ -6055,11 +6281,11 @@
                 ];
                 laserColors.forEach((lc, idx) => {
                     const btn = document.createElement('button');
-                    btn.className = 'spring-btn dock-item-enter';
+                    btn.className = 'dock-color-swatch spring-btn dock-item-enter';
                     btn.style.animationDelay = `${idx * 22}ms`;
                     btn.title = lc.name + ' Laser';
-                    btn.style.width = '24px';
-                    btn.style.height = '24px';
+                    btn.style.width = '26px';
+                    btn.style.height = '26px';
                     btn.style.borderRadius = '50%';
                     btn.style.backgroundColor = lc.col;
                     btn.style.border = (laserColor === lc.col) ? '2.5px solid white' : '1.5px solid rgba(255,255,255,0.4)';
@@ -6071,7 +6297,7 @@
                 // Laser Beam Thickness Wells in dock
                 STROKE_SIZES.laser.forEach((sz, sIdx) => {
                     const btn = document.createElement('button');
-                    btn.className = 'spring-btn dock-item-enter';
+                    btn.className = 'dock-size-well spring-btn dock-item-enter';
                     btn.style.animationDelay = `${(laserColors.length + sIdx) * 22}ms`;
                     btn.title = `Laser Beam ${sz}px`;
                     btn.style.width = '30px';
@@ -6135,7 +6361,7 @@
 
                 STROKE_SIZES.eraser.forEach((sz, sIdx) => {
                     const btn = document.createElement('button');
-                    btn.className = 'spring-btn dock-item-enter';
+                    btn.className = 'dock-size-well spring-btn dock-item-enter';
                     btn.style.animationDelay = `${(sIdx + 1) * 22}ms`;
                     btn.style.width = '30px';
                     btn.style.height = '30px';
@@ -6201,10 +6427,10 @@
                 const shapeColorList = COLOR_SWATCHES.pen.slice(0, 4).map((c, i) => (i === 0 && isDarkPaperActive) ? '#FFFFFF' : c);
                 shapeColorList.forEach((col, cIdx) => {
                     const btn = document.createElement('button');
-                    btn.className = 'spring-btn dock-item-enter';
+                    btn.className = 'dock-color-swatch spring-btn dock-item-enter';
                     btn.style.animationDelay = `${(cIdx + 1) * 20}ms`;
-                    btn.style.width = '22px';
-                    btn.style.height = '22px';
+                    btn.style.width = '26px';
+                    btn.style.height = '26px';
                     btn.style.borderRadius = '50%';
                     btn.style.backgroundColor = col;
                     btn.style.border = (col === activeColor) ? '2.5px solid white' : '1px solid rgba(255,255,255,0.4)';
@@ -6216,10 +6442,10 @@
                 // Thickness wells
                 STROKE_SIZES.pen.forEach((sz, sIdx) => {
                     const btn = document.createElement('button');
-                    btn.className = 'spring-btn dock-item-enter';
+                    btn.className = 'dock-size-well spring-btn dock-item-enter';
                     btn.style.animationDelay = `${(shapeColorList.length + sIdx + 1) * 20}ms`;
-                    btn.style.width = '28px';
-                    btn.style.height = '28px';
+                    btn.style.width = '30px';
+                    btn.style.height = '30px';
                     btn.style.borderRadius = '50%';
                     btn.style.display = 'flex';
                     btn.style.alignItems = 'center';
@@ -6243,10 +6469,10 @@
             const colors = (currentTool === 'highlighter') ? COLOR_SWATCHES.highlighter : COLOR_SWATCHES.pen.map((c, i) => (i === 0 && isDarkPaperActive) ? '#FFFFFF' : c);
             colors.forEach((col, cIdx) => {
                 const btn = document.createElement('button');
-                btn.className = 'spring-btn dock-item-enter';
+                btn.className = 'dock-color-swatch spring-btn dock-item-enter';
                 btn.style.animationDelay = `${cIdx * 18}ms`;
-                btn.style.width = '24px';
-                btn.style.height = '24px';
+                btn.style.width = '26px';
+                btn.style.height = '26px';
                 btn.style.borderRadius = '50%';
                 btn.style.backgroundColor = col;
                 btn.style.border = (col === activeColor) ? '2.5px solid white' : '1.5px solid rgba(255,255,255,0.4)';
@@ -6258,7 +6484,7 @@
             const sizes = (currentTool === 'highlighter') ? STROKE_SIZES.highlighter : STROKE_SIZES.pen;
             sizes.forEach((sz, sIdx) => {
                 const btn = document.createElement('button');
-                btn.className = 'spring-btn dock-item-enter';
+                btn.className = 'dock-size-well spring-btn dock-item-enter';
                 btn.style.animationDelay = `${(colors.length + sIdx) * 18}ms`;
                 btn.style.width = '30px';
                 btn.style.height = '30px';
